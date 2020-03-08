@@ -33,6 +33,26 @@ class Usuario implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $apellidos;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $edad;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $sexo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,5 +129,53 @@ class Usuario implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellidos(): ?string
+    {
+        return $this->apellidos;
+    }
+
+    public function setApellidos(string $apellidos): self
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    public function getEdad(): ?int
+    {
+        return $this->edad;
+    }
+
+    public function setEdad(int $edad): self
+    {
+        $this->edad = $edad;
+
+        return $this;
+    }
+
+    public function getSexo(): ?string
+    {
+        return $this->sexo;
+    }
+
+    public function setSexo(string $sexo): self
+    {
+        $this->sexo = $sexo;
+
+        return $this;
     }
 }
