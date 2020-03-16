@@ -21,7 +21,7 @@
                 <td>{{ deporte.Nombre }}</td>
                 <td>{{ deporte.Descripcion }}</td>
                 <td>
-                    <a href="{{ path('admin_deporte_show', {'id': deporte.id}) }}">Ve al evento</a>
+                    <a href="{{ path('deporte_show', {'id': deporte.id}) }}">Ve al evento</a>
                 </td>
             </tr>
         {% else %}
