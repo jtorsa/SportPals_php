@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Localidad
      * @ORM\JoinColumn(nullable=false)
      */
     private $Provincia;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Evento", mappedBy="localidad")
+     */
+    private $eventos;
+
+    public function __construct()
+    {
+        $this->eventos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,37 @@ class Localidad
     public function setProvincia(?Provincia $Provincia): self
     {
         $this->Provincia = $Provincia;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evento[]
+     */
+    public function getEventos(): Collection
+    {
+        return $this->eventos;
+    }
+
+    public function addEvento(Evento $evento): self
+    {
+        if (!$this->eventos->contains($evento)) {
+            $this->eventos[] = $evento;
+            $evento->setLocalidad($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvento(Evento $evento): self
+    {
+        if ($this->eventos->contains($evento)) {
+            $this->eventos->removeElement($evento);
+            // set the owning side to null (unless already changed)
+            if ($evento->getLocalidad() === $this) {
+                $evento->setLocalidad(null);
+            }
+        }
 
         return $this;
     }
