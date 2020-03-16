@@ -11,22 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/deporte")
+ * @Route("/admin/deporte")
  */
 class DeporteController extends AbstractController
 {
     /**
-     * @Route("/", name="deporte_index", methods={"GET"})
+     * @Route("/", name="admin_deporte_index", methods={"GET"})
      */
     public function index(DeporteRepository $deporteRepository): Response
     {
-        return $this->render('deporte/index.html.twig', [
+        return $this->render('deporte/admin_index.html.twig', [
             'deportes' => $deporteRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="deporte_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_deporte_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,27 +39,27 @@ class DeporteController extends AbstractController
             $entityManager->persist($deporte);
             $entityManager->flush();
 
-            return $this->redirectToRoute('deporte_index');
+            return $this->redirectToRoute('admin_deporte_index');
         }
 
-        return $this->render('deporte/new.html.twig', [
+        return $this->render('deporte/admin_new.html.twig', [
             'deporte' => $deporte,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="deporte_show", methods={"GET"})
+     * @Route("/{id}", name="admin_deporte_show", methods={"GET"})
      */
     public function show(Deporte $deporte): Response
     {
-        return $this->render('deporte/show.html.twig', [
+        return $this->render('deporte/admin_show.html.twig', [
             'deporte' => $deporte,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="deporte_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_deporte_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Deporte $deporte): Response
     {
@@ -69,26 +69,26 @@ class DeporteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('deporte_index');
+            return $this->redirectToRoute('admin_deporte_index');
         }
 
-        return $this->render('deporte/edit.html.twig', [
+        return $this->render('deporte/admin_edit.html.twig', [
             'deporte' => $deporte,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="deporte_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_deporte_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Deporte $deporte): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$deporte->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $deporte->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($deporte);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('deporte_index');
+        return $this->redirectToRoute('admin_deporte_index');
     }
 }

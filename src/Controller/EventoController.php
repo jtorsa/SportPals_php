@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/evento")
+ * @Route("/admin/evento")
  */
 class EventoController extends AbstractController
 {
@@ -31,6 +31,7 @@ class EventoController extends AbstractController
     public function new(Request $request): Response
     {
         $evento = new Evento();
+        $evento->setCreador($this->getUser());
         $form = $this->createForm(EventoType::class, $evento);
         $form->handleRequest($request);
 
