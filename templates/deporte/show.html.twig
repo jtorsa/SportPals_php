@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deporte{% endblock %}
+
+{% block body %}
+    <h1>Deporte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ deporte.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ deporte.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ deporte.Descripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('deporte_index') }}">back to list</a>
+
+    <a href="{{ path('deporte_edit', {'id': deporte.id}) }}">edit</a>
+
+    {{ include('deporte/_delete_form.html.twig') }}
+{% endblock %}

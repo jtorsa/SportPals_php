@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -52,6 +54,22 @@ class Usuario implements UserInterface
      * @ORM\Column(type="string", length=20)
      */
     private $sexo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Evento", mappedBy="creador")
+     */
+    private $eventosCreados;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participa", mappedBy="jugador")
+     */
+    private $eventosParticipados;
+
+    public function __construct()
+    {
+        $this->eventosCreados = new ArrayCollection();
+        $this->eventosParticipados = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -175,6 +193,68 @@ class Usuario implements UserInterface
     public function setSexo(string $sexo): self
     {
         $this->sexo = $sexo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evento[]
+     */
+    public function getEventosCreados(): Collection
+    {
+        return $this->eventosCreados;
+    }
+
+    public function addEventosCreado(Evento $eventosCreado): self
+    {
+        if (!$this->eventosCreados->contains($eventosCreado)) {
+            $this->eventosCreados[] = $eventosCreado;
+            $eventosCreado->setCreador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventosCreado(Evento $eventosCreado): self
+    {
+        if ($this->eventosCreados->contains($eventosCreado)) {
+            $this->eventosCreados->removeElement($eventosCreado);
+            // set the owning side to null (unless already changed)
+            if ($eventosCreado->getCreador() === $this) {
+                $eventosCreado->setCreador(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participa[]
+     */
+    public function getEventosParticipados(): Collection
+    {
+        return $this->eventosParticipados;
+    }
+
+    public function addEventosParticipado(Participa $eventosParticipado): self
+    {
+        if (!$this->eventosParticipados->contains($eventosParticipado)) {
+            $this->eventosParticipados[] = $eventosParticipado;
+            $eventosParticipado->setJugador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventosParticipado(Participa $eventosParticipado): self
+    {
+        if ($this->eventosParticipados->contains($eventosParticipado)) {
+            $this->eventosParticipados->removeElement($eventosParticipado);
+            // set the owning side to null (unless already changed)
+            if ($eventosParticipado->getJugador() === $this) {
+                $eventosParticipado->setJugador(null);
+            }
+        }
 
         return $this;
     }

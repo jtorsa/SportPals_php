@@ -38,10 +38,16 @@ class Deporte
      */
     private $eventos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Participa", mappedBy="deporte")
+     */
+    private $eventoParticipados;
+
     public function __construct()
     {
         $this->niveles = new ArrayCollection();
         $this->eventos = new ArrayCollection();
+        $this->eventoParticipados = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +135,42 @@ class Deporte
             // set the owning side to null (unless already changed)
             if ($evento->getDeporte() === $this) {
                 $evento->setDeporte(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
+    /**
+     * @return Collection|Participa[]
+     */
+    public function getEventoParticipados(): Collection
+    {
+        return $this->eventoParticipados;
+    }
+
+    public function addEventoParticipado(Participa $eventoParticipado): self
+    {
+        if (!$this->eventoParticipados->contains($eventoParticipado)) {
+            $this->eventoParticipados[] = $eventoParticipado;
+            $eventoParticipado->setDeporte($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventoParticipado(Participa $eventoParticipado): self
+    {
+        if ($this->eventoParticipados->contains($eventoParticipado)) {
+            $this->eventoParticipados->removeElement($eventoParticipado);
+            // set the owning side to null (unless already changed)
+            if ($eventoParticipado->getDeporte() === $this) {
+                $eventoParticipado->setDeporte(null);
             }
         }
 

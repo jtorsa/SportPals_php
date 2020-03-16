@@ -58,6 +58,12 @@ class Evento
      */
     private $requeridos;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="eventosCreados")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $creador;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +161,18 @@ class Evento
     public function setRequeridos(int $requeridos): self
     {
         $this->requeridos = $requeridos;
+
+        return $this;
+    }
+
+    public function getCreador(): ?Usuario
+    {
+        return $this->creador;
+    }
+
+    public function setCreador(?Usuario $creador): self
+    {
+        $this->creador = $creador;
 
         return $this;
     }

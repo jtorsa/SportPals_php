@@ -115,4 +115,9 @@ class Nivel
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getDeporte()." ".$this->getNivel();
+    }
 }
