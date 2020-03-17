@@ -65,6 +65,11 @@ class Usuario implements UserInterface
      */
     private $eventosParticipados;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->eventosCreados = new ArrayCollection();
@@ -255,6 +260,18 @@ class Usuario implements UserInterface
                 $eventosParticipado->setJugador(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
