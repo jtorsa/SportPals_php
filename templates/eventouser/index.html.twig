@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block body %}
+    <h1>Eventos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>deporte</th>
+                <th>Descripcion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.title }}</td>
+                <td>{{ evento.deporte }}</td>
+                <td>{{ evento.requeridos }}</td>
+                <td>
+                    <a href="{{ path('evento_show', {'id': evento.id}) }}">Ve al evento</a>
+                    <a href="#">Inscribete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aun no hay ningun evento registrado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
