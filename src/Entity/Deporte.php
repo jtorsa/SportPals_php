@@ -24,7 +24,7 @@ class Deporte
     private $Nombre;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="text")
      */
     private $Descripcion;
 
