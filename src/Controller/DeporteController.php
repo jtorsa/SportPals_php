@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Deporte;
 use App\Form\DeporteType;
+use \Gumlet\ImageResize;
 use App\Repository\DeporteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/admin/deporte")
@@ -36,6 +38,27 @@ class DeporteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $image = $form->get('Campo')->getData();
+            $imageFileName = $form->get('Nombre')->getData().'.'.$image->guessExtension();
+            /**Mover a un servicio imagen que se encargue de guardar las imagenes y redimiensionarlas */
+            try {
+                $image->move(
+                    $this->getParameter('court_directory'),
+                    $imageFileName
+                );
+                $imagick = new \Imagick();
+                $imagick->readImage($this->getParameter('court_directory').'/'.$imageFileName);
+                $imagick->rotateImage(new \ImagickPixel(), 90);
+                $imagick->writeImage($this->getParameter('court_directory').'/'.$imageFileName);
+                $imagick->clear();
+                $imagick->destroy();
+                $image = new ImageResize($this->getParameter('court_directory').'/'.$imageFileName);
+                $image->resizeToBestFit(600, 800);
+                $image->save($this->getParameter('court_directory').'/'.$imageFileName);
+            } catch (FileException $e) {
+                dump($e->getMessage());die;
+                return $e->getMessage();
+            }
             $entityManager->persist($deporte);
             $entityManager->flush();
 

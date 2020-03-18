@@ -6,6 +6,7 @@ use App\Entity\Deporte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class DeporteType extends AbstractType
 {
@@ -14,6 +15,10 @@ class DeporteType extends AbstractType
         $builder
             ->add('Nombre')
             ->add('Descripcion')
+            ->add('Campo', FileType::class,[
+                'label' => 'Campo de juego',
+                'mapped' => false
+            ])
         ;
     }
 

@@ -105,6 +105,9 @@
     "egulias/email-validator": {
         "version": "2.1.14"
     },
+    "gumlet/php-image-resize": {
+        "version": "1.9.2"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
