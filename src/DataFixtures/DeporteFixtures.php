@@ -5,12 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Deporte;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DeporteFixtures extends Fixture
 {
-    private $passwordEncoder;
-
     public function __construct()
     {
     }

@@ -44,11 +44,6 @@ class Evento
     private $direccion;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     */
-    private $start;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Nivel", inversedBy="eventos")
      */
     private $nivel;
@@ -63,6 +58,21 @@ class Evento
      * @ORM\JoinColumn(nullable=false)
      */
     private $creador;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dia;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $inicio;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $final;
 
     public function getId(): ?int
     {
@@ -129,18 +139,6 @@ class Evento
         return $this;
     }
 
-    public function getStart(): ?string
-    {
-        return $this->start;
-    }
-
-    public function setStart(string $start): self
-    {
-        $this->start = $start;
-
-        return $this;
-    }
-
     public function getNivel(): ?Nivel
     {
         return $this->nivel;
@@ -173,6 +171,42 @@ class Evento
     public function setCreador(?Usuario $creador): self
     {
         $this->creador = $creador;
+
+        return $this;
+    }
+
+    public function getDia(): ?\DateTimeInterface
+    {
+        return $this->dia;
+    }
+
+    public function setDia(\DateTimeInterface $dia): self
+    {
+        $this->dia = $dia;
+
+        return $this;
+    }
+
+    public function getInicio(): ?\DateTimeInterface
+    {
+        return $this->inicio;
+    }
+
+    public function setInicio(\DateTimeInterface $inicio): self
+    {
+        $this->inicio = $inicio;
+
+        return $this;
+    }
+
+    public function getFinal(): ?\DateTimeInterface
+    {
+        return $this->final;
+    }
+
+    public function setFinal(\DateTimeInterface $final): self
+    {
+        $this->final = $final;
 
         return $this;
     }

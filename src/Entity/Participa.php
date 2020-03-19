@@ -29,11 +29,6 @@ class Participa
     private $deporte;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $posicion;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Nivel")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -64,18 +59,6 @@ class Participa
     public function setDeporte(?Deporte $deporte): self
     {
         $this->deporte = $deporte;
-
-        return $this;
-    }
-
-    public function getPosicion(): ?string
-    {
-        return $this->posicion;
-    }
-
-    public function setPosicion(string $posicion): self
-    {
-        $this->posicion = $posicion;
 
         return $this;
     }
