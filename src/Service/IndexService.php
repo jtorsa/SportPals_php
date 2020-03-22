@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Manager\PracticaManager;
 use App\Repository\DeporteRepository;
 use Symfony\Component\Security\Core\Security;
 
@@ -9,11 +10,13 @@ class IndexService
 {
     private $security;
     private $deporteRepository;
+    private $practicaManager;
 
-    public function __construct(Security $security, DeporteRepository $deporteRepository)
+    public function __construct(Security $security, DeporteRepository $deporteRepository, PracticaManager $practicaManager)
     {
         $this->security = $security;
         $this->deporteRepository = $deporteRepository;
+        $this->practicaManager = $practicaManager;
     }
     /* funcion para recoger eventos en su localidad y que practique*/
 
@@ -24,11 +27,25 @@ class IndexService
     public function getPracticados()
     {
         $user = $this->security->getUser();
-        $this->deporteRepository->getNoPracticados($user);die;
 
         if($user){
             return $user->getDeportesPracticados();
         }
+        return [];
     }
 
+    public function getDeportesNoPracticados()
+    {
+        $user = $this->security->getUser();
+        if(!$user){
+            return [];
+        }
+        return $this->practicaManager->getDeportesNoPracticados($user);
+    }
+
+    public function getPosibleAmistad()
+    {
+        $user = $this->security->getUser()->getLocalidad();
+        /*Usuarios de la misma localidad */
+    }
 }

@@ -33,22 +33,17 @@ WHERE jugador_id = 6
       * @return Deporte[] Returns an array of Deporte objects
       */
     
-    public function getDeportesNoPracticados(Usuario $usuario)
+    public function getDeportesNoPracticados(array $deportes)
     {
-        $practicados = $usuario->getDeportesPracticados();
-        $arrayIds = [];
-        foreach($practicados as $practicado){
-            $arrayIds[] = $practicado->getDeporte()->getId();
-        }
         $entityManager = $this->getEntityManager();  
-                $query = $entityManager->createQuery(
-                    'SELECT d.id
-                    FROM App\Entity\Deporte d
-                    WHERE d NOT IN (:array)')
-                ->setParameter('array',$arrayIds);
-                dump($usuario->getId(),$query->getResult());die;
-                ;
+        $query = $entityManager->createQuery(
+            'SELECT d
+            FROM App\Entity\Deporte d
+            WHERE d NOT IN (:array)')
+            ->setParameter('array',$deportes);
+            ;
         ;
+        return $query->getResult();
     }
 
     /*

@@ -20,7 +20,10 @@ class IndexController extends AbstractController
     public function index()
     {
         
-        return $this->render('base.html.twig', ['practicados' => $this->indexService->getPracticados()]);
+        return $this->render('base.html.twig', [
+            'practicados' => $this->indexService->getPracticados(),
+            'noPracticados' => $this->indexService->getDeportesNoPracticados()
+            ]);
     }
 
 }
