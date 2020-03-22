@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Usuario;
 use App\Form\UsuarioType;
 use App\Repository\UsuarioRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -41,6 +42,7 @@ class UsuarioController extends AbstractController
             $image = $form->get('avatar')->getData();
             $imageFileName = $form->get('email')->getData().'.'.$image->guessExtension();
             $usuario->setAvatar($imageFileName);
+            $usuario->setFechaAlta(new DateTime('now'));
             $usuario->setPassword($passwordEncoder->encodePassword(
                 $usuario,
                 $form->get('password')->getData()

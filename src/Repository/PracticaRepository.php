@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Participa;
+use App\Entity\Practica;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Participa|null find($id, $lockMode = null, $lockVersion = null)
- * @method Participa|null findOneBy(array $criteria, array $orderBy = null)
- * @method Participa[]    findAll()
- * @method Participa[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Practica|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Practica|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Practica[]    findAll()
+ * @method Practica[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ParticipaRepository extends ServiceEntityRepository
+class PracticaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Participa::class);
+        parent::__construct($registry, Practica::class);
     }
 
      /**
-      * @return Participa[] Returns an array of Participa objects
+      * @return Practica[] Returns an array of Practica objects
       */
     
     public function findByExampleField($value)
@@ -36,7 +36,7 @@ class ParticipaRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Participa[] Returns an array of Participa objects
+    //  * @return Practica[] Returns an array of Practica objects
     //  */
     /*
     public function findByExampleField($value)
@@ -53,7 +53,7 @@ class ParticipaRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Participa
+    public function findOneBySomeField($value): ?Practica
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

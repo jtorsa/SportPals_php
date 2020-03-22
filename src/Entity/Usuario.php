@@ -70,10 +70,21 @@ class Usuario implements UserInterface
      */
     private $avatar;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $fecha_alta;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Practica", mappedBy="jugador", orphanRemoval=true)
+     */
+    private $deportesPracticados;
+
     public function __construct()
     {
         $this->eventosCreados = new ArrayCollection();
         $this->eventosParticipados = new ArrayCollection();
+        $this->deportesPracticados = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -272,6 +283,49 @@ class Usuario implements UserInterface
     public function setAvatar(string $avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function getFechaAlta(): ?\DateTimeInterface
+    {
+        return $this->fecha_alta;
+    }
+
+    public function setFechaAlta(\DateTimeInterface $fecha_alta): self
+    {
+        $this->fecha_alta = $fecha_alta;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Practica[]
+     */
+    public function getDeportesPracticados(): Collection
+    {
+        return $this->deportesPracticados;
+    }
+
+    public function addDeportesPracticado(Practica $deportesPracticado): self
+    {
+        if (!$this->deportesPracticados->contains($deportesPracticado)) {
+            $this->deportesPracticados[] = $deportesPracticado;
+            $deportesPracticado->setJugador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeportesPracticado(Practica $deportesPracticado): self
+    {
+        if ($this->deportesPracticados->contains($deportesPracticado)) {
+            $this->deportesPracticados->removeElement($deportesPracticado);
+            // set the owning side to null (unless already changed)
+            if ($deportesPracticado->getJugador() === $this) {
+                $deportesPracticado->setJugador(null);
+            }
+        }
 
         return $this;
     }

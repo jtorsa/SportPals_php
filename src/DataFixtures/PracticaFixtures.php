@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Repository\UsuarioRepository;
-use App\Entity\Participa;
+use App\Entity\Practica;
 use App\Repository\DeporteRepository;
 use App\Repository\NivelRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -34,22 +34,22 @@ class PracticaFixtures extends Fixture implements DependentFixtureInterface
         $usuarios = $this->usuarioRepository->findAll();
         $participante = $usuarios[0];
 
-        $participa = new Participa();
+        $participa = new Practica();
         $participa->setJugador($participante);
         $participa->setNivel($nivelesTenis[4]);
         $participa->setDeporte($tenis);
 
-        $participa0 = new Participa();
+        $participa0 = new Practica();
         $participa0->setJugador($participante);
         $participa0->setNivel($nivelesFutbol[0]);
         $participa0->setDeporte($futbol);
 
-        $participa1 = new Participa();
+        $participa1 = new Practica();
         $participa1->setJugador($participante);
         $participa1->setNivel($nivelesBaloncesto[0]);
         $participa1->setDeporte($baloncesto);
 
-        $participa2 = new Participa();
+        $participa2 = new Practica();
         $participa2->setJugador($usuarios[1]);
         $participa2->setNivel($nivelesTenis[1]);
         $participa2->setDeporte($tenis);

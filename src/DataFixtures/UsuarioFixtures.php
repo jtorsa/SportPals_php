@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Usuario;
+use DateTime;
 
 class UsuarioFixtures extends Fixture
 {
@@ -24,6 +25,7 @@ class UsuarioFixtures extends Fixture
         $user->setNombre('Nombre');
         $user->setApellidos('Apellidos');
         $user->setEdad(18);
+        $user->setFechaAlta(new DateTime('now'));
         $user->setPassword($this->passwordEncoder->encodePassword(
                          $user,
                          '1234'
@@ -38,6 +40,7 @@ class UsuarioFixtures extends Fixture
         $user2->setNombre('Nombre');
         $user2->setApellidos('Apellidos');
         $user2->setEdad(18);
+        $user2->setFechaAlta(new DateTime('now'));
         $user2->setPassword($this->passwordEncoder->encodePassword(
                          $user2,
                          '1234'
@@ -52,6 +55,7 @@ class UsuarioFixtures extends Fixture
         $user3->setNombre('Nombre');
         $user3->setApellidos('Apellidos');
         $user3->setEdad(40);
+        $user3->setFechaAlta(new DateTime('now'));
         $user3->setPassword($this->passwordEncoder->encodePassword(
                          $user3,
                          '1234'

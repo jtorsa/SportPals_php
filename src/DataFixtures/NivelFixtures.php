@@ -22,6 +22,7 @@ class NivelFixtures extends Fixture implements DependentFixtureInterface
         $deporte = $this->deporteRepository->findOneBy(['Nombre'=>'Tenis']);
         $futbol = $this->deporteRepository->findOneBy(['Nombre'=>'Futbol']);
         $baloncesto = $this->deporteRepository->findOneBy(['Nombre'=>'Baloncesto']);
+        $padel = $this->deporteRepository->findOneBy(['Nombre'=>'Padel']);
 
         $nivel0 = new Nivel();
         $nivel0->setNivel(1.5);
@@ -100,6 +101,45 @@ class NivelFixtures extends Fixture implements DependentFixtureInterface
         Consigues buenos globos, dejadas, medias-voleas, smashes y aplicas bien la produndidad 
         y los efectos en tus segundos servicios.');
         $manager->persist($nivel8);
+
+        $nivelP = new Nivel();
+        $nivelP->setNivel(1.0);
+        $nivelP->setDeporte($padel);
+        $nivelP->setDescripcion('Acaba de empezar a jugar al pádel.');
+        $manager->persist($nivelP);
+
+        $nivelP1 = new Nivel();
+        $nivelP1->setNivel(1.5);
+        $nivelP1->setDeporte($padel);
+        $nivelP1->setDescripcion('Experiencia limitada. Sigue intentando mantener las pelotas en juego');
+        $manager->persist($nivelP1);
+
+        $nivelP2 = new Nivel();
+        $nivelP2->setNivel(2.0);
+        $nivelP2->setDeporte($padel);
+        $nivelP2->setDescripcion(
+            'DERECHA: Gesto (swing) incompleto, falta de control direccional, velocidad de bola lenta.
+            REVES: Evita el revés, golpeo errático, problemas de empuñadura, gesto incompleto
+            SERVICIO/RESTO: Gesto incompleto, habitualmente comete dobles faltas, bote de la bola inconsistente, resto con muchos problemas
+            VOLEA: Evita subir a la red, evita la volea de revés, mal posicionamiento de pies
+            REBOTES: No consigue devolver ningún rebote.
+            ESTILO DE JUEGO: Familiar con las posiciones básicas, aunque se posiciona frecuentemente de manera incorrecta'
+        );
+        $manager->persist($nivelP2);
+
+        $nivelP25 = new Nivel();
+        $nivelP25->setNivel(2.5);
+        $nivelP25->setDeporte($padel);
+        $nivelP25->setDescripcion(
+            'DERECHA: En desarrollo, velocidad de bola moderada.
+            REVES: Problemas en preparación y empuñadura, a menudo prefiere el golpeo de derecha al de revés            
+            SERVICIO/RESTO: Intento de realizar el gesto completo, velocidad de bola en servicio lenta, bote de bola inconsistente, devuelve servicios lentos.            
+            VOLEA: Incomodo en la red especialmente en el revés, utiliza frecuentemente la cara del drive en las voleas de revés.            
+            REBOTES: Se intenta posicionar para los rebotes aunque solo golpea la bola de forma ocasional            
+            GOLPES ESPECIALES: Hace globos intencionados pero con poco control, empala la bola ocasionalmente en golpes altos (smash)            
+            ESTILO DE JUEGO: Puede pelotear con una velocidad de bola lenta, débil cobertura de su espacio en la pista, permanece en la posición inicial del juego.'
+        );
+        $manager->persist($nivelP25);
         
         $manager->flush();
     }
