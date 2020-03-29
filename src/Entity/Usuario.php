@@ -80,6 +80,12 @@ class Usuario implements UserInterface
      */
     private $deportesPracticados;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Localidad")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $localidad;
+
     public function __construct()
     {
         $this->eventosCreados = new ArrayCollection();
@@ -326,6 +332,18 @@ class Usuario implements UserInterface
                 $deportesPracticado->setJugador(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLocalidad(): ?Localidad
+    {
+        return $this->localidad;
+    }
+
+    public function setLocalidad(?Localidad $localidad): self
+    {
+        $this->localidad = $localidad;
 
         return $this;
     }
