@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.posicion) }}    {# <select id="meetup_sport" ... #}
+    {{ form_row(form.deporte) }} {# <select id="meetup_position" ... #}
+    {{ form_row(form.nivel) }} 
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
