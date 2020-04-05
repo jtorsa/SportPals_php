@@ -29,15 +29,15 @@ class Participa
     private $deporte;
 
     /**
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $posicion;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Nivel")
      * @ORM\JoinColumn(nullable=false)
      */
     private $nivel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Posicion")
+     */
+    private $posicion;
 
     public function getId(): ?int
     {
@@ -68,18 +68,6 @@ class Participa
         return $this;
     }
 
-    public function getPosicion(): ?string
-    {
-        return $this->posicion;
-    }
-
-    public function setPosicion(?string $posicion): self
-    {
-        $this->posicion = $posicion;
-
-        return $this;
-    }
-
     public function getNivel(): ?Nivel
     {
         return $this->nivel;
@@ -88,6 +76,18 @@ class Participa
     public function setNivel(?Nivel $nivel): self
     {
         $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    public function getPosicion(): ?Posicion
+    {
+        return $this->posicion;
+    }
+
+    public function setPosicion(?Posicion $posicion): self
+    {
+        $this->posicion = $posicion;
 
         return $this;
     }

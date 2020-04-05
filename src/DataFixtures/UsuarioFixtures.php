@@ -6,19 +6,26 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Usuario;
+use App\Repository\LocalidadRepository;
 use DateTime;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class UsuarioFixtures extends Fixture
+
+class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 {
     private $passwordEncoder;
+    private $localidadRepository;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, LocalidadRepository $localidadRepository)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->localidadRepository = $localidadRepository;
     }
 
     public function load(ObjectManager $manager)
     {
+       $localidades = $this->localidadRepository->findAll();
+
         $user = new Usuario();
         $user->setEmail('admin@mail.com');
         $user->setSexo('H');
@@ -32,6 +39,7 @@ class UsuarioFixtures extends Fixture
                      ));
         $user->setRoles(['ROLE_ADMIN']);
         $user->setAvatar('admin@mail.com.png');
+        $user->setLocalidad($localidades[0]);
         $manager->persist($user);
 
         $user2 = new Usuario();
@@ -47,6 +55,7 @@ class UsuarioFixtures extends Fixture
                      ));
         $user2->setRoles(['ROLE_ADMIN']);
         $user2->setAvatar('avatar@mail.com.png');
+        $user2->setLocalidad($localidades[0]);
         $manager->persist($user2);
 
         $user3 = new Usuario();
@@ -62,8 +71,16 @@ class UsuarioFixtures extends Fixture
                      ));
         $user3->setRoles(['ROLE_USER']);
         $user3->setAvatar('user@mail.com.png');
+        $user3->setLocalidad($localidades[5]);
         $manager->persist($user3);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            Provinciafixtures::class,
+        );
     }
 }

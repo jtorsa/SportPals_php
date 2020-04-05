@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Deporte;
-use App\Entity\Nivel;
 use App\Entity\Participa;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -81,7 +81,7 @@ class Usuario implements UserInterface
     private $deportesPracticados;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Localidad")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Localidad", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $localidad;

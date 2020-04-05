@@ -24,7 +24,7 @@ class Localidad
     private $Nombre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Provincia", inversedBy="Localidades")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Provincia", inversedBy="Localidades",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $Provincia;
