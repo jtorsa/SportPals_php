@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Practica{% endblock %}
+
+{% block body %}
+    <h1>Practica</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ practica.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('practica_index') }}">back to list</a>
+
+    <a href="{{ path('practica_edit', {'id': practica.id}) }}">edit</a>
+
+    {{ include('practica/_delete_form.html.twig') }}
+{% endblock %}

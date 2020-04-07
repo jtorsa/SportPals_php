@@ -29,11 +29,6 @@ class Localidad
      */
     private $Provincia;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Evento", mappedBy="localidad")
-     */
-    private $eventos;
-
     public function __construct()
     {
         $this->eventos = new ArrayCollection();
@@ -64,37 +59,6 @@ class Localidad
     public function setProvincia(?Provincia $Provincia): self
     {
         $this->Provincia = $Provincia;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Evento[]
-     */
-    public function getEventos(): Collection
-    {
-        return $this->eventos;
-    }
-
-    public function addEvento(Evento $evento): self
-    {
-        if (!$this->eventos->contains($evento)) {
-            $this->eventos[] = $evento;
-            $evento->setLocalidad($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvento(Evento $evento): self
-    {
-        if ($this->eventos->contains($evento)) {
-            $this->eventos->removeElement($evento);
-            // set the owning side to null (unless already changed)
-            if ($evento->getLocalidad() === $this) {
-                $evento->setLocalidad(null);
-            }
-        }
 
         return $this;
     }

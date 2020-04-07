@@ -34,6 +34,11 @@ class Practica
      */
     private $nivel;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Posicion")
+     */
+    private $posicion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +76,18 @@ class Practica
     public function setNivel(?Nivel $nivel): self
     {
         $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    public function getPosicion(): ?Posicion
+    {
+        return $this->posicion;
+    }
+
+    public function setPosicion(?Posicion $posicion): self
+    {
+        $this->posicion = $posicion;
 
         return $this;
     }

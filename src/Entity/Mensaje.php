@@ -20,7 +20,7 @@ class Mensaje
      * @ORM\ManyToOne(targetEntity="App\Entity\Usuario")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Emisor;
+    private $emisor;
 
     /**
      * @ORM\Column(type="text")
@@ -40,12 +40,12 @@ class Mensaje
 
     public function getEmisor(): ?Usuario
     {
-        return $this->Emisor;
+        return $this->emisor;
     }
 
-    public function setEmisor(?Usuario $Emisor): self
+    public function setEmisor(?Usuario $emisor): self
     {
-        $this->Emisor = $Emisor;
+        $this->emisor = $emisor;
 
         return $this;
     }

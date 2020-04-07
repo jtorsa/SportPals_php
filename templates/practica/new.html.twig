@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Practica{% endblock %}
+
+{% block body %}
+    <h1>Create new Practica</h1>
+
+    {{ include('practica/_form.html.twig') }}
+
+    <a href="{{ path('practica_index') }}">back to list</a>
+
+    <script>
+        var $sport = $('#practica_deporte');
+        
+        $sport.change(function() {
+            var $form = $(this).closest('form');
+            var data = {};
+            data[$sport.attr('name')] = $sport.val();
+            $.ajax({
+                url : $form.attr('action'),
+                type: $form.attr('method'),
+                data : data,
+                success: function(html) {
+                    $('#practica_nivel').replaceWith(
+                        $(html).find('#practica_nivel')
+                    );
+                    $('#practica_posicion').replaceWith(
+                        $(html).find('#practica_posicion')
+                    );
+                }
+            });
+        });
+</script>
+{% endblock %}
