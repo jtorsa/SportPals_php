@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{deporte.nombre}}{% endblock %}
+
+{% block body %}
+    <h1>{{deporte.nombre}}</h1>
+        <table>
+            <tr>
+                <td>{{ deporte.id }}</td>
+                <td>{{ deporte.Nombre }}</td>
+                <td>{{ deporte.Descripcion }}</td>
+            </tr>
+    </table>
+{% endblock %}

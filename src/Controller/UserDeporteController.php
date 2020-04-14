@@ -3,18 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Deporte;
-use App\Form\DeporteType;
 use App\Repository\DeporteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\IndexService;
 
 /**
  * @Route("/deporte")
  */
 class UserDeporteController extends AbstractController
 {
+    private $indexService;
+
+    public function __construct(IndexService $indexService)
+    {
+        $this->indexService = $indexService;
+    }
+
     /**
      * @Route("/", name="deporte_index", methods={"GET"})
      */
@@ -31,7 +37,8 @@ class UserDeporteController extends AbstractController
     public function show(Deporte $deporte): Response
     {
         return $this->render('deporteuser/show.html.twig', [
-            'deporte' => $deporte,
+            'deportes' => $this->indexService->getDeportes(),
+            'deporte' => $deporte
         ]);
     }
 

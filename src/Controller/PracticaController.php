@@ -9,12 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+
 
 /**
  * @Route("/practica")
  */
 class PracticaController extends AbstractController
 {
+    private $security;
+    
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
     /**
      * @Route("/", name="practica_index", methods={"GET"})
      */
@@ -31,6 +39,7 @@ class PracticaController extends AbstractController
     public function new(Request $request): Response
     {
         $practica = new Practica();
+        $practica->setJugador($this->security->getUser());
         $form = $this->createForm(PracticaType::class, $practica);
         $form->handleRequest($request);
 

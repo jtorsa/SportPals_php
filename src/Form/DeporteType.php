@@ -18,6 +18,9 @@ class DeporteType extends AbstractType
             ->add('Campo', FileType::class,[
                 'label' => 'Campo de juego',
                 'mapped' => false
+            ])->add('Imagen', FileType::class,[
+                'label' => 'Imagen',
+                'mapped' => false
             ])
         ;
     }

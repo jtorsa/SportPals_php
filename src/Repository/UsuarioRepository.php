@@ -27,13 +27,26 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
      */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
-        if (!$user instanceof User) {
+        if (!$user instanceof Usuario) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    public function mismaLocalidad()
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT u
+            FROM App\Entity\Usuario u
+            WHERE u NOT IN (:array)')
+            ->setParameter('amigos',$amigos);
+            ;
+        ;
+        return $query->getResult();
     }
 
     // /**

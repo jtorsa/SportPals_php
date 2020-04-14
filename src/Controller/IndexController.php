@@ -19,8 +19,9 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        
+        $this->indexService->getPosibleAmistad();
         return $this->render('base.html.twig', [
+            'deportes' => $this->indexService->getDeportes(),
             'practicados' => $this->indexService->getPracticados(),
             'noPracticados' => $this->indexService->getDeportesNoPracticados()
             ]);
