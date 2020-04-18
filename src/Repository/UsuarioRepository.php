@@ -43,7 +43,7 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
             'SELECT u
             FROM App\Entity\Usuario u
             WHERE u NOT IN (:array)')
-            ->setParameter('amigos',$amigos);
+           // ->setParameter('amigos',$amigos);
             ;
         ;
         return $query->getResult();

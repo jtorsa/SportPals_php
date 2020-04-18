@@ -6,6 +6,7 @@ use App\Entity\Usuario;
 use App\Form\UsuarioType;
 use App\Repository\UsuarioRepository;
 use DateTime;
+use \Gumlet\ImageResize;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -52,6 +53,9 @@ class UsuarioController extends AbstractController
                     $this->getParameter('avatar_directory'),
                     $imageFileName
                 );
+                $image = new ImageResize($this->getParameter('avatar_directory').'/'.$imageFileName);
+                $image->resizeToBestFit(250, 250);
+                $image->save($this->getParameter('avatar_directory').'/'.$imageFileName);
             } catch (FileException $e) {
                 dump($e->getMessage());die;
                 return $e->getMessage();

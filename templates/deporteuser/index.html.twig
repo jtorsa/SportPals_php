@@ -8,7 +8,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>actions</th>
@@ -17,11 +16,10 @@
         <tbody>
         {% for deporte in deportes %}
             <tr>
-                <td>{{ deporte.id }}</td>
                 <td>{{ deporte.Nombre }}</td>
-                <td>{{ deporte.Descripcion }}</td>
+                <td> <img src='/SportSpals/public/sports/{{deporte.nombre}}.png' height="70" width="100"></td>
                 <td>
-                    <a href="{{ path('deporte_show', {'id': deporte.id}) }}">Ve al evento</a>
+                    <a href="{{ path('deporte_show', {'id': deporte.id}) }}">Ve al deporte</a>
                 </td>
             </tr>
         {% else %}

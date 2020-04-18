@@ -27,13 +27,13 @@ class Evento
     private $descripcion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Deporte", inversedBy="eventos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Deporte")
      * @ORM\JoinColumn(nullable=false)
      */
     private $deporte;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Localidad", inversedBy="eventos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Localidad")
      * @ORM\JoinColumn(nullable=false)
      */
     private $localidad;
@@ -44,7 +44,7 @@ class Evento
     private $direccion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Nivel", inversedBy="eventos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Nivel")
      */
     private $nivel;
 

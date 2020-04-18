@@ -19,6 +19,7 @@ class UsuarioType extends AbstractType
             ->add('apellidos')
             ->add('edad')
             ->add('sexo')
+            ->add('localidad')
             ->add('avatar', FileType::class,[
                 'label' => 'avatar',
                 'mapped' => false

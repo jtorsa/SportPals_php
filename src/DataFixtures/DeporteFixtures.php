@@ -50,6 +50,8 @@ class DeporteFixtures extends Fixture
         $manager->persist($padel);
 
         
+
+        
         $manager->flush();
     }
 }
