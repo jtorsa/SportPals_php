@@ -49,8 +49,18 @@ class DeporteFixtures extends Fixture
         El jugador o jugadores opuestos deben devolver la bola con un golpe, cumpliendo con un máximo de un bote para golpearla.');
         $manager->persist($padel);
 
+        $balonmano = new Deporte();
+        $balonmano->setNombre('Balonmano');
+        $balonmano->setDescripcion(' deporte de pelota en el que se enfrentan dos equipos, se caracteriza por transportarla con las manos.
+         Cada equipo se compone de siete jugadores (seis de campo y un portero), pudiendo el equipo contar con otros siete jugadores 
+         (o menos, o ninguno) reservas que pueden intercambiarse en cualquier momento con sus compañeros.');
+        $manager->persist($balonmano);
         
-
+        $ciclismo = new Deporte();
+        $ciclismo->setNombre('Ciclismo');
+        $ciclismo->setDescripcion(' deporte en el que se utiliza una bicicleta1​ para recorrer Circuitos al Aire Libre o en Pista Cubierta 
+        y que engloba diferentes especialidades.');
+        $manager->persist($ciclismo);
         
         $manager->flush();
     }

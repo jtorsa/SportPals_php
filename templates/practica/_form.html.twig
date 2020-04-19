@@ -1,6 +1,6 @@
-{{ form_start(form) }}
-    {{ form_row(form.deporte) }} {# <select id="meetup_position" ... #}
-    {{ form_row(form.nivel) }}
-    {{ form_row(form.posicion) }}
+{{ form_start(global.form) }}
+    {{ form_row(global.form.deporte) }} {# <select id="meetup_position" ... #}
+    {{ form_row(global.form.nivel) }}
+    {{ form_row(global.form.posicion) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(global.form) }}

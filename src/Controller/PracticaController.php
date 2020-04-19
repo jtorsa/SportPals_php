@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use App\ViewManager\PracticaViewmanager;
 
 
 /**
@@ -18,11 +19,14 @@ use Symfony\Component\Security\Core\Security;
 class PracticaController extends AbstractController
 {
     private $security;
+    private $practicaViewmanager;
     
-    public function __construct(Security $security)
+    public function __construct(Security $security, PracticaViewmanager $practicaViewmanager)
     {
         $this->security = $security;
+        $this->practicaViewmanager = $practicaViewmanager;
     }
+
     /**
      * @Route("/", name="practica_index", methods={"GET"})
      */
@@ -38,6 +42,7 @@ class PracticaController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $global = $this->practicaViewmanager->new($request);
         $practica = new Practica();
         $practica->setJugador($this->security->getUser());
         $form = $this->createForm(PracticaType::class, $practica);
@@ -52,8 +57,7 @@ class PracticaController extends AbstractController
         }
 
         return $this->render('practica/new.html.twig', [
-            'practica' => $practica,
-            'form' => $form->createView(),
+            'global' => $global
         ]);
     }
 

@@ -19,6 +19,18 @@ class EventoRepository extends ServiceEntityRepository
         parent::__construct($registry, Evento::class);
     }
 
+    /**
+      * @return Evento[] Returns an array of Evento objects
+      */
+      public function getAllOrderByDate()
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.dia', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+    
     // /**
     //  * @return Evento[] Returns an array of Evento objects
     //  */

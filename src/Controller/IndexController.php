@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use App\Service\IndexService;
+use App\ViewManager\IndexViewmanager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    private $indexService;
+    private $indexViewmanager;
 
-    public function __construct(IndexService $indexService)
+    public function __construct(IndexViewmanager $indexViewmanager)
     {
-        $this->indexService = $indexService;
+        $this->indexViewmanager = $indexViewmanager;
     }
     /**
      * @Route("/", name="index")
@@ -20,9 +20,8 @@ class IndexController extends AbstractController
     public function index()
     {
         return $this->render('base.html.twig', [
-            'deportes' => $this->indexService->getDeportes(),
-            'practicados' => $this->indexService->getPracticados(),
-            'noPracticados' => $this->indexService->getDeportesNoPracticados()
+            
+            'global' => $this->indexViewmanager->index()
             ]);
     }
 

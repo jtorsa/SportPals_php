@@ -14,6 +14,10 @@ use Symfony\Component\Form\FormInterface;
 
 class PracticaType extends AbstractType
 {
+    public function __construct()
+    {
+        
+    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

@@ -2,19 +2,21 @@
 
 namespace App\Manager;
 
-use App\Entity\Usuario;
-use App\Repository\DeporteRepository;
+use App\Repository\EventoRepository;
 
 class EventoManager 
 {
-    private $deporteRepository;
+    private $practicaManager;
+    private $eventoRepository;
     
-    public function __construct(DeporteRepository $deporteRepository)
+    public function __construct(PracticaManager $practicaManager, EventoRepository $eventoRepository)
     {
-        $this->deporteRepository = $deporteRepository;
+        $this->practicaManager = $practicaManager;
+        $this->eventoRepository = $eventoRepository;
     }
 
-public function getDeportesNoPracticados()
+    public function getEventsByDate()
     {
+        return $this->eventoRepository->getAllOrderByDate();
     }
 }

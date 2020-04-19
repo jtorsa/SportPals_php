@@ -48,11 +48,30 @@ class Provinciafixtures extends Fixture
         $localidad8 = new Localidad();
         $localidad8->setNombre('Coslada');
         $localidad8->setProvincia($provincia2);
+/********************************************* */
+        $provincia3 = new Provincia();
+        $provincia3->setNombre('Vizcaya');
 
+        $localidad9 = new Localidad();
+        $localidad9->setNombre('Ibarranguelua‎');
+        $localidad9->setProvincia($provincia3);
+
+        $localidad10 = new Localidad();
+        $localidad10->setNombre('Basauri');
+        $localidad10->setProvincia($provincia3);
+
+        $localidad11 = new Localidad();
+        $localidad11->setNombre('Durango');
+        $localidad11->setProvincia($provincia3);
+
+        $localidad12 = new Localidad();
+        $localidad12->setNombre('Zalla');
+        $localidad12->setProvincia($provincia3);
 
 
         $manager->persist($provincia);
         $manager->persist($provincia2);
+        $manager->persist($provincia3);
         $manager->persist($localidad);
         $manager->persist($localidad2);
         $manager->persist($localidad3);
@@ -61,6 +80,10 @@ class Provinciafixtures extends Fixture
         $manager->persist($localidad6);
         $manager->persist($localidad7);
         $manager->persist($localidad8);
+        $manager->persist($localidad9);
+        $manager->persist($localidad10);
+        $manager->persist($localidad11);
+        $manager->persist($localidad12);
 
         $manager->flush();
     }
