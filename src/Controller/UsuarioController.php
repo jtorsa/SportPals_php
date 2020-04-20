@@ -44,6 +44,7 @@ class UsuarioController extends AbstractController
             $imageFileName = $form->get('email')->getData().'.'.$image->guessExtension();
             $usuario->setAvatar($imageFileName);
             $usuario->setFechaAlta(new DateTime('now'));
+            $usuario->setRoles(['ROLE_USER']);
             $usuario->setPassword($passwordEncoder->encodePassword(
                 $usuario,
                 $form->get('password')->getData()

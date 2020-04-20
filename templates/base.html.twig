@@ -62,9 +62,16 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
             </div>
             </nav>
     {% endblock %}
-    Practicados 
+    
         {% block body %}
-        
+            <div class="container">
+                <div class="row">
+                    Eventos que podrian interesarte 
+                </div>
+                <div class="row">
+                    <a href="/SportSpals/public/index.php/evento/new"> Crear evento </a>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                 {% for practicado in global.practicados %}

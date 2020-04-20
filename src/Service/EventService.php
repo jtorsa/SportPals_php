@@ -30,9 +30,11 @@ class EventService
     {
         $user = $this->security->getUser();
         if(!$user){
-            return $this->eventoManager->getEventsByDate();
+            return $this->eventoManager->getAllEventsOrderByDate();
         }
         $practicados = $this->practicaManager->getDeportesPracticados($user);
+        $localidad = $user->getLocalidad();
+        return $this->eventoManager->getUserEventsByLocalidad($practicados, $localidad);
     }
 
 }

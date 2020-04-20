@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.deporte) }}
+    {{ form_row(form.nivel) }}
+    {{ form_row(form.localidad) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.descripcion) }}
+    {{ form_row(form.direccion) }}
+    {{ form_row(form.requeridos) }}
+    {{ form_row(form.dia) }}
+    {{ form_row(form.inicio) }}
+    {{ form_row(form.final) }}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

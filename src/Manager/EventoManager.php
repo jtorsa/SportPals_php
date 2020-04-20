@@ -2,7 +2,9 @@
 
 namespace App\Manager;
 
+use App\Entity\Localidad;
 use App\Repository\EventoRepository;
+use Doctrine\Common\Collections\Collection;
 
 class EventoManager 
 {
@@ -15,8 +17,13 @@ class EventoManager
         $this->eventoRepository = $eventoRepository;
     }
 
-    public function getEventsByDate()
+    public function getAllEventsOrderByDate()
     {
-        return $this->eventoRepository->getAllOrderByDate();
+        return $this->eventoRepository->getAllEventsOrderByDate();
+    }
+
+    public function getUserEventsByLocalidad(Collection $practicados, Localidad $localidad)
+    {
+        return $this->eventoRepository->getUserEventsByLocalidad($practicados, $localidad);
     }
 }

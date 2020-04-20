@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Evento;
+use App\Entity\Localidad;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @method Evento|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,9 +24,23 @@ class EventoRepository extends ServiceEntityRepository
     /**
       * @return Evento[] Returns an array of Evento objects
       */
-      public function getAllOrderByDate()
+      public function getAllEventsOrderByDate()
     {
         return $this->createQueryBuilder('e')
+            ->orderBy('e.dia', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+      * @return Evento[] Returns an array of Evento objects
+      */
+      public function getUserEventsByLocalidad(Collection $practicados, Localidad $localidad)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.localidad = :localidad')
+            ->setParameter('localidad', $localidad)
             ->orderBy('e.dia', 'ASC')
             ->setMaxResults(5)
             ->getQuery()
