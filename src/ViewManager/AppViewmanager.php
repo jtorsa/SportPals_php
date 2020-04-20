@@ -16,7 +16,7 @@ class AppViewmanager
     public function index()
     {
         $global = 
-       [
+       [   
            'deportes' => $this->indexService->getDeportes(),
         ];
         return $global;

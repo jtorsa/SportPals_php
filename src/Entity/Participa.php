@@ -17,7 +17,7 @@ class Participa
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="eventosParticipados")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario")
      * @ORM\JoinColumn(nullable=false)
      */
     private $jugador;
@@ -27,6 +27,17 @@ class Participa
      * @ORM\JoinColumn(nullable=false)
      */
     private $evento;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Posicion")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $posicion;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $equipo;
 
 
     public function getId(): ?int
@@ -54,6 +65,30 @@ class Participa
     public function setEvento(?Evento $evento): self
     {
         $this->evento = $evento;
+
+        return $this;
+    }
+
+    public function getPosicion(): ?Posicion
+    {
+        return $this->posicion;
+    }
+
+    public function setPosicion(?Posicion $posicion): self
+    {
+        $this->posicion = $posicion;
+
+        return $this;
+    }
+
+    public function getEquipo(): ?int
+    {
+        return $this->equipo;
+    }
+
+    public function setEquipo(?int $equipo): self
+    {
+        $this->equipo = $equipo;
 
         return $this;
     }

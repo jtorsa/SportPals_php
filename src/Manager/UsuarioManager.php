@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\Evento;
 use App\Entity\Localidad;
 use App\Repository\AmistadRepository;
 use App\Repository\UsuarioRepository;
@@ -25,5 +26,10 @@ class UsuarioManager
     public function getAmigos()
     {
         $this->amistadRepository->findBy();
+    }
+    
+    public function getParticipantes(Evento $evento)
+    {
+        return $this->usuarioRepository->getParticipantes($evento);
     }
 }

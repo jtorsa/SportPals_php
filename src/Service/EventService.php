@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Evento;
 use App\Manager\EventoManager;
 use App\Manager\PracticaManager;
 use App\Manager\UsuarioManager;
@@ -35,6 +36,16 @@ class EventService
         $practicados = $this->practicaManager->getDeportesPracticados($user);
         $localidad = $user->getLocalidad();
         return $this->eventoManager->getUserEventsByLocalidad($practicados, $localidad);
+    }
+
+    public function getParticipantesIndexedByPosition(Evento $evento)
+    {
+        $participantes = $this->usuarioManager->getParticipantes($evento);
+        $participantesIndexed = [];
+        foreach ($participantes as $participante ){
+            $participantesIndexed[$participante['nombre'].$participante['equipo']] = $participante['avatar'];
+        }
+        return $participantesIndexed;
     }
 
 }

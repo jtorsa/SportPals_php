@@ -53,7 +53,7 @@ class DeporteController extends AbstractController
                 $imagick->clear();
                 $imagick->destroy();
                 $image = new ImageResize($this->getParameter('court_directory').'/'.$imageFileName);
-                $image->resizeToBestFit(600, 800);
+                $image->resizeToBestFit(450, 600);
                 $image->save($this->getParameter('court_directory').'/'.$imageFileName);
             } catch (FileException $e) {
                 dump($e->getMessage());die;

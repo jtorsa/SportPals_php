@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\EventoType;
+use App\ViewManager\AppViewmanager;
+use App\ViewManager\EventoViewmanager;
 
 /**
  * @Route("/evento")
@@ -17,10 +19,15 @@ use App\Form\EventoType;
 class UserEventoController extends AbstractController
 {
     private $indexService;
+    private $eventoViewmanager;
+    private $appViewmanager;
 
-    public function __construct(IndexService $indexService)
+
+    public function __construct(IndexService $indexService, EventoViewmanager $eventoViewmanager, AppViewmanager $appViewmanager)
     {
         $this->indexService = $indexService;
+        $this->appViewmanager = $appViewmanager;
+        $this->eventoViewmanager= $eventoViewmanager;
     }
 
     /**
@@ -84,8 +91,10 @@ class UserEventoController extends AbstractController
      */
     public function show(Evento $evento): Response
     {
+        $global = $this->eventoViewmanager->show($evento);
+        
         return $this->render('eventouser/show.html.twig', [
-            'evento' => $evento,
+            'global' => $global,
         ]);
     }
 

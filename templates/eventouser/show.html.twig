@@ -6,49 +6,33 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6"> 
+        <div class="col-md-6" id="event-info">
+            <div class="row">
+                <h3>{{ global.evento.title }}</h3>
+            </div>
+            <div class="row">
+                <p>{{ global.evento.descripcion }}</p>
+            </div>
+            <div class="row">
+                <p>{{ global.evento.direccion }}</p>
+            </div>
+            <div class="row">
+                <p>{{ global.evento.dia|date('d-m-Y') }}</p>
+            </div>
+            <div class="row">
+                <p>{{ global.evento.inicio|date('H:i:s') }} / {{ global.evento.final|date('H:i:s')}}</p>
+            </div>
+            <div class="row">
+                <p>{{ global.evento.requeridos }}</p>
+            </div>
         </div>
-        <div class="col-md-6">   
+        <div class="col-md-6" id="court" style="background-image: url('/SportSpals/public/courts/Baloncesto.png');"> 
+            {% include '/courts/baloncesto.html.twig' with {'gloabl':global }%}
         </div>
     </div>
     <div class="row">
     
     </div>
 </div>
-    <h1>Evento</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ evento.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ evento.title }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ evento.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Direccion</th>
-                <td>{{ evento.direccion }}</td>
-            </tr>
-            <tr>
-                <th>Start</th>
-                <td>{{ evento.start }}</td>
-            </tr>
-            <tr>
-                <th>Requeridos</th>
-                <td>{{ evento.requeridos }}</td>
-            </tr>
-        </tbody>
-    </table>
-
     <a href="{{ path('evento_index') }}">back to list</a>
-
-    <a href="{{ path('evento_edit', {'id': evento.id}) }}">edit</a>
-
-    {{ include('evento/_delete_form.html.twig') }}
 {% endblock %}

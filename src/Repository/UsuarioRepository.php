@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Usuario;
+use App\Entity\Evento;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -36,6 +37,9 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
         $this->_em->flush();
     }
 
+    /**
+     * Devuelve los Usuarios la misma Localidad
+     */
     public function mismaLocalidad()
     {
         $entityManager = $this->getEntityManager();  
@@ -44,6 +48,22 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
             FROM App\Entity\Usuario u
             WHERE u NOT IN (:array)')
            // ->setParameter('amigos',$amigos);
+            ;
+        ;
+        return $query->getResult();
+    }
+
+    public function getParticipantes(Evento $evento)
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT u.avatar, po.nombre, p.equipo
+            FROM App\Entity\Evento e, App\Entity\Usuario u, App\Entity\Participa p, App\Entity\Posicion po
+            WHERE e.id = :evento
+            AND p.evento = e.id
+            AND p.jugador = u.id
+            AND p.posicion = po.id')
+            ->setParameter('evento',$evento->getId());
             ;
         ;
         return $query->getResult();

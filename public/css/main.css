@@ -1,0 +1,34 @@
+body {
+    background-color: red;
+  }
+  
+
+  #court{
+    background-size: cover;
+    width: 100%;
+    height: 56em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+
+  .position{
+    text-align: center;
+    height: 9em;
+    white-space: nowrap;
+    padding-top: 2em;
+  }
+
+  .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+  .position-avatar{
+    border-radius: 50%;
+    height: 6em;
+    width: 6em;
+    vertical-align: middle;
+  }

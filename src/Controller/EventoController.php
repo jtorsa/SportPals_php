@@ -9,12 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\ViewManager\EventoViewmanager;
 
 /**
  * @Route("/admin/evento")
  */
 class EventoController extends AbstractController
 {
+
+    private $eventoViewmanager;
+
+    public function __construct(EventoViewmanager $eventoViewmanager)
+    {
+        $this->eventoViewmanager= $eventoViewmanager;
+    }
 
     /**
      * @Route("/", name="evento_index", methods={"GET"})

@@ -32,17 +32,17 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicion1->setNombre('Defensa');
         $posicion1->setDeporte($futbol);
 
-        $posicion1 = new Posicion;
-        $posicion1->setNombre('Centrocampista');
-        $posicion1->setDeporte($futbol);
+        $posicion3 = new Posicion;
+        $posicion3->setNombre('Centrocampista');
+        $posicion3->setDeporte($futbol);
 
         $posicion2 = new Posicion;
         $posicion2->setNombre('Delantero');
         $posicion2->setDeporte($futbol);
 /*****************************************/
-        $posicion3 = new Posicion;
-        $posicion3->setNombre('Base');
-        $posicion3->setDeporte($baloncesto);
+        $posicion7 = new Posicion;
+        $posicion7->setNombre('Base');
+        $posicion7->setDeporte($baloncesto);
 
         $posicion4 = new Posicion;
         $posicion4->setNombre('Escolta');
@@ -53,12 +53,12 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicion5->setDeporte($baloncesto);
 
         $posicion6 = new Posicion;
-        $posicion6->setNombre('Ala-pivot');
+        $posicion6->setNombre('Ala-Pivot');
         $posicion6->setDeporte($baloncesto);
 
-        $posicion = new Posicion;
-        $posicion->setNombre('Pivot');
-        $posicion->setDeporte($baloncesto);
+        $posicion8 = new Posicion;
+        $posicion8->setNombre('Pivot');
+        $posicion8->setDeporte($baloncesto);
 
         $manager->persist($posicion);
         $manager->persist($posicion1);
@@ -67,6 +67,9 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($posicion4);
         $manager->persist($posicion5);
         $manager->persist($posicion6);
+        $manager->persist($posicion7);
+        $manager->persist($posicion8);
+
 
         $manager->flush();
     }
