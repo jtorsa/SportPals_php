@@ -44,7 +44,7 @@ class UsuarioController extends AbstractController
             $imageFileName = $form->get('email')->getData().'.'.$image->guessExtension();
             $usuario->setAvatar($imageFileName);
             $usuario->setFechaAlta(new DateTime('now'));
-            $usuario->setRoles(['ROLE_USER']);
+            $usuario->setRoles(["ROLE_USER"]);
             $usuario->setPassword($passwordEncoder->encodePassword(
                 $usuario,
                 $form->get('password')->getData()
@@ -54,9 +54,6 @@ class UsuarioController extends AbstractController
                     $this->getParameter('avatar_directory'),
                     $imageFileName
                 );
-                $image = new ImageResize($this->getParameter('avatar_directory').'/'.$imageFileName);
-                $image->resizeToBestFit(250, 250);
-                $image->save($this->getParameter('avatar_directory').'/'.$imageFileName);
             } catch (FileException $e) {
                 dump($e->getMessage());die;
                 return $e->getMessage();
