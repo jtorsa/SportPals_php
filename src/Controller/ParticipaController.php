@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Participa;
 use App\Form\ParticipaType;
+use App\Service\ParticipaService;
 use App\Repository\ParticipaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ParticipaController extends AbstractController
 {
+    private $participaService;
+
+    public function __construct(ParticipaService $participaService)
+    {
+        $this->participaService = $participaService;
+    }
     /**
      * @Route("/", name="participa_index", methods={"GET"})
      */
@@ -23,6 +30,20 @@ class ParticipaController extends AbstractController
         return $this->render('participa/index.html.twig', [
             'participas' => $participaRepository->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/new", name="participa_new_ajax", methods={"GET","POST"})
+     */
+    public function newAjax(Request $request): Response
+    {   
+        $participa = $this->participaService->getParticipaFromAjax($request->request->get('id'), $request->request->get('posicion'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($participa);
+        $entityManager->flush();
+
+        
+        return $this->redirectToRoute('participa_index');
     }
 
     /**

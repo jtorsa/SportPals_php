@@ -3,7 +3,22 @@
 {% block title %}Evento{% endblock %}
 
 {% block body %}
-
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+        var posTeam = $(this).parent().parent().attr('id');
+        $.ajax({
+            url: "{{ path('participa_new_ajax') }}",
+            type: "POST",
+            data: {id : {{global.evento.id}},
+                    posicion : posTeam },
+            success: function(html){
+                        location.reload();
+                    }
+            });
+        });
+    });
+</script>
 <div class="container">
     <div class="row">
         <div class="col-md-6" id="event-info">
@@ -26,8 +41,8 @@
                 <p>{{ global.evento.requeridos }}</p>
             </div>
         </div>
-        <div class="col-md-6" id="court" style="background-image: url('/SportSpals/public/courts/Baloncesto.png');"> 
-            {% include '/courts/baloncesto.html.twig' with {'gloabl':global }%}
+        <div class="col-md-6" id="court" style="background-image: url('/SportSpals/public/courts/{{global.evento.deporte.nombre}}.png');"> 
+            {% include (global.court) with {'gloabl':global }%}
         </div>
     </div>
     <div class="row">

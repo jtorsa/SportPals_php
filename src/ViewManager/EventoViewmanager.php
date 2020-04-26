@@ -36,8 +36,10 @@ class EventoViewmanager extends AbstractController
     public function show(Evento $evento)
     {
         $global = $this->appViewmanager->index();
+        $global['rolled'] = $this->eventService->isRolled($evento);
         $global['participantes'] = $this->eventService->getParticipantesIndexedByPosition($evento);
-        $global['evento'] = $evento;
+        $global['evento'] = $evento;    
+        $global['court'] = $this->eventService->getCourtTwig($evento);    
         return $global;
     }
 }

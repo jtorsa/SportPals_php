@@ -26,4 +26,9 @@ class EventoManager
     {
         return $this->eventoRepository->getUserEventsByLocalidad($practicados, $localidad);
     }
+
+    public function getById(string $id)
+    {
+        return $this->eventoRepository->findOneBy(['id'=>$id]);
+    }
 }

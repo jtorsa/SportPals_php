@@ -38,7 +38,7 @@ class EventService
         return $this->eventoManager->getUserEventsByLocalidad($practicados, $localidad);
     }
 
-    public function getParticipantesIndexedByPosition(Evento $evento)
+    public function getParticipantesIndexedByPosition(Evento $evento) :array
     {
         $participantes = $this->usuarioManager->getParticipantes($evento);
         $participantesIndexed = [];
@@ -46,6 +46,26 @@ class EventService
             $participantesIndexed[$participante['nombre'].$participante['equipo']] = $participante['avatar'];
         }
         return $participantesIndexed;
+    }
+
+    public function isRolled(Evento $evento) :bool
+    {
+        $user = $this->security->getUser();
+        if(!$user){
+            return false;
+        }
+        $participantes = $this->usuarioManager->getParticipantes($evento);
+        foreach($participantes as $participante){
+            if($user->getAvatar()== $participante['avatar']){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getCourtTwig(Evento $evento)
+    {
+        return '\/courts/'.$evento->getDeporte()->getNombre().'.html.twig';
     }
 
 }

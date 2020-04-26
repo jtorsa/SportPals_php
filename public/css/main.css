@@ -4,6 +4,7 @@ body {
   
 
   #court{
+    background: no-repeat center center;
     background-size: cover;
     width: 100%;
     height: 56em;
@@ -11,8 +12,17 @@ body {
     padding-bottom: 2em;
     padding-left: 3em;
     padding-right: 3em;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
   }
 
+  .tenis-half{
+    height: 27em;
+    padding: 5em;
+    border: solid;
+    border-color: tomato;
+  }
   .position{
     text-align: center;
     height: 9em;

@@ -1,0 +1,56 @@
+<div class="court-helper">
+    <div class="row">
+    {% set break = false %}
+            {% set user = '' %}
+        <div class="col-md-12 col-sm-12 tenis-half" id="Derecha-1">
+        {% for  participante, value in global.participantes %}
+                    {% if participante == 'Derecha1' %}
+                        {% set user = value %}
+                        {% set break = true %} 
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Derecha del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Derecha del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}</div>
+    </div>
+    <div class="row">
+    {% set break = false %}
+            {% set user = '' %}
+        <div class="col-md-12 col-sm-12 tenis-half" id="Derecha-2">
+        {% for  participante, value in global.participantes %}
+                    {% if participante == 'Derecha2' %}
+                        {% set user = value %}
+                        {% set break = true %} 
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Derecha del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Derecha del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}</div>
+    </div>
+</div>

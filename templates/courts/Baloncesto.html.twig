@@ -1,0 +1,274 @@
+<div class="court-helper">
+    <div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Pivot-1">
+                {% for  participante, value in global.participantes %}
+                    {% if participante == 'Pivot1' %}
+                        {% set user = value %}
+                        {% set break = true %} 
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Pivot del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Pivot del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="AlaPivot-1">
+                {% for  participante, value in global.participantes %}
+                    {% if participante == 'AlaPivot1' %}
+                        {% set break = true %}
+                        {% set user = value %}
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Ala-Pivot del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Ala-Pivot del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Alero-1">
+                {% for  participante, value in global.participantes %}
+                    {% if participante == 'Alero1' %}
+                        {% set break = true %}
+                        {% set user = value %}    
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Alero del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Alero del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Escolta-1">
+            {% for  participante, value in global.participantes %}
+                {% if participante == 'Escolta1' %}
+                    {% set break = true %}
+                    {% set user = value %}    
+                {% endif %}
+            {% endfor %}
+            {% if break == true %}
+                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+            {% elseif global.rolled %}
+                    <div class="row">
+                        Escolta del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Escolta del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-12 col-md-12 position" id="Base-1">
+            {% for  participante, value in global.participantes %}
+                {% if participante == 'Base1' %}
+                    {% set break = true %}
+                    {% set user = value %}    
+                {% endif %}
+            {% endfor %}
+            {% if break == true %}
+                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+            {% elseif global.rolled %}
+                    <div class="row">
+                        Base del equipo 1
+                    </div>
+                {% else %}
+                <div class="row">
+                        Base del equipo 1
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-12 col-md-12 position" id="Base-2">
+            {% for  participante, value in global.participantes %}
+                {% if participante == 'Base2' %}
+                    {% set break = true %}
+                    {% set user = value %}    
+                {% endif %}
+            {% endfor %}
+            {% if break == true %}
+                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+            {% elseif global.rolled %}
+                    <div class="row">
+                        Base del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Base del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Alero-2">
+                {% for  participante, value in global.participantes %}
+                    {% if participante == 'Alero2' %}
+                        {% set break = true %}
+                        {% set user = value %}    
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Alero del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Alero del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Escolta-2">
+            {% for  participante, value in global.participantes %}
+                {% if participante == 'Escolta2' %}
+                    {% set break = true %}
+                    {% set user = value %}    
+                {% endif %}
+            {% endfor %}
+            {% if break == true %}
+                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+            {% elseif global.rolled %}
+                    <div class="row">
+                        Escolta del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Escolta del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="Pivot2">
+            {% for  participante, value in global.participantes %}
+                {% if participante == 'Pivot2' %}
+                    {% set user = value %}
+                    {% set break = true %} 
+                {% endif %}
+            {% endfor %}
+            {% if break == true %}
+                <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Pivot del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Pivot del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            {% set break = false %}
+            {% set user = '' %}
+            <div class="col-md-6 col-md-6 position" id="AlaPivot-2">
+                {% for  participante, value in global.participantes %}
+                    {% if participante == 'AlaPivot2' %}
+                        {% set break = true %}
+                        {% set user = value %}
+                    {% endif %}
+                {% endfor %}
+                {% if break == true %}
+                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                {% elseif global.rolled %}
+                    <div class="row">
+                        Ala-Pivot del equipo 2
+                    </div>
+                {% else %}
+                <div class="row">
+                        Ala-Pivot del equipo 2
+                    </div>
+                <div class="row">
+                    <button class="btn-add"> 
+                            <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+    </div>
