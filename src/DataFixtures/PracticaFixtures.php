@@ -25,9 +25,9 @@ class PracticaFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $tenis = $this->deporteRepository->findOneBy(['Nombre'=>'Tenis']);
-        $futbol = $this->deporteRepository->findOneBy(['Nombre'=>'Futbol']);
-        $baloncesto = $this->deporteRepository->findOneBy(['Nombre'=>'Baloncesto']);
+        $tenis = $this->deporteRepository->findOneBy(['nombre'=>'Tenis']);
+        $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
+        $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
         $nivelesTenis = $this->nivelRepository->findBy(['deporte'=> $tenis]);
         $nivelesFutbol = $this->nivelRepository->findBy(['deporte'=> $futbol]);
         $nivelesBaloncesto = $this->nivelRepository->findBy(['deporte'=> $baloncesto]);

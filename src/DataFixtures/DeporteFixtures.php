@@ -22,6 +22,7 @@ class DeporteFixtures extends Fixture
          que cuelga una red. La puntuación por cada canasta o cesta es de dos o tres puntos, dependiendo de la posición 
          desde la que se efectúa el tiro a canasta, o de uno, si se trata de un tiro libre por una falta de un jugador 
          contrario. El equipo ganador es el que obtiene el mayor número de puntos');
+        $deporte->setCampoJuego('Baloncesto.png');
         $manager->persist($deporte);
 
         $deporte2 = new Deporte();
@@ -29,6 +30,7 @@ class DeporteFixtures extends Fixture
         $deporte2->setDescripcion('Deporte de equipo jugado entre dos conjuntos de once jugadores cada uno y algunos 
         árbitros que se ocupan de que las normas se cumplan correctamente. Es ampliamente considerado el deporte más
          popular del mundo, pues lo practican unas 270 millones de personas');
+         $deporte2->setCampoJuego('Futbol.png');
         $manager->persist($deporte2);
 
         $deporte3 = new Deporte();
@@ -39,6 +41,7 @@ class DeporteFixtures extends Fixture
         una pelota golpeándola con la raqueta de modo que rebote en la otra cancha pasando la red dentro de los límites
          permitidos del campo del rival, procurando que este no pueda devolverla para conseguir un segundo rebote en el
          suelo y por ende un punto.');
+         $deporte3->setCampoJuego('Tenis.png');
         $manager->persist($deporte3);
 
         $padel = new Deporte();
@@ -47,6 +50,7 @@ class DeporteFixtures extends Fixture
         fundamentales para su desarrollo: la pelota, la pala y el campo de juego o pista. Consiste en hacer botar 
         la bola en el campo contrario antes de impactar con las paredes y/o verja (excepto en el servicio). 
         El jugador o jugadores opuestos deben devolver la bola con un golpe, cumpliendo con un máximo de un bote para golpearla.');
+        $padel->setCampoJuego('Padel.png');
         $manager->persist($padel);
 
         $balonmano = new Deporte();

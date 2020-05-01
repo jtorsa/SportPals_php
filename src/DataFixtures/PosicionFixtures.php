@@ -19,10 +19,10 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $tenis = $this->deporteRepository->findOneBy(['Nombre'=>'Tenis']);
-        $futbol = $this->deporteRepository->findOneBy(['Nombre'=>'Futbol']);
-        $baloncesto = $this->deporteRepository->findOneBy(['Nombre'=>'Baloncesto']);
-        $padel = $this->deporteRepository->findOneBy(['Nombre'=>'Padel']);
+        $tenis = $this->deporteRepository->findOneBy(['nombre'=>'Tenis']);
+        $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
+        $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
+        $padel = $this->deporteRepository->findOneBy(['nombre'=>'Padel']);
 
         $posicion = new Posicion;
         $posicion->setNombre('Portero');

@@ -19,21 +19,27 @@ class NivelFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $deporte = $this->deporteRepository->findOneBy(['Nombre'=>'Tenis']);
-        $futbol = $this->deporteRepository->findOneBy(['Nombre'=>'Futbol']);
-        $baloncesto = $this->deporteRepository->findOneBy(['Nombre'=>'Baloncesto']);
-        $padel = $this->deporteRepository->findOneBy(['Nombre'=>'Padel']);
+        $deporte = $this->deporteRepository->findOneBy(['nombre'=>'Tenis']);
+        $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
+        $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
+        $padel = $this->deporteRepository->findOneBy(['nombre'=>'Padel']);
 
         $nivel0 = new Nivel();
         $nivel0->setNivel(1.5);
         $nivel0->setDeporte($futbol);
-        $nivel0->setDescripcion('Conoce las reglas basicas del baloncesto');
+        $nivel0->setDescripcion('Conoce las reglas basicas del futbol');
         $manager->persist($nivel0);
+
+        $nivelF2 = new Nivel();
+        $nivelF2->setNivel(2.0);
+        $nivelF2->setDeporte($futbol);
+        $nivelF2->setDescripcion('Juega asiduamente a futbol');
+        $manager->persist($nivelF2);
 
         $nivel1 = new Nivel();
         $nivel1->setNivel(1.5);
         $nivel1->setDeporte($baloncesto);
-        $nivel1->setDescripcion('Conoce las reglas basicas del futbol.');
+        $nivel1->setDescripcion('Conoce las reglas basicas del baloncesto.');
         $manager->persist($nivel1);
 
         $nivel = new Nivel();

@@ -32,9 +32,9 @@ class EventoFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $tenis = $this->deporteRepository->findOneBy(['Nombre'=>'Tenis']);
-        $futbol = $this->deporteRepository->findOneBy(['Nombre'=>'Futbol']);
-        $baloncesto = $this->deporteRepository->findOneBy(['Nombre'=>'Baloncesto']);
+        $tenis = $this->deporteRepository->findOneBy(['nombre'=>'Tenis']);
+        $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
+        $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
         $valencia = $this->localidadRepository->findOneBy(['Nombre'=>'Valencia']);
         $nivelesTenis = $this->nivelRepository->findBy(['deporte'=> $tenis]);
         $nivelesFutbol = $this->nivelRepository->findBy(['deporte'=> $futbol]);
@@ -67,6 +67,19 @@ class EventoFixtures extends Fixture implements DependentFixtureInterface
         $evento2->setDia($hoy);
         $evento2->setInicio(new DateTime('16:30'));
         $evento2->setFinal(new DateTime('18:30'));
+
+        $evento3 = new Evento();
+        $evento3->setDeporte($futbol);
+        $evento3->setLocalidad($valencia);
+        $evento3->setNivel($nivelesFutbol[0]);
+        $evento3->setCreador($usuarios[0]);
+        $evento3->setTitle('Primer Evento de '.$futbol->getNombre());
+        $evento3->setDescripcion('Descripcion del evento de prueba creado por '.$usuarios[0]->getNombre());
+        $evento3->setDireccion('direccion de prueba');
+        $evento3->setRequeridos(22);
+        $evento3->setDia($hoy);
+        $evento3->setInicio(new DateTime('19:30'));
+        $evento3->setFinal(new DateTime('20:30'));
 
 
         $manager->persist($evento);
