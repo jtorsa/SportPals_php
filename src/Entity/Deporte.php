@@ -32,11 +32,6 @@ class Deporte
     private $descripcion;
 
     /**
-     * @ORM\Column(type="string", length=75, nullable=true)
-     */
-    private $campoJuego;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Nivel", mappedBy="deporte")
      */
     private $niveles;
@@ -46,10 +41,6 @@ class Deporte
      */
     private $posiciones;
 
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $imagen;
 
     public function getId(): ?int
     {
