@@ -2,27 +2,34 @@
 
 namespace App\Controller;
 
-use App\ViewManager\IndexViewmanager;
+use App\ViewManager\AdminViewmanager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\Material\ColumnChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\Diff\DiffColumnChart;
 
 /**
  * @Route("/admin")
  */
 class AdminController extends AbstractController
 {
-    private $indexViewmanager;
+    private $adminViewmanager;
 
-    public function __construct(IndexViewmanager $indexViewmanager)
+    public function __construct(AdminViewmanager $adminViewmanager)
     {
-        $this->indexViewmanager = $indexViewmanager;
+        $this->adminViewmanager = $adminViewmanager;
     }
     /**
      * @Route("/", name="admin_index")
      */
     public function index()
     {
-        return $this->render('admin/index.html.twig');
+        $this->adminViewmanager->index();
+        $global= $this->adminViewmanager->index();
+        
+        return $this->render('admin/index.html.twig', array(
+            'global' => $global
+        ));
     }
 
 }

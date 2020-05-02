@@ -36,13 +36,13 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
                     <a class="nav-link dropdown-toggle" href="/SportSpals/public/index.php/deporte" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Deportes
                     </a>
-                    {% if global.deportes %}
+                 {#   {% if global.deportes %}
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% for deporte in global.deportes %}
                         <a class="dropdown-item" href="/SportSpals/public/index.php/deporte/{{deporte.id}}">{{deporte.nombre}}</a>
                     {% endfor %}
                     </div>
-                    {% endif %} 
+                    {% endif %} #}
                 </li>
                {# login logic #}
                 {% if app.user %}
