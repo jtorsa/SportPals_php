@@ -46,6 +46,19 @@ WHERE jugador_id = 6
         return $query->getResult();
     }
 
+    public function getMostPracticeds()
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT d.nombre, COUNT(p.deporte) AS num
+            FROM App\Entity\Practica p, App\Entity\Deporte d
+            WHERE p.deporte = d.id
+            GROUP BY d.nombre'
+        );
+
+        return $query->getResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?Deporte
     {

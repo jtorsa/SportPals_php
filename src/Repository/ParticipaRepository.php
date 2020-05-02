@@ -35,6 +35,19 @@ class ParticipaRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getMostActiveCities()
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT l.Nombre, COUNT(e.localidad) AS num
+            FROM  App\Entity\Localidad l, App\Entity\Evento e
+            WHERE e.localidad = l.id
+            GROUP BY l.Nombre'
+        );
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Participa[] Returns an array of Participa objects
     //  */

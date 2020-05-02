@@ -14,7 +14,12 @@ class DeporteManager
         $this->deporteRepository = $deporteRepository;
     }
 
-public function getDeportesNoPracticados()
+    public function getDeportesNoPracticados()
     {
+    }
+
+    public function getMostPracticeds()
+    {
+        return $this->deporteRepository->getMostPracticeds();
     }
 }

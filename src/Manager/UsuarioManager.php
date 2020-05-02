@@ -32,4 +32,9 @@ class UsuarioManager
     {
         return $this->usuarioRepository->getParticipantes($evento);
     }
+
+    public function getMostUsersCities()
+    {
+        return $this->usuarioRepository->getMostUsersCities();
+    }
 }

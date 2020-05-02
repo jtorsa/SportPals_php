@@ -69,6 +69,19 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
         return $query->getResult();
     }
 
+    public function getMostUsersCities()
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT l.Nombre, COUNT(u.localidad) AS num
+            FROM  App\Entity\Localidad l, App\Entity\Usuario u
+            WHERE u.localidad = l.id
+            GROUP BY l.Nombre'
+        );
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Usuario[] Returns an array of Usuario objects
     //  */
