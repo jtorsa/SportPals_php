@@ -59,6 +59,12 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicion8 = new Posicion;
         $posicion8->setNombre('Pivot');
         $posicion8->setDeporte($baloncesto);
+        /**********************************/
+        $posicion9 = new Posicion;
+        $posicion9->setNombre('Derecha');
+        $posicion9->setDeporte($tenis);
+
+
 
         $manager->persist($posicion);
         $manager->persist($posicion1);
@@ -69,6 +75,7 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($posicion6);
         $manager->persist($posicion7);
         $manager->persist($posicion8);
+        $manager->persist($posicion9);
 
 
         $manager->flush();

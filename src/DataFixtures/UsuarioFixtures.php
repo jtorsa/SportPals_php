@@ -25,6 +25,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
        $localidades = $this->localidadRepository->findAll();
+        $num = sizeof($localidades)-1;
 
         $user = new Usuario();
         $user->setEmail('admin@mail.com');
@@ -39,7 +40,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
                      ));
         $user->setRoles(['ROLE_ADMIN']);
         $user->setAvatar('admin@mail.com.png');
-        $user->setLocalidad($localidades[0]);
+        $user->setLocalidad($localidades[random_int (0 , $num )]);
         $manager->persist($user);
 
         $user2 = new Usuario();
@@ -55,7 +56,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
                      ));
         $user2->setRoles(['ROLE_ADMIN']);
         $user2->setAvatar('avatar@mail.com.png');
-        $user2->setLocalidad($localidades[0]);
+        $user2->setLocalidad($localidades[random_int (0 , $num )]);
         $manager->persist($user2);
 
         $user3 = new Usuario();
@@ -71,7 +72,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
                      ));
         $user3->setRoles(['ROLE_USER']);
         $user3->setAvatar('user@mail.com.png');
-        $user3->setLocalidad($localidades[5]);
+        $user3->setLocalidad($localidades[random_int (0 , $num )]);
         $manager->persist($user3);
 
         $user4 = new Usuario();
@@ -87,8 +88,75 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
                      ));
         $user4->setRoles(['ROLE_USER']);
         $user4->setAvatar('user@mail.com.png');
-        $user4->setLocalidad($localidades[8]);
+        $user4->setLocalidad($localidades[random_int (0 , $num )]);
         $manager->persist($user4);
+
+        
+
+        $user5 = new Usuario();
+        $user5->setEmail('user5@mail.com');
+        $user5->setSexo('H');
+        $user5->setNombre('Nombre5');
+        $user5->setApellidos('Apellidos5');
+        $user5->setEdad(18);
+        $user5->setFechaAlta(new DateTime('now'));
+        $user5->setPassword($this->passwordEncoder->encodePassword(
+                         $user5,
+                         '1234'
+                     ));
+        $user5->setRoles(['ROLE_USER']);
+        $user5->setAvatar('user5@mail.com.png');
+        $user5->setLocalidad($localidades[random_int (0 , $num )]);
+        $manager->persist($user5);
+
+        $user6 = new Usuario();
+        $user6->setEmail('user6@mail.com');
+        $user6->setSexo('H');
+        $user6->setNombre('Nombre6');
+        $user6->setApellidos('Apellidos6');
+        $user6->setEdad(18);
+        $user6->setFechaAlta(new DateTime('now'));
+        $user6->setPassword($this->passwordEncoder->encodePassword(
+                         $user6,
+                         '1234'
+                     ));
+        $user6->setRoles(['ROLE_USER']);
+        $user6->setAvatar('user6@mail.com.png');
+        $user6->setLocalidad($localidades[random_int (0 , $num )]);
+        $manager->persist($user6);
+
+
+        $user7 = new Usuario();
+        $user7->setEmail('user7@mail.com');
+        $user7->setSexo('H');
+        $user7->setNombre('Nombre7');
+        $user7->setApellidos('7');
+        $user7->setEdad(18);
+        $user7->setFechaAlta(new DateTime('now'));
+        $user7->setPassword($this->passwordEncoder->encodePassword(
+                         $user7,
+                         '1234'
+                     ));
+        $user7->setRoles(['ROLE_USER']);
+        $user7->setAvatar('user7@mail.com.png');
+        $user7->setLocalidad($localidades[random_int (0 , $num )]);
+        $manager->persist($user7);
+
+        $user8 = new Usuario();
+        $user8->setEmail('user8@mail.com');
+        $user8->setSexo('H');
+        $user8->setNombre('Nombre8');
+        $user8->setApellidos('8');
+        $user8->setEdad(18);
+        $user8->setFechaAlta(new DateTime('now'));
+        $user8->setPassword($this->passwordEncoder->encodePassword(
+                         $user8,
+                         '1234'
+                     ));
+        $user8->setRoles(['ROLE_USER']);
+        $user8->setAvatar('user8@mail.com.png');
+        $user8->setLocalidad($localidades[random_int (0 , $num )]);
+        $manager->persist($user8);
 
         $manager->flush();
     }

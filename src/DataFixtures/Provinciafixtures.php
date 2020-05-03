@@ -72,6 +72,7 @@ class Provinciafixtures extends Fixture
         $manager->persist($provincia);
         $manager->persist($provincia2);
         $manager->persist($provincia3);
+        
         $manager->persist($localidad);
         $manager->persist($localidad2);
         $manager->persist($localidad3);

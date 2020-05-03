@@ -32,32 +32,32 @@ class PracticaFixtures extends Fixture implements DependentFixtureInterface
         $nivelesFutbol = $this->nivelRepository->findBy(['deporte'=> $futbol]);
         $nivelesBaloncesto = $this->nivelRepository->findBy(['deporte'=> $baloncesto]);
         $usuarios = $this->usuarioRepository->findAll();
-        $participante = $usuarios[0];
+        $practicante = $usuarios[0];
 
-        $participa = new Practica();
-        $participa->setJugador($participante);
-        $participa->setNivel($nivelesTenis[4]);
-        $participa->setDeporte($tenis);
+        $practica = new Practica();
+        $practica->setJugador($practicante);
+        $practica->setNivel($nivelesTenis[4]);
+        $practica->setDeporte($tenis);
 
-        $participa0 = new Practica();
-        $participa0->setJugador($participante);
-        $participa0->setNivel($nivelesFutbol[0]);
-        $participa0->setDeporte($futbol);
+        $practica0 = new Practica();
+        $practica0->setJugador($practicante);
+        $practica0->setNivel($nivelesFutbol[0]);
+        $practica0->setDeporte($futbol);
 
-        $participa1 = new Practica();
-        $participa1->setJugador($participante);
-        $participa1->setNivel($nivelesBaloncesto[0]);
-        $participa1->setDeporte($baloncesto);
+        $practica1 = new Practica();
+        $practica1->setJugador($practicante);
+        $practica1->setNivel($nivelesBaloncesto[0]);
+        $practica1->setDeporte($baloncesto);
 
-        $participa2 = new Practica();
-        $participa2->setJugador($usuarios[1]);
-        $participa2->setNivel($nivelesTenis[1]);
-        $participa2->setDeporte($tenis);
+        $practica2 = new Practica();
+        $practica2->setJugador($usuarios[1]);
+        $practica2->setNivel($nivelesTenis[1]);
+        $practica2->setDeporte($tenis);
         
-        $manager->persist($participa);
-        $manager->persist($participa0);
-        $manager->persist($participa1);
-        $manager->persist($participa2);
+        $manager->persist($practica);
+        $manager->persist($practica0);
+        $manager->persist($practica1);
+        $manager->persist($practica2);
 
         $manager->flush();
     }
