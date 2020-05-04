@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Practica;
+use App\Form\DeporteType;
 use App\Form\PracticaType;
 use App\Repository\PracticaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use App\ViewManager\PracticaViewmanager;
+use App\ViewManager\AppViewmanager;
+use App\Manager\DeporteManager;
 
 
 /**
@@ -20,11 +23,13 @@ class PracticaController extends AbstractController
 {
     private $security;
     private $practicaViewmanager;
+    private $deporteManager;
     
-    public function __construct(Security $security, PracticaViewmanager $practicaViewmanager)
+    public function __construct(Security $security, PracticaViewmanager $practicaViewmanager, DeporteManager $deporteManager)
     {
         $this->security = $security;
         $this->practicaViewmanager = $practicaViewmanager;
+        $this->deporteManager = $deporteManager;
     }
 
     /**
@@ -42,23 +47,32 @@ class PracticaController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        
         $global = $this->practicaViewmanager->new($request);
-        $practica = new Practica();
-        $practica->setJugador($this->security->getUser());
-        $form = $this->createForm(PracticaType::class, $practica);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($practica);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('practica_index');
-        }
+        $global['deportes'] = $this->deporteManager->findAll();
 
         return $this->render('practica/new.html.twig', [
             'global' => $global
         ]);
+
+    }
+
+    /**
+     * @Route("/newAjax", name="practica_new_ajax", methods={"POST"})
+     */
+    public function newAjax(Request $request): Response
+    {
+        $parameters = $request->request;
+        foreach($parameters as $key => $value){
+            dump($value);
+        }
+        
+    die;
+        $global = null;
+        return $this->render('practica/new.html.twig', [
+            'global' => $global
+        ]);
+
     }
 
     /**

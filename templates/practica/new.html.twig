@@ -5,30 +5,73 @@
 {% block body %}
     <h1>Create new Practica</h1>
 
-    {{ include('practica/_form.html.twig') }}
-
-    <a href="{{ path('practica_index') }}">back to list</a>
-
+     <form name="practica" id="practica_form" method="post" action="{{ path('practica_new_ajax') }}">
+        {% for deporte in global.deportes %}
+            <h3>{{deporte.nombre}}</h3>
+            <label>Nivel</label>
+            <select name="{{deporte.nombre}}_nivel" id="{{deporte.nombre}}_nivel">
+            {% set find = false %}
+            {% set try = '' %}
+            {% set name = '' %}
+                {% for nivel in deporte.niveles %}
+                {% set find = false %}
+                    {% for nivelo in global.practicados.niveles %}
+                    {% set  try = deporte.id~'_'~nivel.id %}
+                       {% if nivelo == try %}
+                            {% set find = true %}
+                        {% endif %}
+                        {% set name = nivel.nivel %}
+                    {% endfor %}
+                     {% if find == true %}
+                        <option value="{{try}}" selected> {{name}}</option>
+                    {% else %}
+                        <option value="{{try}}"> {{name}}</option>
+                    {% endif %}
+                {% endfor %}
+               
+                </select>
+                <label>Posicion</label>
+                <select name="{{deporte.nombre}}_posicion" id="{{deporte.nombre}}_posicion">
+                
+                {% set try = '' %}
+                {% set name = '' %}
+                {% for posicion in deporte.posiciones %}
+                    {% set find = false %}
+                    {% for pos in global.practicados.posiciones %}
+                        {% set  try = deporte.id~'_'~posicion.id %}
+                        {% if pos == try %}
+                            {% set find = true %}
+                        {% endif %}
+                        {% set name = posicion.nombre %}
+                    {% endfor %}
+                    {% if find == true %}
+                        <option value="{{try}}" selected> {{name}}</option>
+                    {% else %}
+                        <option value="{{try}}"> {{name}}</option>
+                    {% endif %}
+                {% endfor %}
+                    
+                </select>
+        {% endfor %}
+        <button id="actualizar" class="btn" >Actualizar</button>
+    </form>
     <script>
-        var $sport = $('#practica_deporte');
+
+    $(document).ready(function() {
+        var form = $('#practica_form');
+        var url = form.attr('action');
+        var method = form.attr('method');
         
-        $sport.change(function() {
-            var $form = $(this).closest('form');
-            var data = {};
-            data[$sport.attr('name')] = $sport.val();
+        $('button').click(function(event){
+            event.preventDefault();
+            
+            console.log(form);
             $.ajax({
-                url : $form.attr('action'),
-                type: $form.attr('method'),
-                data : data,
-                success: function(html) {
-                    $('#practica_nivel').replaceWith(
-                        $(html).find('#practica_nivel')
-                    );
-                    $('#practica_posicion').replaceWith(
-                        $(html).find('#practica_posicion')
-                    );
-                }
+                url : url,
+                type: method,
+                data: form.serialize(),
             });
         });
+    })
 </script>
 {% endblock %}

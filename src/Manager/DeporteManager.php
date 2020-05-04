@@ -18,6 +18,11 @@ class DeporteManager
     {
     }
 
+    public function findAll()
+    {
+        return $this->deporteRepository->findAll();
+    }
+
     public function getMostPracticeds()
     {
         return $this->deporteRepository->getMostPracticeds();

@@ -23,6 +23,8 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
         $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
         $padel = $this->deporteRepository->findOneBy(['nombre'=>'Padel']);
+        $balonmano = $this->deporteRepository->findOneBy(['nombre'=>'Balonmano']);
+        
 
         $posicion = new Posicion;
         $posicion->setNombre('Portero');
@@ -63,6 +65,31 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicion9 = new Posicion;
         $posicion9->setNombre('Derecha');
         $posicion9->setDeporte($tenis);
+        /******************************* */
+        $posicionBal1 = new Posicion;
+        $posicionBal1->setNombre('Portero');
+        $posicionBal1->setDeporte($balonmano);
+
+        $posicionBal2 = new Posicion;
+        $posicionBal2->setNombre('Extremo');
+        $posicionBal2->setDeporte($balonmano);
+
+        $posicionBal3 = new Posicion;
+        $posicionBal3->setNombre('Lateral');
+        $posicionBal3->setDeporte($balonmano);
+
+        $posicionBal4 = new Posicion;
+        $posicionBal4->setNombre('Central');
+        $posicionBal4->setDeporte($balonmano);
+
+        $posicionBal5 = new Posicion;
+        $posicionBal5->setNombre('Pivote');
+        $posicionBal5->setDeporte($balonmano);
+
+        /***************************** */
+        $posicionPad = new Posicion;
+        $posicionPad->setNombre('Derecha');
+        $posicionPad->setDeporte($padel);
 
 
 
@@ -76,6 +103,12 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($posicion7);
         $manager->persist($posicion8);
         $manager->persist($posicion9);
+        $manager->persist($posicionBal1);
+        $manager->persist($posicionBal2);
+        $manager->persist($posicionBal3);
+        $manager->persist($posicionBal4);
+        $manager->persist($posicionBal5);
+        $manager->persist($posicionPad);
 
 
         $manager->flush();
