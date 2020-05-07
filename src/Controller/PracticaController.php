@@ -14,7 +14,8 @@ use Symfony\Component\Security\Core\Security;
 use App\ViewManager\PracticaViewmanager;
 use App\ViewManager\AppViewmanager;
 use App\Manager\DeporteManager;
-
+use App\Manager\PracticaManager;
+use App\Service\PracticaService;
 
 /**
  * @Route("/practica")
@@ -24,12 +25,14 @@ class PracticaController extends AbstractController
     private $security;
     private $practicaViewmanager;
     private $deporteManager;
+    private $practicaService;
     
-    public function __construct(Security $security, PracticaViewmanager $practicaViewmanager, DeporteManager $deporteManager)
+    public function __construct(Security $security, PracticaViewmanager $practicaViewmanager, DeporteManager $deporteManager, PracticaService $practicaService)
     {
         $this->security = $security;
         $this->practicaViewmanager = $practicaViewmanager;
         $this->deporteManager = $deporteManager;
+        $this->practicaService = $practicaService;
     }
 
     /**
@@ -63,12 +66,11 @@ class PracticaController extends AbstractController
     public function newAjax(Request $request): Response
     {
         $parameters = $request->request;
-        foreach($parameters as $key => $value){
-            dump($value);
-        }
+
+        $this->practicaService->updateParticipas($parameters);
         
-    die;
-        $global = null;
+        $global = $this->practicaViewmanager->new($request);
+        $global['deportes'] = $this->deporteManager->findAll();
         return $this->render('practica/new.html.twig', [
             'global' => $global
         ]);

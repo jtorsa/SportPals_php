@@ -41,18 +41,23 @@ class PracticaViewmanager extends AbstractController
         $practicados = $this->practicaManager->getDeportesPracticados($user);
         $noPracticados = $this->practicaManager->getDeportesNoPracticados($user);
         $deportes = [] ;
+        $deportes['niveles'] = [];
+        $deportes['posiciones'] = [];
         foreach($practicados as $practicado)
         {
             $deporte = $practicado->getDeporte()->getId();
             $nivel = $practicado->getNivel()->getId();
-            $posicionId = $practicado->getPosicion()->getId();
-            $deportes['posiciones'][] = $deporte.'_'.$posicionId;
+            if($practicado->getPosicion()){
+                $posicionId = $practicado->getPosicion()->getId();
+                $deportes['posiciones'][] = $deporte.'_'.$posicionId;
+            }
+            
             $deportes['niveles'][] = $deporte.'_'.$nivel;
         
         }
         $global = $this->index();
         $global['practicados'] = $deportes;
-        
+
         return $global;
     }
 }

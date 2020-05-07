@@ -10,17 +10,19 @@
             <h3>{{deporte.nombre}}</h3>
             <label>Nivel</label>
             <select name="{{deporte.nombre}}_nivel" id="{{deporte.nombre}}_nivel">
+             <option selected> </option>
             {% set find = false %}
             {% set try = '' %}
             {% set name = '' %}
                 {% for nivel in deporte.niveles %}
-                {% set find = false %}
+                {% set find = false %} 
+                {% set  try = deporte.id~'_'~nivel.id %}
+                {% set name = nivel.nivel %}
                     {% for nivelo in global.practicados.niveles %}
                     {% set  try = deporte.id~'_'~nivel.id %}
                        {% if nivelo == try %}
                             {% set find = true %}
                         {% endif %}
-                        {% set name = nivel.nivel %}
                     {% endfor %}
                      {% if find == true %}
                         <option value="{{try}}" selected> {{name}}</option>
@@ -28,29 +30,25 @@
                         <option value="{{try}}"> {{name}}</option>
                     {% endif %}
                 {% endfor %}
-               
                 </select>
                 <label>Posicion</label>
-                <select name="{{deporte.nombre}}_posicion" id="{{deporte.nombre}}_posicion">
-                
-                {% set try = '' %}
-                {% set name = '' %}
+            <select name="{{deporte.nombre}}_posicion" id="{{deporte.nombre}}_posicion">
+             <option selected></option>
                 {% for posicion in deporte.posiciones %}
-                    {% set find = false %}
+                {% set find = false %} 
+                {% set name = posicion.nombre %}
+                {% set  try = deporte.id~'_'~posicion.id %}
                     {% for pos in global.practicados.posiciones %}
-                        {% set  try = deporte.id~'_'~posicion.id %}
-                        {% if pos == try %}
+                       {% if pos == try %}
                             {% set find = true %}
                         {% endif %}
-                        {% set name = posicion.nombre %}
                     {% endfor %}
-                    {% if find == true %}
+                     {% if find == true %}
                         <option value="{{try}}" selected> {{name}}</option>
                     {% else %}
                         <option value="{{try}}"> {{name}}</option>
                     {% endif %}
                 {% endfor %}
-                    
                 </select>
         {% endfor %}
         <button id="actualizar" class="btn" >Actualizar</button>
@@ -70,6 +68,10 @@
                 url : url,
                 type: method,
                 data: form.serialize(),
+                success: function(html){
+                    location.reload();
+                }
+            });
             });
         });
     })

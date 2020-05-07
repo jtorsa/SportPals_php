@@ -23,6 +23,8 @@ class NivelFixtures extends Fixture implements DependentFixtureInterface
         $futbol = $this->deporteRepository->findOneBy(['nombre'=>'Futbol']);
         $baloncesto = $this->deporteRepository->findOneBy(['nombre'=>'Baloncesto']);
         $padel = $this->deporteRepository->findOneBy(['nombre'=>'Padel']);
+        $balonmano = $this->deporteRepository->findOneBy(['nombre'=>'Balonmano']);
+        $ciclismo = $this->deporteRepository->findOneBy(['nombre'=>'Ciclismo']);
 
         $nivel0 = new Nivel();
         $nivel0->setNivel(1.5);
@@ -146,6 +148,22 @@ class NivelFixtures extends Fixture implements DependentFixtureInterface
             ESTILO DE JUEGO: Puede pelotear con una velocidad de bola lenta, débil cobertura de su espacio en la pista, permanece en la posición inicial del juego.'
         );
         $manager->persist($nivelP25);
+
+        $nivelCI10 = new Nivel();
+        $nivelCI10->setNivel(1.0);
+        $nivelCI10->setDeporte($ciclismo);
+        $nivelCI10->setDescripcion(
+            'Nunca ha salido de ruta con la bici'
+        );
+        $manager->persist($nivelCI10);
+
+        $nivelBM10 = new Nivel();
+        $nivelBM10->setNivel(1.0);
+        $nivelBM10->setDeporte($balonmano);
+        $nivelBM10->setDescripcion(
+            'Nunca ha jugado a Balonmano'
+        );
+        $manager->persist($nivelBM10);
         
         $manager->flush();
     }
