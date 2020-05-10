@@ -55,6 +55,10 @@ class EventoRepository extends ServiceEntityRepository
       */
       public function getUserEventsByLocalidadLimit4(array $practicados, Localidad $localidad)
     {
+        if(empty($practicados)){
+            return null;
+        }else{
+
         
             $entityManager = $this->getEntityManager();  
             $query = $entityManager->createQuery(
@@ -68,20 +72,29 @@ class EventoRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+    }
 
     /**
       * @return Evento[] Returns an array of Evento objects
       */
       public function getUserEventsNOTPracticadesByLocalidadLimit4(array $practicados, Localidad $localidad)
     {
-        
+        $entityManager = $this->getEntityManager();
+        if(empty($practicados)){
+            $query = $entityManager->createQuery(
+                'SELECT e 
+                FROM  App\Entity\Evento e
+                WHERE e.localidad = :id'
+            ); 
+        }else{
             $entityManager = $this->getEntityManager();  
             $query = $entityManager->createQuery(
-            'SELECT e 
-            FROM  App\Entity\Evento e
-            WHERE e.localidad = :id
-            AND e.deporte NOT IN ('.implode(',',$practicados).')'
-        ); 
+                'SELECT e 
+                FROM  App\Entity\Evento e
+                WHERE e.localidad = :id
+                AND e.deporte NOT IN ('.implode(',',$practicados).')'
+            ); 
+        }
         $query->setParameter("id", $localidad->getId());
         $query->setMaxResults(4);
 

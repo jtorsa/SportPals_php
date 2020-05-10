@@ -55,8 +55,7 @@ body {
   .tenis-half{
     height: 27em;
     padding: 5em;
-    border: solid;
-    border-color: tomato;
+
   }
   .position{
     text-align: center;

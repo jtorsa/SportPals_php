@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{deporte.nombre}}{% endblock %}
+{% block title %}{{global.deporte.nombre}}{% endblock %}
 
 {% block body %}
-    <h1>{{deporte.nombre}}</h1>
+    <h1>{{global.deporte.nombre}}</h1>
         <table>
             <tr>
-                <td>{{ deporte.id }}</td>
-                <td>{{ deporte.Nombre }}</td>
-                <td>{{ deporte.Descripcion }}</td>
+                <td>{{ global.deporte.id }}</td>
+                <td>{{ global.deporte.Nombre }}</td>
+                <td>{{ global.deporte.Descripcion }}</td>
             </tr>
     </table>
 {% endblock %}

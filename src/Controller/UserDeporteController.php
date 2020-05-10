@@ -40,9 +40,10 @@ class UserDeporteController extends AbstractController
      */
     public function show(Deporte $deporte): Response
     {
+        $global = $this->appViewmanager->index();
+        $global['deporte'] = $deporte;
         return $this->render('deporteuser/show.html.twig', [
-            'deportes' => $this->indexService->getDeportes(),
-            'deporte' => $deporte
+            'global' => $global
         ]);
     }
 

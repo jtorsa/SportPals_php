@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-md-6" id="court" style="background-image: url('/SportSpals/public/courts/{{global.evento.deporte.nombre}}.png');"> 
-            {% include (global.court) with {'gloabl':global }%}
+            {% include (global.court) ignore missing with {'global':global } %}
         </div>
     </div>
     <div class="row">

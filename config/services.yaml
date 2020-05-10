@@ -6,6 +6,7 @@
 parameters:
     avatar_directory: '%kernel.project_dir%/public/avatars'
     court_directory: '%kernel.project_dir%/public/courts'
+    sport_directory: '%kernel.project_dir%/public/sports'
 services:
     # default configuration for services in *this* file
     _defaults:

@@ -91,6 +91,10 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicionPad->setNombre('Derecha');
         $posicionPad->setDeporte($padel);
 
+        $posicionPad1 = new Posicion;
+        $posicionPad1->setNombre('Revés');
+        $posicionPad1->setDeporte($padel);
+
 
 
         $manager->persist($posicion);
@@ -109,7 +113,7 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($posicionBal4);
         $manager->persist($posicionBal5);
         $manager->persist($posicionPad);
-
+        $manager->persist($posicionPad1);
 
         $manager->flush();
     }

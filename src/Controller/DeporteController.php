@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Deporte;
 use App\Form\DeporteType;
+use Intervention\Image\ImageManagerStatic as Image;
 use \Gumlet\ImageResize;
 use App\Repository\DeporteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,9 +40,14 @@ class DeporteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $image = $form->get('Campo')->getData();
-            $imageFileName = $form->get('Nombre')->getData().'.'.$image->guessExtension();
+            $imgeSport = $form->get('Imagen')->getData();
+            $imageFileName = $form->get('Nombre')->getData().'.png';
             /**Mover a un servicio imagen que se encargue de guardar las imagenes y redimiensionarlas */
             try {
+                $imgeSport->move(
+                    $this->getParameter('sport_directory'),
+                $imageFileName
+                );
                 $image->move(
                     $this->getParameter('court_directory'),
                     $imageFileName
@@ -52,6 +58,11 @@ class DeporteController extends AbstractController
                 $imagick->writeImage($this->getParameter('court_directory').'/'.$imageFileName);
                 $imagick->clear();
                 $imagick->destroy();
+
+                $img = Image::make($this->getParameter('court_directory').'/'.$imageFileName);
+                $img->resize(450, 700);
+                $img->save($this->getParameter('court_directory').'/'.$imageFileName);
+                
             } catch (FileException $e) {
                 dump($e->getMessage());die;
                 return $e->getMessage();
