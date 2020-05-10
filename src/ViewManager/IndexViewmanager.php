@@ -22,8 +22,8 @@ class IndexViewmanager
     public function index()
     {
         $global = $this->appViewmanager->index();
-        $global['practicados'] = $this->eventService->getUserEventsByLocalidad();
-        $global['noPracticados'] = $this->indexService->getDeportesNoPracticados();
+        $global['practicados'] = $this->eventService->getUserEventsByLocalidadLimit4();
+        $global['noPracticados'] = $this->eventService->getUserEventsNOTPracticadesByLocalidadLimit4();
 
         return $global;
     }

@@ -13,15 +13,17 @@
     <table class="table">
         <thead>
             <tr>
+                <th> </th>
                 <th>Titulo</th>
-                <th>deporte</th>
-                <th>Descripcion</th>
-                <th>actions</th>
+                <th>Localidad</th>
+                <th>Requeridos</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-        {% for evento in eventos %}
+        {% for evento in global.eventos %}
             <tr>
+                <td><img src='/SportSpals/public/balls/{{evento.deporte}}.png' height="30" width="30"></td>
                 <td>{{ evento.title }}</td>
                 <td>{{ evento.deporte }}</td>
                 <td>{{ evento.requeridos }}</td>

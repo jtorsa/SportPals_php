@@ -10,7 +10,7 @@
         {% endblock %}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.js"
-integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous" ></script>
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     </head>
@@ -47,13 +47,13 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
                {# login logic #}
                 {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/SportSpals/public/index.php/practica/new">Practicados</a>
+                        <a class="nav-link" href="/SportSpals/public/index.php/practica/new">Deportes que practicas</a>
                     </li>
                     <li class="nav-item active">
-                        <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}' height="75" width="75">
+                        <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
                     </li>
                     <li class="nav-item active">
-                        <a href="/SportSpals/public/index.php/logout"> logout </a>
+                        <a id="cerrar-sesion" href="/SportSpals/public/index.php/logout"> Cerrar sesión </a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
@@ -69,9 +69,15 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
     {% endblock %}
     
         {% block body %}
+        {% if app.user %}
             <div class="container">
                 <div class="row">
-                    Eventos que podrian interesarte 
+                    <div class="col-md-10">
+                        <h4>Eventos en tu localidad de los deportes que practicas</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ path('evento_index')}}"> ver mas </a>
+                    </div>
                 </div>
                 <div class="row">
                     <a href="/SportSpals/public/index.php/evento/new"> Crear evento </a>
@@ -80,19 +86,78 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
             <div class="container">
                 <div class="row">
                 {% for practicado in global.practicados %}
-                    <div class="col-md-3">
-                        <div class="row">{{practicado.deporte}}</div>
+                    <div class="col-md-3 evento-index">
+                        <img src='/SportSpals/public/balls/{{practicado.deporte}}.png' height="30" width="30">
                         <div class="row">{{practicado.title}}</div>
+                        <div class="row">{{practicado.descripcion}}</div>
+                        <a href="{{ path('evento_show', {'id': practicado.id}) }}">Ve al evento</a>
+                    </div>
+                    {% else %}
+                    <div class="row">
+                        <p class="no-events"> Aún no hay eventos en tu localidad anímate a crear el primero</p>
                     </div>
                 {% endfor %}
                 </div>
             </div>
-        
-    No practicados 
-        {% for noPracticado in global.noPracticados %}
-            {{noPracticado}}
-        {% endfor %}
+            <div class="container">
+                <div class="row">
+                    <h4>Eventos en tu localidad de los deportes que aun no practicas y podrian interesarte</h4>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                {% for noPracticado in global.noPracticados %}
+                    <div class="col-md-3 evento-index">
+                        <img src='/SportSpals/public/balls/{{noPracticado.deporte}}.png' height="30" width="30">
+                        <div class="row">{{noPracticado.title}}</div>
+                        <div class="row">{{noPracticado.descripcion}}</div>
+                        <a href="{{ path('evento_show', {'id': noPracticado.id}) }}">Ve al evento</a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="container index">
+            <div class="row">
+                <div class="col-md-4 infoCont">
+                    <div class="row">
+                        <div class="container info">
+                            <div class="row">
+                                <h4>Organiza</h4>
+                            </div>
+                            <p>
+                            Crea eventos de tu deporte favorito.
+                            Elige el lugar, la hora, los jugadores necesarios y el nivel que tendran los participantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 infoCont">
+                    <div class="row">
+                        <div class="container info">
+                            <div class="row">
+                                <h4>Participa</h4>
+                            </div>
+                            ¿Dónde es el partido? ¿Cuantos jugadores somos? ¿A que hora es el partido?
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 infoCont">  
+                    <div class="row">
+                        <div class="container info">
+                            <div class="row">
+                                <h4>Profesor</h4>
+                            </div>
+                            ¿Eres monitor y quiere dar clases?
+                            ¿Quieres impartir conocimientos a gente que está empezando en el deporte que practicas?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endif %}
         {% endblock %}
+        
         {% block javascripts %}
             
         {% endblock %}

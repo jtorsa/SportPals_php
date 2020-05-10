@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\IndexService;
+use App\ViewManager\AppViewmanager;
 
 /**
  * @Route("/deporte")
@@ -15,10 +16,12 @@ use App\Service\IndexService;
 class UserDeporteController extends AbstractController
 {
     private $indexService;
+    private $appViewmanager;
 
-    public function __construct(IndexService $indexService)
+    public function __construct(IndexService $indexService, AppViewmanager $appViewmanager)
     {
         $this->indexService = $indexService;
+        $this->appViewmanager = $appViewmanager;
     }
 
     /**
@@ -26,8 +29,9 @@ class UserDeporteController extends AbstractController
      */
     public function index(DeporteRepository $deporteRepository): Response
     {
+        $global = $this->appViewmanager->index();
         return $this->render('deporteuser/index.html.twig', [
-            'deportes' => $deporteRepository->findAll(),
+            'global' => $global,
         ]);
     }
 

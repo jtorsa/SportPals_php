@@ -35,10 +35,11 @@ class UserEventoController extends AbstractController
      */
     public function index(EventoRepository $eventoRepository): Response
     {
-        $deportes = $this->indexService->getDeportes();
+        $global = $this->appViewmanager->index();
+        $global['eventos'] = $eventoRepository->findAll();
+        
         return $this->render('eventouser/index.html.twig', [
-            'eventos' => $eventoRepository->findAll(),
-            'deportes' => $deportes
+            'global' => $global,
         ]);
     }
 
@@ -47,6 +48,7 @@ class UserEventoController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $global = $this->appViewmanager->index();
         $evento = new Evento();
         $evento->setCreador($this->getUser());
         $form = $this->createForm(EventoType::class, $evento);
@@ -61,6 +63,7 @@ class UserEventoController extends AbstractController
         }
 
         return $this->render('evento/new.html.twig', [
+            'global' => $global,
             'evento' => $evento,
             'form' => $form->createView(),
         ]);

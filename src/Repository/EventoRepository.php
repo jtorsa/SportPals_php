@@ -36,15 +36,56 @@ class EventoRepository extends ServiceEntityRepository
     /**
       * @return Evento[] Returns an array of Evento objects
       */
-      public function getUserEventsByLocalidad(Collection $practicados, Localidad $localidad)
+      public function getUserEventsByLocalidad(array $practicados, Localidad $localidad)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.localidad = :localidad')
-            ->setParameter('localidad', $localidad)
-            ->orderBy('e.dia', 'ASC')
-            ->setMaxResults(5)
-            ->getQuery()
-            ->getResult();
+        $entityManager = $this->getEntityManager();  
+            $query = $entityManager->createQuery(
+            'SELECT e 
+            FROM  App\Entity\Evento e
+            WHERE e.localidad = :id
+            AND e.deporte IN ('.implode(',',$practicados).')'
+        ); 
+        $query->setParameter("id", $localidad->getId());
+
+        return $query->getResult();
+    }
+
+    /**
+      * @return Evento[] Returns an array of Evento objects
+      */
+      public function getUserEventsByLocalidadLimit4(array $practicados, Localidad $localidad)
+    {
+        
+            $entityManager = $this->getEntityManager();  
+            $query = $entityManager->createQuery(
+            'SELECT e 
+            FROM  App\Entity\Evento e
+            WHERE e.localidad = :id
+            AND e.deporte IN ('.implode(',',$practicados).')'
+        ); 
+        $query->setParameter("id", $localidad->getId());
+        $query->setMaxResults(4);
+
+        return $query->getResult();
+    }
+
+    /**
+      * @return Evento[] Returns an array of Evento objects
+      */
+      public function getUserEventsNOTPracticadesByLocalidadLimit4(array $practicados, Localidad $localidad)
+    {
+        
+            $entityManager = $this->getEntityManager();  
+            $query = $entityManager->createQuery(
+            'SELECT e 
+            FROM  App\Entity\Evento e
+            WHERE e.localidad = :id
+            AND e.deporte NOT IN ('.implode(',',$practicados).')'
+        ); 
+        $query->setParameter("id", $localidad->getId());
+        $query->setMaxResults(4);
+
+        return $query->getResult();
     }
     
     // /**

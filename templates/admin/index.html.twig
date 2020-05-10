@@ -17,9 +17,6 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
         <div class="row">
             <div class="col-md-4">
                 <div class="row">
-                    <a href="/SportSpals/public/index.php/usuario/new"></a>
-                </div>
-                <div class="row">
                     <a href="/SportSpals/public/index.php/admin/deporte">Deportes</a>
                 </div>
                 <div class="row">
@@ -30,30 +27,24 @@ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="ano
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div id="mostPracticeds"></div> 
                     <script type="text/javascript">
                         {{ gc_draw([global.mostPracticeds], ['mostPracticeds']) }}
                     </script>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div id="mostActive"></div> 
                     <script type="text/javascript">
                         {{ gc_draw([global.mostActive], ['mostActive']) }}
                     </script>
                 </div>
-                <div class="col-md-4">
-                    <div id="mostUsers"></div> 
-                    <script type="text/javascript">
-                        {{ gc_draw([global.mostUsers], ['mostUsers']) }}
-                    </script>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div id="e"></div> 
+                    <div id="mostUsers"></div> 
                     <script type="text/javascript">
-                      
+                        {{ gc_draw([global.mostUsers], ['mostUsers']) }}
                     </script>
                 </div>
                 <div class="col-md-6">

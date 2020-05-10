@@ -26,6 +26,40 @@ class EventService
 
     }
 
+    /* función para devolver los eventos proximo 4 eventos de la Localidad del usuario en los deportes practicados*/
+    public function getUserEventsByLocalidadLimit4()
+    {
+        $user = $this->security->getUser();
+        if(!$user){
+            return $this->eventoManager->getAllEventsOrderByDate();
+        }
+        $practicados = $this->practicaManager->getDeportesPracticados($user);
+        $practicadosId = [];
+        foreach($practicados as $practicado){
+            $practicadosId[] = $practicado->getDeporte()->getId();
+        }
+        $localidad = $user->getLocalidad();
+
+        return $this->eventoManager->getUserEventsByLocalidadLimit4($practicadosId, $localidad);
+    }
+
+    /* función para devolver los eventos proximo 4 eventos de la Localidad del usuario en los deportes practicados*/
+    public function getUserEventsNOTPracticadesByLocalidadLimit4()
+    {
+        $user = $this->security->getUser();
+        if(!$user){
+            return $this->eventoManager->getAllEventsOrderByDate();
+        }
+        $practicados = $this->practicaManager->getDeportesPracticados($user);
+        $practicadosId = [];
+        foreach($practicados as $practicado){
+            $practicadosId[] = $practicado->getDeporte()->getId();
+        }
+        $localidad = $user->getLocalidad();
+        
+        return $this->eventoManager->getUserEventsNOTPracticadesByLocalidadLimit4($practicadosId, $localidad);
+    }
+
     /* función para devolver los eventos de la Localidad del usuario en los deportes practicados*/
     public function getUserEventsByLocalidad()
     {
@@ -34,8 +68,12 @@ class EventService
             return $this->eventoManager->getAllEventsOrderByDate();
         }
         $practicados = $this->practicaManager->getDeportesPracticados($user);
+        $practicadosId = [];
+        foreach($practicados as $practicado){
+            $practicadosId[] = $practicado->getDeporte()->getId();
+        }
         $localidad = $user->getLocalidad();
-        return $this->eventoManager->getUserEventsByLocalidad($practicados, $localidad);
+        return $this->eventoManager->getUserEventsByLocalidad($practicadosId, $localidad);
     }
 
     public function getParticipantesIndexedByPosition(Evento $evento) :array

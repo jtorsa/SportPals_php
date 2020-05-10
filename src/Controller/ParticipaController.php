@@ -38,12 +38,12 @@ class ParticipaController extends AbstractController
     public function newAjax(Request $request): Response
     {   
         $participa = $this->participaService->getParticipaFromAjax($request->request->get('id'), $request->request->get('posicion'));
+        $evento = $participa->getEvento()->getId();
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($participa);
         $entityManager->flush();
 
-        
-        return $this->redirectToRoute('participa_index');
+        return $this->redirectToRoute('evento_show',['id'=>$evento]);
     }
 
     /**

@@ -22,9 +22,19 @@ class EventoManager
         return $this->eventoRepository->getAllEventsOrderByDate();
     }
 
-    public function getUserEventsByLocalidad(Collection $practicados, Localidad $localidad)
+    public function getUserEventsByLocalidad(array $practicados, Localidad $localidad)
     {
         return $this->eventoRepository->getUserEventsByLocalidad($practicados, $localidad);
+    }
+
+    public function getUserEventsByLocalidadLimit4(array $practicados, Localidad $localidad)
+    {
+        return $this->eventoRepository->getUserEventsByLocalidadLimit4($practicados, $localidad);
+    }
+
+    public function getUserEventsNOTPracticadesByLocalidadLimit4(array $practicados, Localidad $localidad)
+    {
+        return $this->eventoRepository->getUserEventsNOTPracticadesByLocalidadLimit4($practicados, $localidad);
     }
 
     public function getById(string $id)

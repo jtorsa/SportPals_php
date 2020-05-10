@@ -1,7 +1,42 @@
 body {
-    background-color: whitesmoke;
+    background-color: #E2FFFC;
   }
   
+  #nav-avatar{
+    width: 75px;
+    height: 75px;
+    border-radius: 1em;
+  }
+
+  #cerrar-sesion{
+    padding: 2px;
+    background-color:#D94846;
+    border-radius: 0.5em;
+    color: silver;
+  }
+
+  .evento-index{
+    height: 18em;
+    padding: 1.5em, 1.5em, 1.5em, 1.5em;
+  }
+
+  .infoHead{
+    text-align: center;
+  }
+
+  .info{
+    background-color: teal;
+    color: white;
+    padding: 3em;
+    height: 20em;
+    border-radius: 1em;
+  }
+  .infoCont{
+    padding: 2em;
+  }
+  .index{
+    padding: 2em;
+  }
 
   #court{
     background: no-repeat center center;

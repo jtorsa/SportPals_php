@@ -27,6 +27,7 @@ class EventoViewmanager extends AbstractController
     
     public function index()
     {
+        
     }
 
     public function new (Request $request)
