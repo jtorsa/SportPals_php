@@ -44,4 +44,15 @@ class ParticipaService
         return $this->participaManager->getMostActiveCities();
     }
 
+    public function userParticipas()
+    {
+        $user =$this->security->getUser();
+        $participas = [];
+        if($user){
+            $participas = $this->participaManager->userParticipas($user);
+        }
+        
+        return $participas;
+    }
+
 }

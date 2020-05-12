@@ -86,11 +86,20 @@
             <div class="container">
                 <div class="row">
                 {% for practicado in global.practicados %}
+                {% set esta = false %}
+                    {% for participa in global.participa %}
+                        {% if participa.evento.id == practicado.id %}
+                            {% set esta = true %}
+                        {% endif %}
+                    {% endfor %}
                     <div class="col-md-3 evento-index">
                         <img src='/SportSpals/public/balls/{{practicado.deporte}}.png' height="30" width="30">
-                        <div class="row">{{practicado.title}}</div>
-                        <div class="row">{{practicado.descripcion}}</div>
-                        <a href="{{ path('evento_show', {'id': practicado.id}) }}">Ve al evento</a>
+                        {% if esta ==true %}
+                            <span class="glyphicon glyphicon-ok"> </span>Ya estás inscrito en este evento
+                        {% endif %}
+                            <div class="row">{{practicado.title}}</div>
+                            <div class="row">{{practicado.descripcion}}</div>
+                            <a href="{{ path('evento_show', {'id': practicado.id}) }}">Ve al evento</a>
                     </div>
                     {% else %}
                     <div class="row">

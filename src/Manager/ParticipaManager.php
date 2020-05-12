@@ -39,6 +39,11 @@ class ParticipaManager
         return $noPracticados;
     }
 
+    public function userParticipas(Usuario $usuario)
+    {
+        return $this->participaRepository->userParticipas($usuario);
+    }
+
     public function getDeportesPracticados(Usuario $usuario)
     {
         return $usuario->getDeportesPracticados();

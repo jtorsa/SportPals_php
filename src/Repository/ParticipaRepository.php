@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Participa;
+use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -23,11 +24,11 @@ class ParticipaRepository extends ServiceEntityRepository
       * @return Participa[] Returns an array of Participa objects
       */
     
-    public function findByExampleField($value)
+    public function userParticipas(Usuario $usuario)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.jugador = :jugador')
+            ->setParameter('jugador', $usuario)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
@@ -47,6 +48,7 @@ class ParticipaRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
 
     // /**
     //  * @return Participa[] Returns an array of Participa objects

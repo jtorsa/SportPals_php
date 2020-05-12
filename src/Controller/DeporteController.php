@@ -54,7 +54,11 @@ class DeporteController extends AbstractController
                 );
                 $imagick = new \Imagick();
                 $imagick->readImage($this->getParameter('court_directory').'/'.$imageFileName);
-                $imagick->rotateImage(new \ImagickPixel(), 90);
+                $width = $imagick->getImageWidth();
+                $height = $imagick->getImageHeight();
+                if($width >= $height){
+                    $imagick->rotateImage(new \ImagickPixel(), 90);
+                }
                 $imagick->writeImage($this->getParameter('court_directory').'/'.$imageFileName);
                 $imagick->clear();
                 $imagick->destroy();
