@@ -41,7 +41,8 @@ class EventoViewmanager extends AbstractController
         $global['participantes'] = $this->eventService->getParticipantesIndexedByPosition($evento);
         $global['evento'] = $evento;    
         $global['court'] = $this->eventService->getCourtTwig($evento);
-       // $global['hour'] = true || false;
+        $global['sameHour'] = $this->eventService->eventSameHour($evento);
+
         return $global;
     }
 }

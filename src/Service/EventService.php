@@ -115,11 +115,12 @@ class EventService
         }
         $eventos = $this->eventoManager->getUserEvents($user);
         foreach($eventos as $event){
-            if($evento->getDia != $event->getDia()){
+            if($evento->getDia() != $event->getDia()){
                 continue;
             }
-            if(strtotime($evento->getInicio())>=strtotime($event->getInicio()) && strtotime($evento->getInicio())<=strtotime($event->getFinal())){
-                $find []= $event ;
+            if($evento->getInicio()>=$event->getInicio() && $evento->getInicio()<=$event->getFinal()){
+                $find [] = $event ;
+                return $find;
             }
         }
         return $find;
