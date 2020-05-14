@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Evento;
 use App\Entity\Localidad;
+use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Collections\Collection;
@@ -101,6 +102,23 @@ class EventoRepository extends ServiceEntityRepository
         return $query->getResult();
     }
     
+    /**
+      * @return Evento[] Returns an array of Evento objects
+      */
+      public function getUserEvents(Usuario $usuario)
+    {
+        $entityManager = $this->getEntityManager();  
+            $query = $entityManager->createQuery(
+            'SELECT e 
+            FROM  App\Entity\Evento e, App\Entity\Participa p
+            WHERE e.id = p.evento
+            AND p.jugador = :id'
+        ); 
+        $query->setParameter("id", $usuario->getId());
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Evento[] Returns an array of Evento objects
     //  */

@@ -106,4 +106,22 @@ class EventService
         return '\/courts/'.$evento->getDeporte()->getNombre().'.html.twig';
     }
 
+    public function eventSameHour(Evento $evento):array
+    {
+        $find = [];
+        $user = $this->security->getUser();
+        if(!$user){
+            return false;
+        }
+        $eventos = $this->eventoManager->getUserEvents($user);
+        foreach($eventos as $event){
+            if($evento->getDia != $event->getDia()){
+                continue;
+            }
+            if(strtotime($evento->getInicio())>=strtotime($event->getInicio()) && strtotime($evento->getInicio())<=strtotime($event->getFinal())){
+                $find []= $event ;
+            }
+        }
+        return $find;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\Localidad;
+use App\Entity\Usuario;
 use App\Repository\EventoRepository;
 use Doctrine\Common\Collections\Collection;
 
@@ -40,5 +41,10 @@ class EventoManager
     public function getById(string $id)
     {
         return $this->eventoRepository->findOneBy(['id'=>$id]);
+    }
+
+    public function getUserEvents(Usuario $usuario)
+    {
+        return $this->eventoRepository->getUserEvents($usuario);
     }
 }
