@@ -1,54 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Usuario{% endblock %}
+{% block title %}global.usuario{% endblock %}
 
 {% block body %}
-    <h1>Usuario</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="container" >
+                        <img id="profile-img" src="/SportSpals/public/avatars/{{global.usuario.avatar}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        Nombre
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        Apellidos
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        Email
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        Localidad
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+            </div>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ usuario.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ usuario.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ usuario.roles ? usuario.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ usuario.password }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ usuario.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Apellidos</th>
-                <td>{{ usuario.apellidos }}</td>
-            </tr>
-            <tr>
-                <th>Edad</th>
-                <td>{{ usuario.edad }}</td>
-            </tr>
-            <tr>
-                <th>Sexo</th>
-                <td>{{ usuario.sexo }}</td>
-            </tr>
-            <tr>
-                <th>Avatar</th>
-                <td>{{ usuario.avatar }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('usuario_index') }}">back to list</a>
-
-    <a href="{{ path('usuario_edit', {'id': usuario.id}) }}">edit</a>
-
-    {{ include('usuario/_delete_form.html.twig') }}
 {% endblock %}

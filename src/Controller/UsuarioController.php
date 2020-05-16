@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Usuario;
 use App\Form\UsuarioType;
 use App\Repository\UsuarioRepository;
+use App\ViewManager\UsuarioViewManager;
 use DateTime;
 use \Gumlet\ImageResize;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UsuarioController extends AbstractController
 {
+    private $usuarioViewManager;
+
+    public function __construct(UsuarioViewManager $usuarioViewManager)
+    {
+        $this->usuarioViewManager = $usuarioViewManager;
+    }
     /**
      * @Route("/", name="usuario_index", methods={"GET"})
      */
@@ -75,8 +82,10 @@ class UsuarioController extends AbstractController
      */
     public function show(Usuario $usuario): Response
     {
+        $global = $this->usuarioViewManager->show($usuario);
+
         return $this->render('usuario/show.html.twig', [
-            'usuario' => $usuario,
+            'global' => $global,
         ]);
     }
 

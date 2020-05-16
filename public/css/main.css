@@ -76,3 +76,9 @@ body {
     width: 6em;
     vertical-align: middle;
   }
+
+  #profile-img{
+    height: 8em;
+    width: 8em;
+    background-color: #D94846;
+  }

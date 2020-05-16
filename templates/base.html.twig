@@ -50,7 +50,9 @@
                         <a class="nav-link" href="/SportSpals/public/index.php/practica/new">Deportes que practicas</a>
                     </li>
                     <li class="nav-item active">
-                        <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
+                        <a class="nav-link" href="/SportSpals/public/index.php/usuario/{{app.user.id}}">
+                            <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
+                        </a>
                     </li>
                     <li class="nav-item active">
                         <a id="cerrar-sesion" href="/SportSpals/public/index.php/logout"> Cerrar sesión </a>
