@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Evento;
+use App\Entity\Usuario;
 use App\Manager\EventoManager;
 use App\Manager\PracticaManager;
 use App\Manager\UsuarioManager;
@@ -124,5 +125,10 @@ class EventService
             }
         }
         return $find;
+    }
+
+    public function getEventsByUser(Usuario $usuario)
+    {
+        return $this->eventoManager->getUserEvents($usuario);
     }
 }

@@ -82,3 +82,9 @@ body {
     width: 8em;
     background-color: #D94846;
   }
+
+  #calendar{
+    height: 30em;
+    width: 45em;
+    padding-left: 0em;
+  }

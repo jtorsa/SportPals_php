@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
+use App\EventSubscriber\CalendarSubscriber;
 use App\Form\UsuarioType;
 use App\Repository\UsuarioRepository;
 use App\ViewManager\UsuarioViewManager;
 use DateTime;
-use \Gumlet\ImageResize;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,10 +21,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsuarioController extends AbstractController
 {
     private $usuarioViewManager;
+    private $calendarSubscriber;
 
-    public function __construct(UsuarioViewManager $usuarioViewManager)
+    public function __construct(UsuarioViewManager $usuarioViewManager, CalendarSubscriber $calendarSubscriber)
     {
         $this->usuarioViewManager = $usuarioViewManager;
+        $this->calendarSubscriber = $calendarSubscriber;
     }
     /**
      * @Route("/", name="usuario_index", methods={"GET"})
@@ -82,8 +84,15 @@ class UsuarioController extends AbstractController
      */
     public function show(Usuario $usuario): Response
     {
+        $eventos = [
+            "title" => "Event 1",
+            "start" => "2020-05-16 10:38:34.122943",
+            "end" => "2020-05-16 11:38:34.122943"
+        ];
+        
+        
         $global = $this->usuarioViewManager->show($usuario);
-
+        $global['eventos'] = json_encode($eventos);
         return $this->render('usuario/show.html.twig', [
             'global' => $global,
         ]);
@@ -122,4 +131,5 @@ class UsuarioController extends AbstractController
 
         return $this->redirectToRoute('usuario_index');
     }
+
 }
