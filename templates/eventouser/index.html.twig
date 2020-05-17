@@ -23,12 +23,12 @@
         <tbody>
         {% for evento in global.eventos %}
             <tr>
-                <td><img src='/SportSpals/public/balls/{{evento.deporte}}.png' height="30" width="30"></td>
-                <td>{{ evento.title }}</td>
-                <td>{{ evento.deporte }}</td>
-                <td>{{ evento.requeridos }}</td>
+                <td><img src='/SportSpals/public/balls/{{evento.evento.deporte}}.png' height="30" width="30"></td>
+                <td>{{ evento.evento.title }}</td>
+                <td>{{ evento.evento.localidad }}</td>
+                <td>{{ evento.evento.requeridos }}</td>
                 <td>
-                    <a href="{{ path('evento_show', {'id': evento.id}) }}">Ve al evento</a>
+                    <a href="{{ path('evento_show', {'id': evento.evento.id}) }}">Ve al evento</a>
                 </td>
             </tr>
         {% else %}

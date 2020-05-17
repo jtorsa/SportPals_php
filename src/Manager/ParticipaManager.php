@@ -54,4 +54,8 @@ class ParticipaManager
         return $this->participaRepository->getMostActiveCities();
     }
     
+    public function getPlayersByEvent()
+    {
+        return $this->participaRepository->getPlayersByEvent();
+    }
 }

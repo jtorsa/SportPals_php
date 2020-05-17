@@ -107,7 +107,7 @@ class EventService
         return '\/courts/'.$evento->getDeporte()->getNombre().'.html.twig';
     }
 
-    public function eventSameHour(Evento $evento):array
+    public function eventSameHour(Evento $evento)
     {
         $find = [];
         $user = $this->security->getUser();
@@ -131,4 +131,5 @@ class EventService
     {
         return $this->eventoManager->getUserEvents($usuario);
     }
+    
 }

@@ -121,9 +121,37 @@ class EventoFixtures extends Fixture implements DependentFixtureInterface
         $evento3->setInicio(new DateTime('19:30'));
         $evento3->setFinal(new DateTime('20:30'));
 
+        $eventoF2 = new Evento();
+        $eventoF2->setDeporte($futbol);
+        $eventoF2->setLocalidad($valencia);
+        $eventoF2->setNivel($nivelesFutbol[0]);
+        $eventoF2->setCreador($usuarios[3]);
+        $eventoF2->setTitle(' Evento en Valencia de '.$futbol->getNombre());
+        $eventoF2->setDescripcion('Descripcion del evento de prueba creado por '.$usuarios[0]->getNombre());
+        $eventoF2->setDireccion('direccion de prueba');
+        $eventoF2->setRequeridos(22);
+        $eventoF2->setDia($hoy);
+        $eventoF2->setInicio(new DateTime('17:30'));
+        $eventoF2->setFinal(new DateTime('18:30'));
+
+        $eventoF3 = new Evento();
+        $eventoF3->setDeporte($futbol);
+        $eventoF3->setLocalidad($valencia);
+        $eventoF3->setNivel($nivelesFutbol[0]);
+        $eventoF3->setCreador($usuarios[3]);
+        $eventoF3->setTitle('TORNEO en Valencia de '.$futbol->getNombre());
+        $eventoF3->setDescripcion('Descripcion del evento de prueba creado por '.$usuarios[0]->getNombre());
+        $eventoF3->setDireccion('direccion de prueba');
+        $eventoF3->setRequeridos(22);
+        $eventoF3->setDia($hoy);
+        $eventoF3->setInicio(new DateTime('09:30'));
+        $eventoF3->setFinal(new DateTime('19:30'));
+
 
         $manager->persist($evento);
         $manager->persist($evento2);
+        $manager->persist($eventoF2);
+        $manager->persist($eventoF3);
         $manager->persist($evento3);
         $manager->persist($eventoTe1);
         $manager->persist($eventoTe2);

@@ -48,7 +48,8 @@ class CalendarSubscriber extends AbstractController implements EventSubscriberIn
             $calendar->addEvent(new Event(
                 $evento->getTitle(),
                 $inicio,
-                $final
+                $final,
+                ['url'=>'/SportSpals/public/index.php/evento/'.$evento->getId()]
             ));
         }
     }

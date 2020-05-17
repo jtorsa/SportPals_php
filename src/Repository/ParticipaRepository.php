@@ -49,6 +49,20 @@ class ParticipaRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function getPlayersByEvent()
+    {
+        $entityManager = $this->getEntityManager();  
+        $query = $entityManager->createQuery(
+            'SELECT e.id, COUNT(p.evento) AS num
+            FROM  App\Entity\Participa p, App\Entity\Evento e
+            WHERE e.id = p.evento
+            GROUP BY p.evento
+            '
+        );
+ 
+        return $query->getResult();
+    }
+
 
     // /**
     //  * @return Participa[] Returns an array of Participa objects

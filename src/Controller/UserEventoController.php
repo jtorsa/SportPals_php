@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\EventoType;
+use App\Repository\ParticipaRepository;
 use App\ViewManager\AppViewmanager;
 use App\ViewManager\EventoViewmanager;
 
@@ -35,8 +36,7 @@ class UserEventoController extends AbstractController
      */
     public function index(EventoRepository $eventoRepository): Response
     {
-        $global = $this->appViewmanager->index();
-        $global['eventos'] = $eventoRepository->findAll();
+        $global = $this->eventoViewmanager->index();
         
         return $this->render('eventouser/index.html.twig', [
             'global' => $global,

@@ -55,4 +55,15 @@ class ParticipaService
         return $participas;
     }
 
+    public function getPlayersByEvent()
+    {
+        $playersCount = $this->participaManager->getPlayersByEvent();
+        $eventsIndexedByCount = [];
+        foreach($playersCount as $count => $id){
+            $eventsIndexedByCount[$id['id']]['count'] = $id['num'];
+            $eventsIndexedByCount[$id['id']]['evento'] = $this->eventoManager->findOneById($id['id']);
+        }
+        
+        return $eventsIndexedByCount;
+    }
 }

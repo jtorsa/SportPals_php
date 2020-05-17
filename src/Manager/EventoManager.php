@@ -47,4 +47,14 @@ class EventoManager
     {
         return $this->eventoRepository->getUserEvents($usuario);
     }
+
+    public function findAll()
+    {
+        return $this->eventoRepository->findAll();
+    }
+
+    public function findOneById(int $id)
+    {
+        return $this->eventoRepository->findOneById($id);
+    }
 }
