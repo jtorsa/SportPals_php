@@ -16,7 +16,7 @@
                 <th> </th>
                 <th>Titulo</th>
                 <th>Localidad</th>
-                <th>Requeridos</th>
+                <th>Apuntados/Requeridos</th>
                 <th></th>
             </tr>
         </thead>
@@ -26,7 +26,11 @@
                 <td><img src='/SportSpals/public/balls/{{evento.evento.deporte}}.png' height="30" width="30"></td>
                 <td>{{ evento.evento.title }}</td>
                 <td>{{ evento.evento.localidad }}</td>
-                <td>{{ evento.evento.requeridos }}</td>
+                {% if evento.count  == evento.evento.requeridos %}
+                    <td>El evento ya está completo</td>
+                {% else %}
+                    <td>{{ evento.count }}/{{ evento.evento.requeridos }}</td>
+                {% endif %}
                 <td>
                     <a href="{{ path('evento_show', {'id': evento.evento.id}) }}">Ve al evento</a>
                 </td>
