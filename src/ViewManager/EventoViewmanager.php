@@ -19,7 +19,6 @@ class EventoViewmanager extends AbstractController
     private $eventService;
     private $participaService;
     private $security;
-    private $eventoManager;
 
     public function __construct( 
         AppViewmanager $appViewmanager,
