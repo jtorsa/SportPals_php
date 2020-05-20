@@ -1,34 +1,83 @@
 <div class="court-helper">
+    <!--Inicio posicion -->
     <div class="row">
     {% set break = false %}
-            {% set user = '' %}
-        <div class="col-md-12 col-sm-12 tenis-half" id="Derecha-1">
+    {% set vote = '' %}
+    {% set voteBreak = false %}
+    {% set user = '' %}
+    <div class="col-md-12 col-sm-12 tenis-half" id="Derecha-1">
         {% for  participante, value in global.participantes %}
-                    {% if participante == 'Derecha1' %}
-                        {% set user = value %}
-                        {% set break = true %} 
+            {% if participante == 'Derecha1' %}
+                {% set user = value %}
+                {% set break = true %} 
+            {% endif %}
+        {% endfor %}
+        {% if break == true %}
+            <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+            {% for posicion, rate in global.votos %}
+                {% if posicion == user %}
+                    {% set vote = rate %}
+                    {% set voteBreak = true %} 
+                {% endif %}
+            {% endfor %}
+            {% if voteBreak == true %}
+                <div class="row">
+                    {% if vote == 1 %}
+                        <span class="glyphicon glyphicon-star"></span>
                     {% endif %}
-                {% endfor %}
-                {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
-                {% elseif global.rolled %}
+                    {% if vote == 2 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 3 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 4 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 5 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                </div>   
+            {% endif %}
+            {% if app.user.avatar != user and app.user.avatar in global.participantes %}
+                <div class="vote">
                     <div class="row">
-                        Derecha del equipo 1
+                        Puntua al jugador
                     </div>
-                {% else %}
-                <div class="row">
-                        Derecha del equipo 1
-                    </div>
-                <div class="row">
-                    <button class="btn-add"> 
-                            <span class="glyphicon glyphicon-plus"></span>
-                    </button>
+                    <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                        <div class="rating">
+                            <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                            <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                            <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                            <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                            <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                        </div>
+                    </form>
                 </div>
-                {% endif %}</div>
+            {% endif %}
+        </div>
+        {% elseif global.rolled  or app.user is null %}
+            <div class="row">
+                Derecha del equipo 1
+            </div>
+        {% else %}
+            <div class="row">
+                Derecha del equipo 1
+            </div>
+            <div class="row">
+                <button class="btn-add"> 
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        {% endif %}
     </div>
+    <!--Final posicion -->
+    <!--Inicio posicion -->
     <div class="row">
     {% set break = false %}
-            {% set user = '' %}
+    {% set vote = '' %}
+    {% set voteBreak = false %}
+    {% set user = '' %}
         <div class="col-md-12 col-sm-12 tenis-half" id="Derecha-2">
         {% for  participante, value in global.participantes %}
                     {% if participante == 'Derecha2' %}
@@ -37,8 +86,51 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
-                {% elseif global.rolled %}
+                <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% for posicion, rate in global.votos %}
+                        {% if posicion == user %}
+                            {% set vote = rate %}
+                            {% set voteBreak = true %} 
+                        {% endif %}
+                {% endfor %}
+                {% if voteBreak == true %}
+                <div class="row">
+                    {% if vote == 1 %}
+                        <span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 2 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 3 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 4 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                    {% if vote == 5 %}
+                        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                    {% endif %}
+                </div>   
+                {% endif %}
+                {% if app.user.avatar != user and app.user.avatar in global.participantes %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+                    
+                {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Derecha del equipo 2
                     </div>
@@ -51,6 +143,7 @@
                             <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </div>
-                {% endif %}</div>
+                {% endif %}
+        </div>
+        <!--Final posicion -->
     </div>
-</div>

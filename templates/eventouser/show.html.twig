@@ -43,6 +43,35 @@
             <div class="row">
                 <p>{{ global.evento.requeridos }}</p>
             </div>
+
+            
+            <h3>Comentarios sobre el evento</h3>
+
+            {% if app.user %}
+
+            <div class="container">
+                <form name="comment" id="comment_form" action="{{ path('comentario_new_ajax') }}" >
+                <input type="text" id="new_comment" name="comment" placeholder="Añade tu comentario" size="60"><br>
+                <input id="event" name="event_id" type="hidden" value="{{global.evento.id}}">
+                <button id="comentar" class="btn" >Comentar</button>
+            </form><br>
+            </div>
+            
+            {% endif %}
+
+            {% for comentario in global.comentarios %}
+            <div class="row comment">
+                <div  class="comment_message" >
+                    {{ comentario.mensaje }}
+                </div>
+            </div>
+            <div class="row">
+                <div  class="comment_user" >
+                    {{ comentario.usuario.nombre }}
+                </div>
+            </div>
+                
+            {% endfor %}
         </div>
         <div class="col-md-6" id="court" style="background-image: url('/SportSpals/public/courts/{{global.evento.deporte.nombre}}.png');"> 
             {% include (global.court) ignore missing with {'global':global } %}
@@ -53,4 +82,42 @@
     </div>
 </div>
     <a href="{{ path('evento_index') }}">back to list</a>
+
+    <script>
+    $(document).ready(function() {
+        var form = $('#comment_form');
+        var formStar = $('#rate_form').attr('action');
+        var url = form.attr('action');
+        var method = form.attr('method');
+        
+
+
+        $('.star').click(function(event){
+            event.preventDefault();
+            var data = $(this).attr("value");
+            $.ajax({
+                url : formStar,
+                type: "POST",
+                data: {'data' :data},
+                success: function(html){
+                    location.reload();
+                }
+            });
+            
+        });
+
+        $('.btn-add').click(function(event){
+            event.preventDefault();
+            
+            $.ajax({
+                url : url,
+                type: method,
+                data: form.serialize(),
+                success: function(html){
+                    location.reload();
+                }
+            });
+        });
+    })
+    </script>
 {% endblock %}

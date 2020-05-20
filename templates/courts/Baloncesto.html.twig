@@ -11,7 +11,24 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="">
+                    <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Pivot del equipo 1
@@ -37,7 +54,24 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                    <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Ala-Pivot del equipo 1
@@ -65,7 +99,24 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                    <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Alero del equipo 1
@@ -91,7 +142,24 @@
                 {% endif %}
             {% endfor %}
             {% if break == true %}
-                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
             {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Escolta del equipo 1
@@ -119,7 +187,24 @@
                 {% endif %}
             {% endfor %}
             {% if break == true %}
-                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
             {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Base del equipo 1
@@ -147,7 +232,24 @@
                 {% endif %}
             {% endfor %}
             {% if break == true %}
-                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
             {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Base del equipo 2
@@ -175,7 +277,24 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                    <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Alero del equipo 2
@@ -201,7 +320,24 @@
                 {% endif %}
             {% endfor %}
             {% if break == true %}
-                        <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
             {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Escolta del equipo 2
@@ -229,7 +365,24 @@
                 {% endif %}
             {% endfor %}
             {% if break == true %}
-                <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Pivot del equipo 2
@@ -255,7 +408,24 @@
                     {% endif %}
                 {% endfor %}
                 {% if break == true %}
-                    <img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="">
+                    <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                {% if app.user.avatar != user %}
+                    <div class="vote">
+                        <div class="row">
+                            Puntua al jugador
+                        </div>
+                        <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
+                            <div class="rating">
+                                <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
                 {% elseif global.rolled  or app.user is null %}
                     <div class="row">
                         Ala-Pivot del equipo 2

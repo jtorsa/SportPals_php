@@ -7,10 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\Evento;
+use App\Manager\ComentarioManager;
 use App\Manager\EventoManager;
 use App\Manager\UsuarioManager;
 use App\Service\EventService;
 use App\Service\ParticipaService;
+use App\Service\VotacionService;
 
 class EventoViewmanager extends AbstractController
 {
@@ -18,6 +20,8 @@ class EventoViewmanager extends AbstractController
     private $usuarioManager;
     private $eventService;
     private $participaService;
+    private $comentarioManager;
+    private $votacionService;
     private $security;
 
     public function __construct( 
@@ -26,7 +30,10 @@ class EventoViewmanager extends AbstractController
         UsuarioManager $usuarioManager, 
         EventService $eventService, 
         EventoManager $eventoManager,
-        ParticipaService $participaService)
+        ParticipaService $participaService,
+        ComentarioManager $comentarioManager,
+        VotacionService $votacionService
+        )
     {
         $this->appViewmanager = $appViewmanager;
         $this->security = $security;
@@ -34,6 +41,8 @@ class EventoViewmanager extends AbstractController
         $this->eventService = $eventService;
         $this->eventoManager = $eventoManager;
         $this->participaService = $participaService;
+        $this->comentarioManager = $comentarioManager;
+        $this->votacionService = $votacionService;
     }
     
     public function index()
@@ -51,12 +60,15 @@ class EventoViewmanager extends AbstractController
 
     public function show(Evento $evento)
     {
+        
         $global = $this->appViewmanager->index();
         $global['rolled'] = $this->eventService->isRolled($evento);
         $global['participantes'] = $this->eventService->getParticipantesIndexedByPosition($evento);
+        $global['votos'] = $this->votacionService->getAverageRateByEvent($global['participantes'], $evento);
         $global['evento'] = $evento;    
         $global['court'] = $this->eventService->getCourtTwig($evento);
         $global['sameHour'] = $this->eventService->eventSameHour($evento);
+        $global['comentarios'] = $this->comentarioManager->getEventComments($evento);
 
         return $global;
     }

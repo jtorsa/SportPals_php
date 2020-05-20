@@ -58,12 +58,25 @@ class ParticipaService
     public function getPlayersByEvent()
     {
         $playersCount = $this->participaManager->getPlayersByEvent();
+        $eventos = $this->eventoManager->findAll();
         $eventsIndexedByCount = [];
-        foreach($playersCount as $count => $id){
-            $eventsIndexedByCount[$id['id']]['count'] = $id['num'];
-            $eventsIndexedByCount[$id['id']]['evento'] = $this->eventoManager->findOneById($id['id']);
+        $i = 0;
+        foreach($eventos as $evento){
+            $done = false;
+            foreach($playersCount as $count => $id){
+                if($done === false){
+                    if($evento->getId() == $id['id']){                   
+                        $eventsIndexedByCount[$evento->getId()]['count'] = $id['num'];
+                        $eventsIndexedByCount[$evento->getId()]['evento'] = $evento;
+                        $done = true;
+                    }else{
+                        $eventsIndexedByCount[$evento->getId()]['count'] = 0;
+                        $eventsIndexedByCount[$evento->getId()]['evento'] = $evento;
+                    }
+                }
+            }
         }
-        
+
         return $eventsIndexedByCount;
     }
 }

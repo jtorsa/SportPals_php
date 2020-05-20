@@ -89,3 +89,65 @@ body {
     padding-left: 0em;
     padding-bottom: 1em;
   }
+
+  .comment_message{
+    padding: 0.5em;
+  }
+
+  .comment_user{
+    padding: 0.5em;
+    color: #81adb3;
+  }
+
+  .comment{
+    padding: 10px;
+    border-radius: 0.6em;
+    border-color: #c1bdbc;
+    border-width: 1px;
+    border-style: solid;
+    width: 90%;
+    height: 4em;
+    padding: 0.5em;
+  }
+
+  .prueba{
+    position: relative;
+    display: inline-block;
+  }
+  .prueba .vote {
+    visibility: hidden;
+    width: 15em;
+    height: 6em;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .prueba:hover .vote {
+    visibility: visible;
+    opacity: 1;
+  }
+
+ .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
