@@ -39,7 +39,7 @@
                     {% endif %}
                 </div>   
             {% endif %}
-            {% if app.user.avatar != user and app.user.avatar in global.participantes %}
+            {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                 <div class="vote">
                     <div class="row">
                         Puntua al jugador
@@ -112,7 +112,7 @@
                     {% endif %}
                 </div>   
                 {% endif %}
-                {% if app.user.avatar != user and app.user.avatar in global.participantes %}
+                {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador

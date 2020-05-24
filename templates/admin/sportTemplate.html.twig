@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>html demo</title>
+  <style>
+  .red {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ <h4> Indica las posiciones que tendrá cada equipo </h4><button class"add-pos">Añadir posición</button>
+ <div id="sportId" name="{{global.deporteId}}" style="visibility: hidden"></div>
+<form>
+    
+</form>
+ <span class="create">Crear Template</span>
+<script>
+$(document).ready(function(){
+  var idDeporte = $('#sportId').attr('name');
+    $('button').click(function(event){
+        $('<div class="row">')
+        .appendTo("form");
+         $("<label>Fila</label>")
+        .appendTo("form");
+        $("<input type='number' value=''/>")
+        .attr("name", "fila")
+        .appendTo("form");
+        $("<label>Posicion</label>")
+        .appendTo("form");
+        $("<input type='text' value='' />")
+        .attr("name", "colum")
+        .appendTo("form");
+        $("</div>")
+        .appendTo("form");
+    });
+
+    $('.create').click(function(event){
+            event.preventDefault();
+            var form = $('form');
+            $.ajax({
+                url : "{{ path('admin_ajax_template')}}",
+                type: "POST",
+                data: {'data' :form.serialize(),
+                        'id' : idDeporte },
+                
+            });
+            
+        });
+});
+
+</script>
+ 
+</body>
+</html>

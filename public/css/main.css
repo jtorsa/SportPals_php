@@ -137,6 +137,55 @@ body {
     opacity: 1;
   }
 
+  .pos_1{
+    height: 27em;
+    border-color: indigo;
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+  }
+  .pos_2{
+    height: 13.5em;
+    border-color: indigo;
+    border-style: solid;
+    border-width: 2px;
+  }
+  .pos_3{
+    height: 9em;
+    border-color: indigo;
+    border-style: solid;
+    border-width: 2px;
+  }
+  .pos_4{
+    height: 6.8em;
+    border-color: indigo;
+    border-style: solid;
+    border-width: 2px;
+  }
+  .pos_5{
+    height: 5.4em;
+    border-color: indigo;
+    border-style: solid;
+    border-width: 2px;
+  }
+
+  .lg-button{
+    background-color: #040947;
+    width: 100%;
+    color: white;
+    font-size: 1em;
+  }
+
+  #myHeader{
+    background-color: #515367;
+  }
+
+  .header-div{
+    width: 15em;
+    text-align: center;
+    height: 5em;
+  }
+
  .rating {
   unicode-bidi: bidi-override;
   direction: rtl;

@@ -76,7 +76,6 @@ class ParticipaService
                 }
             }
         }
-
         return $eventsIndexedByCount;
     }
 }

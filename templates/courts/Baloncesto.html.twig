@@ -12,7 +12,7 @@
                 {% endfor %}
                 {% if break == true %}
                     <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -55,7 +55,7 @@
                 {% endfor %}
                 {% if break == true %}
                     <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -100,7 +100,7 @@
                 {% endfor %}
                 {% if break == true %}
                     <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -143,7 +143,7 @@
             {% endfor %}
             {% if break == true %}
                         <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -188,7 +188,7 @@
             {% endfor %}
             {% if break == true %}
                         <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -233,7 +233,7 @@
             {% endfor %}
             {% if break == true %}
                         <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -278,7 +278,7 @@
                 {% endfor %}
                 {% if break == true %}
                     <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -321,7 +321,7 @@
             {% endfor %}
             {% if break == true %}
                         <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -366,7 +366,7 @@
             {% endfor %}
             {% if break == true %}
                 <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -409,7 +409,7 @@
                 {% endfor %}
                 {% if break == true %}
                     <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                {% if app.user.avatar != user %}
+                {% if app.user and app.user.avatar != user %}
                     <div class="vote">
                         <div class="row">
                             Puntua al jugador
@@ -442,3 +442,4 @@
                 {% endif %}
             </div>
     </div>
+

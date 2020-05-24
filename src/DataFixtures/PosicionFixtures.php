@@ -30,17 +30,45 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
         $posicion->setNombre('Portero');
         $posicion->setDeporte($futbol);
 
-        $posicion1 = new Posicion;
-        $posicion1->setNombre('Defensa');
-        $posicion1->setDeporte($futbol);
+        $posicionDD = new Posicion;
+        $posicionDD->setNombre('CentralDerecho');
+        $posicionDD->setDeporte($futbol);
 
-        $posicion3 = new Posicion;
-        $posicion3->setNombre('Centrocampista');
-        $posicion3->setDeporte($futbol);
+        $posicionLD = new Posicion;
+        $posicionLD->setNombre('LateralDerecho');
+        $posicionLD->setDeporte($futbol);
+
+        $posicionCI = new Posicion;
+        $posicionCI->setNombre('CentralIzquierdo');
+        $posicionCI->setDeporte($futbol);
+
+        $posicionLI = new Posicion;
+        $posicionLI->setNombre('LateralIzquierdo');
+        $posicionLI->setDeporte($futbol);
+
+        $posicionEI = new Posicion;
+        $posicionEI->setNombre('ExtremoIzquierdo');
+        $posicionEI->setDeporte($futbol);
+
+        $posicionCCI = new Posicion;
+        $posicionCCI->setNombre('CentrocampistaIzquierdo');
+        $posicionCCI->setDeporte($futbol);
+
+        $posicionCCD = new Posicion;
+        $posicionCCD->setNombre('CentrocampistaDerecho');
+        $posicionCCD->setDeporte($futbol);
+
+        $posicionED = new Posicion;
+        $posicionED->setNombre('ExtremoDerecho');
+        $posicionED->setDeporte($futbol);
 
         $posicion2 = new Posicion;
-        $posicion2->setNombre('Delantero');
+        $posicion2->setNombre('DelanteroIzquierdo');
         $posicion2->setDeporte($futbol);
+
+        $posicionFDD = new Posicion;
+        $posicionFDD->setNombre('DelanteroDerecho');
+        $posicionFDD->setDeporte($futbol);
 /*****************************************/
         $posicion7 = new Posicion;
         $posicion7->setNombre('Base');
@@ -98,9 +126,15 @@ class PosicionFixtures extends Fixture implements DependentFixtureInterface
 
 
         $manager->persist($posicion);
-        $manager->persist($posicion1);
+        $manager->persist($posicionDD);
+        $manager->persist($posicionLD);
+        $manager->persist($posicionCI);
+        $manager->persist($posicionLI);
         $manager->persist($posicion2);
-        $manager->persist($posicion3);
+        $manager->persist($posicionEI);
+        $manager->persist($posicionED);
+        $manager->persist($posicionCCD);
+        $manager->persist($posicionCCI);
         $manager->persist($posicion4);
         $manager->persist($posicion5);
         $manager->persist($posicion6);

@@ -25,5 +25,7 @@
 
     <a href="{{ path('admin_deporte_edit', {'id': deporte.id}) }}">edit</a>
 
+    <a href="{{ path('admin_sport_template', {'id': deporte.id}) }}">Crear template para inscripción</a>
+
     {{ include('deporte/_delete_form.html.twig') }}
 {% endblock %}

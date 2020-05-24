@@ -3,13 +3,16 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {% if app.user %}
-        <div class="mb-3">
+        <div class="mb-4">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
@@ -17,26 +20,37 @@
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword">Contraseña</label>
     <input type="password" name="password" id="inputPassword" class="form-control" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <br>
+    <button class="btn btn-lg lg-button" type="submit">
+        Inicia sesión
     </button>
 </form>
+<br>
+<p> Si no estás registrado,<a href="/SportSpals/public/index.php/usuario/new">regístrate aquí</a></p>
+ <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+    </div>
+    <div class="col-md-3"></div>
+</div>
+<div class="row">
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <div class="col-md-2 lg-cols"></div>
+    <div class="col-md-4 lg-cols">
+        <b><svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
+  <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
+</svg> Crea tus propios eventos</b>
+        <p>Podrás crear tus propios o inscribirte en los que ya estén creados</p>
+    </div>
+    <div class="col-md-4 lg-cols">
+        <b>Crea tus propios eventos</b>
+        <p>Podrás crear tus propios o inscribirte en los que ya estén creados</p>
+    </div>
+    <div class="col-md-2 lg-cols"></div>
+</div>
 {% endblock %}
