@@ -25,8 +25,7 @@
     </head>
     <body>
     {% block navbar %}
-        <div class="header" id="myHeader">
-            <nav class="navbar navbar-expand-lg navbar-light ">
+            <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="header1">
                 <a class="nav-link" href="/SportSpals/public/index.php">
                     <img id="nav-logo" src='/SportSpals/public/Logo.png'>
                 </a>
@@ -46,7 +45,7 @@
                         <li class="nav-item header-div">
                             <a class="nav-link" href="/SportSpals/public/index.php/practica/new">Deportes que practicas</a>
                         </li>
-                        <li class="nav-item active header-div">
+                        <li class="nav-item active header-div" id="nav-img">
                             <a class="nav-link" href="/SportSpals/public/index.php/usuario/{{app.user.id}}">
                                 <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
                             </a>
@@ -64,8 +63,7 @@
                     {% endif %}
                     </ul>
                 </div>
-            </nav>
-         </div>   
+            </nav>  
     {% endblock %}
     
         {% block body %}
@@ -126,6 +124,7 @@
                 </div>
             </div>
             {% else %}
+            {# sin usuario logeado #}
             <div class="container index">
             <div class="row">
                 <div class="col-md-4 infoCont">
@@ -163,6 +162,21 @@
                     </div>
                 </div>
             </div>
+            <div class="container" id="index-info">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <h4><b>Comunicate</b></h4>
+                        <p>Deja comentarios en los eventos para comunicarte con el resto de participantes o para pedir al creador del evento que cambie de lugar o de hora.</p>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <h4><b>Puntua</b></h4>
+                        <p>Podrás puntuar a las personas con las que has compartido evento tanto para bien como para mal.</p>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            <div>
         </div>
             {% endif %}
         {% endblock %}

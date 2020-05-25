@@ -1,10 +1,11 @@
 body {
     background-color: #E2FFFC;
+   padding-top: 90px; 
   }
   
   #nav-avatar{
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     border-radius: 1em;
   }
 
@@ -176,10 +177,13 @@ body {
     font-size: 1em;
   }
 
-  #myHeader{
+  #header1{
     background-color: #515367;
   }
 
+  #usuario{
+    background-color: blue;
+  }
   .header-div{
     width: 15em;
     text-align: center;

@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Practica{% endblock %}
+{% block title %}Deportes que practico{% endblock %}
 
 {% block body %}
-    <h1>Create new Practica</h1>
+    <h1>Indica que posicion y que nivel tienes</h1>
 
-     <form name="practica" id="practica_form" method="post" action="{{ path('practica_new_ajax') }}">
+    <div class="container">
+        <div class="row">
+            <div class"col-md-4">
+            </div>
+            <div class"col-md-4">
+                <form name="practica" id="practica_form" method="post" action="{{ path('practica_new_ajax') }}">
         {% for deporte in global.deportes %}
             <h3>{{deporte.nombre}}</h3>
             <label>Nivel</label>
@@ -53,6 +58,17 @@
         {% endfor %}
         <button id="actualizar" class="btn" >Actualizar</button>
     </form>
+            </div>
+            <div class"col-md-4">
+                <p>
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    Si tienes alguna duda sobre el nivel del deporte que quieres registrar visita la pagina específica de ese deporte
+                    donde encontrarás toda la información necesaria para descubrir que nivel se adapta mejor a tus habilidades.
+                </p>
+            </div>
+        </div>
+    </div>
+     
     <script>
 
     $(document).ready(function() {
