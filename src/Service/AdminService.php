@@ -27,6 +27,8 @@ class AdminService extends AbstractController
         
         $param = $request->request;
         $deporte = null;
+        $inverso = [];
+        $team =1;
         foreach($param as $key => $inpup){
             if($key === 'id'){
                 $deporte = $this->deporteRepository->find($inpup);
@@ -65,8 +67,98 @@ class AdminService extends AbstractController
          // or .php   
         $fh = fopen($myFile, 'w+'); // or die("error");  
         $stringData = '<div class="court-helper">';
-        for($team = 1; $team <=2;$team++){
             foreach($matrix as $array){
+                $colSize = 12/count($array);
+                $lines = count($matrix);
+                $heightClass = '';
+                switch($lines){
+                    case 1 : $heightClass = 'pos_1';break;
+                    case 2 : $heightClass = 'pos_2';break;
+                    case 3 : $heightClass = 'pos_3';break;
+                    case 4 : $heightClass = 'pos_4';break;
+                    case 5 : $heightClass = 'pos_5';break;
+                }
+                $stringData .= '<div class="row '.$heightClass.'">';
+                foreach($array as $posicion){
+
+                $stringData .= '{% set break = false %}
+                {% set vote = \'\' %}
+                {% set voteBreak = false %}
+                {% set user = \'\' %}';
+
+                    $stringPos = '<div class="col-md-'.$colSize.' col-sm-'.$colSize.' position " id="'.$posicion.'-'.$team.'">
+                    {% for  participante, value in global.participantes %}
+                        {% if participante == \''.$posicion.$team.'\' %}
+                            {% set user = value %}
+                            {% set break = true %} 
+                        {% endif %}
+                    {% endfor %}
+                    {% if break == true %}
+                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
+                        {% for posicion, rate in global.votos %}
+                            {% if posicion == user %}
+                                {% set vote = rate %}
+                                {% set voteBreak = true %} 
+                            {% endif %}
+                        {% endfor %}
+                        {% if voteBreak == true %}
+                            <div class="row class="position-avatar"">
+                                {% if vote == 1 %}
+                                    <span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                                {% if vote == 2 %}
+                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                                {% if vote == 3 %}
+                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                                {% if vote == 4 %}
+                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                                {% if vote == 5 %}
+                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                                {% endif %}
+                            </div>   
+                        {% endif %}
+                        {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
+                            <div class="vote">
+                                <div class="row">
+                                    Puntua al jugador
+                                </div>
+                                <form name="rate" id="rate_form" action="{{ path(\'valoracion_new_ajax\') }}" >
+                                    <div class="rating">
+                                        <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
+                                        <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
+                                        <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
+                                        <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
+                                        <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
+                                    </div>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% elseif global.rolled  or app.user is null %}
+                        <div class="row">
+                            '.$posicion.' del equipo '.$team.'
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            '.$posicion.' del equipo '.$team.'
+                        </div>
+                        <div class="row">
+                            <button class="btn-add"> 
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>';
+                $stringData .=$stringPos;
+                }
+            $stringData .='</div>';
+            array_unshift($inverso, $array);
+            }
+            $team = 2;
+            foreach($inverso as $array){
                 $colSize = 12/count($array);
                 $lines = count($matrix);
                 $heightClass = '';
@@ -84,7 +176,7 @@ class AdminService extends AbstractController
                 {% set user = \'\' %}';
                 foreach($array as $posicion){
 
-                    $stringPos = '<div class="col-md-'.$colSize.' col-sm-'.$colSize.' " id="'.$posicion.'-'.$team.'">
+                    $stringPos = '<div class="col-md-'.$colSize.' col-sm-'.$colSize.' position " id="'.$posicion.'-'.$team.'">
                     {% for  participante, value in global.participantes %}
                         {% if participante == \''.$posicion.$team.'\' %}
                             {% set user = value %}
@@ -154,8 +246,6 @@ class AdminService extends AbstractController
                 }
             $stringData .='</div>';
             }
-        }
-        
         $stringData .='</div>';
         fwrite($fh, $stringData);
         fclose($fh);
