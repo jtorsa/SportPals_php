@@ -39,6 +39,47 @@ body {
     padding: 2em;
   }
 
+ #header-login{
+   border-width: 2px;
+   border-color: orange;
+   border-style: solid;
+   color: orange;
+   width: 7em;
+ }
+  .evento{
+    
+    height: 25em;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .event-title{
+    background-color: #d9d9d9;
+    color: black;
+    text-align: center;
+    width: 90%;
+  }
+
+  .event-incription{
+    height: 2em;
+    padding-top :5px;
+    background-color: indigo;
+    color: ivory;
+    border-radius: 0.5em;
+  }
+
+  .event-incription a{
+    color: ivory;
+  }
+
+  .event-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 2px;
+  }
+
   #court{
     background: no-repeat center center;
     background-size: cover;
@@ -73,8 +114,8 @@ body {
 
   .position-avatar{
     border-radius: 50%;
-    height: 6em;
-    width: 6em;
+    height: 5em;
+    width: 5em;
     vertical-align: middle;
   }
 
