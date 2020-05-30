@@ -1,9 +1,9 @@
-<div class="court-helper"><div class="row pos_3">{% set break = false %}
+<div class="court-helper"><div class="row pos_2">{% set break = false %}
                 {% set vote = '' %}
                 {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-12 col-sm-12 position " id="POrtero-1">
+                {% set user = '' %}<div class="col-md-12 col-sm-12 position " id="Portero-1">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'POrtero1' %}
+                        {% if participante == 'Portero1' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -17,23 +17,23 @@
                             {% endif %}
                         {% endfor %}
                         {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
+                        <div class="star-value">
+                            {% if vote == 1 %}
+                                1<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 2 %}
+                                2<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 3 %}
+                                3<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 4 %}
+                                4<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 5 %}
+                                5<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                        </div>   
                         {% endif %}
                         {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                             <div class="vote">
@@ -54,11 +54,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            POrtero del equipo 1
+                            Portero del equipo 1
                         </div>
                     {% else %}
                         <div class="row">
-                            POrtero del equipo 1
+                            Portero del equipo 1
                         </div>
                         <div class="row">
                             <button class="btn-add"> 
@@ -66,12 +66,12 @@
                             </button>
                         </div>
                     {% endif %}
-                </div></div><div class="row pos_3">{% set break = false %}
+                </div></div><div class="row pos_2">{% set break = false %}
                 {% set vote = '' %}
                 {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="fgh-1">
+                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="DefensaDerecho-1">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'fgh1' %}
+                        {% if participante == 'DefensaDerecho1' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -85,23 +85,23 @@
                             {% endif %}
                         {% endfor %}
                         {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
+                        <div class="star-value">
+                            {% if vote == 1 %}
+                                1<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 2 %}
+                                2<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 3 %}
+                                3<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 4 %}
+                                4<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 5 %}
+                                5<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                        </div>   
                         {% endif %}
                         {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                             <div class="vote">
@@ -122,11 +122,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            fgh del equipo 1
+                            DefensaDerecho del equipo 1
                         </div>
                     {% else %}
                         <div class="row">
-                            fgh del equipo 1
+                            DefensaDerecho del equipo 1
                         </div>
                         <div class="row">
                             <button class="btn-add"> 
@@ -137,9 +137,9 @@
                 </div>{% set break = false %}
                 {% set vote = '' %}
                 {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="hgg-1">
+                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="DefensaIzquierdo-1">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'hgg1' %}
+                        {% if participante == 'DefensaIzquierdo1' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -153,23 +153,23 @@
                             {% endif %}
                         {% endfor %}
                         {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
+                        <div class="star-value">
+                            {% if vote == 1 %}
+                                1<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 2 %}
+                                2<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 3 %}
+                                3<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 4 %}
+                                4<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 5 %}
+                                5<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                        </div>   
                         {% endif %}
                         {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                             <div class="vote">
@@ -190,11 +190,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            hgg del equipo 1
+                            DefensaIzquierdo del equipo 1
                         </div>
                     {% else %}
                         <div class="row">
-                            hgg del equipo 1
+                            DefensaIzquierdo del equipo 1
                         </div>
                         <div class="row">
                             <button class="btn-add"> 
@@ -202,149 +202,13 @@
                             </button>
                         </div>
                     {% endif %}
-                </div></div><div class="row pos_3">{% set break = false %}
-                {% set vote = '' %}
-                {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="Derecho-1">
-                    {% for  participante, value in global.participantes %}
-                        {% if participante == 'Derecho1' %}
-                            {% set user = value %}
-                            {% set break = true %} 
-                        {% endif %}
-                    {% endfor %}
-                    {% if break == true %}
-                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                        {% for posicion, rate in global.votos %}
-                            {% if posicion == user %}
-                                {% set vote = rate %}
-                                {% set voteBreak = true %} 
-                            {% endif %}
-                        {% endfor %}
-                        {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
-                        {% endif %}
-                        {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
-                            <div class="vote">
-                                <div class="row">
-                                    Puntua al jugador
-                                </div>
-                                <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
-                                    <div class="rating">
-                                        <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
-                                    </div>
-                                </form>
-                            </div>
-                        {% endif %}
-                    </div>
-                    {% elseif global.rolled  or app.user is null %}
-                        <div class="row">
-                            Derecho del equipo 1
-                        </div>
-                    {% else %}
-                        <div class="row">
-                            Derecho del equipo 1
-                        </div>
-                        <div class="row">
-                            <button class="btn-add"> 
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div>{% set break = false %}
-                {% set vote = '' %}
-                {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="Izquierdo-1">
-                    {% for  participante, value in global.participantes %}
-                        {% if participante == 'Izquierdo1' %}
-                            {% set user = value %}
-                            {% set break = true %} 
-                        {% endif %}
-                    {% endfor %}
-                    {% if break == true %}
-                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                        {% for posicion, rate in global.votos %}
-                            {% if posicion == user %}
-                                {% set vote = rate %}
-                                {% set voteBreak = true %} 
-                            {% endif %}
-                        {% endfor %}
-                        {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
-                        {% endif %}
-                        {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
-                            <div class="vote">
-                                <div class="row">
-                                    Puntua al jugador
-                                </div>
-                                <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
-                                    <div class="rating">
-                                        <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
-                                    </div>
-                                </form>
-                            </div>
-                        {% endif %}
-                    </div>
-                    {% elseif global.rolled  or app.user is null %}
-                        <div class="row">
-                            Izquierdo del equipo 1
-                        </div>
-                    {% else %}
-                        <div class="row">
-                            Izquierdo del equipo 1
-                        </div>
-                        <div class="row">
-                            <button class="btn-add"> 
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div></div><div class="row pos_3">
+                </div></div><div class="row pos_2">
                 {% set break = false %}
                 {% set vote = '' %}
                 {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="Derecho-2">
+                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="DefensaDerecho-2">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'Derecho2' %}
+                        {% if participante == 'DefensaDerecho2' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -395,11 +259,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            Derecho del equipo 2
+                            DefensaDerecho del equipo 2
                         </div>
                     {% else %}
                         <div class="row">
-                            Derecho del equipo 2
+                            DefensaDerecho del equipo 2
                         </div>
                         <div class="row">
                             <button class="btn-add"> 
@@ -407,9 +271,9 @@
                             </button>
                         </div>
                     {% endif %}
-                </div><div class="col-md-6 col-sm-6 position " id="Izquierdo-2">
+                </div><div class="col-md-6 col-sm-6 position " id="DefensaIzquierdo-2">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'Izquierdo2' %}
+                        {% if participante == 'DefensaIzquierdo2' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -460,11 +324,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            Izquierdo del equipo 2
+                            DefensaIzquierdo del equipo 2
                         </div>
                     {% else %}
                         <div class="row">
-                            Izquierdo del equipo 2
+                            DefensaIzquierdo del equipo 2
                         </div>
                         <div class="row">
                             <button class="btn-add"> 
@@ -472,13 +336,13 @@
                             </button>
                         </div>
                     {% endif %}
-                </div></div><div class="row pos_3">
+                </div></div><div class="row pos_2">
                 {% set break = false %}
                 {% set vote = '' %}
                 {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-6 col-sm-6 position " id="fgh-2">
+                {% set user = '' %}<div class="col-md-12 col-sm-12 position " id="Portero-2">
                     {% for  participante, value in global.participantes %}
-                        {% if participante == 'fgh2' %}
+                        {% if participante == 'Portero2' %}
                             {% set user = value %}
                             {% set break = true %} 
                         {% endif %}
@@ -529,145 +393,11 @@
                     </div>
                     {% elseif global.rolled  or app.user is null %}
                         <div class="row">
-                            fgh del equipo 2
+                            Portero del equipo 2
                         </div>
                     {% else %}
                         <div class="row">
-                            fgh del equipo 2
-                        </div>
-                        <div class="row">
-                            <button class="btn-add"> 
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div><div class="col-md-6 col-sm-6 position " id="hgg-2">
-                    {% for  participante, value in global.participantes %}
-                        {% if participante == 'hgg2' %}
-                            {% set user = value %}
-                            {% set break = true %} 
-                        {% endif %}
-                    {% endfor %}
-                    {% if break == true %}
-                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                        {% for posicion, rate in global.votos %}
-                            {% if posicion == user %}
-                                {% set vote = rate %}
-                                {% set voteBreak = true %} 
-                            {% endif %}
-                        {% endfor %}
-                        {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
-                        {% endif %}
-                        {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
-                            <div class="vote">
-                                <div class="row">
-                                    Puntua al jugador
-                                </div>
-                                <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
-                                    <div class="rating">
-                                        <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
-                                    </div>
-                                </form>
-                            </div>
-                        {% endif %}
-                    </div>
-                    {% elseif global.rolled  or app.user is null %}
-                        <div class="row">
-                            hgg del equipo 2
-                        </div>
-                    {% else %}
-                        <div class="row">
-                            hgg del equipo 2
-                        </div>
-                        <div class="row">
-                            <button class="btn-add"> 
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div></div><div class="row pos_3">
-                {% set break = false %}
-                {% set vote = '' %}
-                {% set voteBreak = false %}
-                {% set user = '' %}<div class="col-md-12 col-sm-12 position " id="POrtero-2">
-                    {% for  participante, value in global.participantes %}
-                        {% if participante == 'POrtero2' %}
-                            {% set user = value %}
-                            {% set break = true %} 
-                        {% endif %}
-                    {% endfor %}
-                    {% if break == true %}
-                        <div class="prueba"><img src="/SportSpals/public/avatars/{{user}}" class="position-avatar" alt="" value="" >
-                        {% for posicion, rate in global.votos %}
-                            {% if posicion == user %}
-                                {% set vote = rate %}
-                                {% set voteBreak = true %} 
-                            {% endif %}
-                        {% endfor %}
-                        {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
-                        {% endif %}
-                        {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
-                            <div class="vote">
-                                <div class="row">
-                                    Puntua al jugador
-                                </div>
-                                <form name="rate" id="rate_form" action="{{ path('valoracion_new_ajax') }}" >
-                                    <div class="rating">
-                                        <span class="star" value="{{user}}_5_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_4_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_3_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_2_{{global.evento.id}}">☆</span>
-                                        <span class="star" value="{{user}}_1_{{global.evento.id}}">☆</span>
-                                    </div>
-                                </form>
-                            </div>
-                        {% endif %}
-                    </div>
-                    {% elseif global.rolled  or app.user is null %}
-                        <div class="row">
-                            POrtero del equipo 2
-                        </div>
-                    {% else %}
-                        <div class="row">
-                            POrtero del equipo 2
+                            Portero del equipo 2
                         </div>
                         <div class="row">
                             <button class="btn-add"> 

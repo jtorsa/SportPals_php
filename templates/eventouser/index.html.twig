@@ -3,6 +3,7 @@
 {% block title %}Eventos{% endblock %}
 
 {% block body %}
+<div class="total">
     <div class="row">
         <div class="col-md-3"> <h1>Eventos</h1></div>
         <div class="col-md-6"></div>
@@ -14,35 +15,38 @@
         <div class="row">
             {% for evento in row %}
                 <div class="col-md-4 evento">
-                    <div class="row">
-                    <div class="col-md-1"></div>
-                        <div class="col-md-10 event-title">
-                            <h3><b>{{evento.evento.title}}</b></h3>
-                            <p>{{evento.evento.dia|date('Y-m-d')}} {{evento.evento.inicio|date('H-m-s')}}<p>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="event-img"src='/SportSpals/public/evento.jpeg'></img>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
+                    <div class="evento-fondo">
+                        <div class="row">
+                        
+                            <div class="col-md-12 event-title">
+                                <h3><b>{{evento.evento.title}}</b></h3>
+                                <p>{{evento.evento.dia|date("l d F")|replace({'Monday':'Lunes','Tuesday':'Martes','Wednesday':'Miercoles','Thursday':'Jueves','Friday':'Viernes','Saturday':'Sabado','Sunday':'Domingo','January':'Enero','February':'Febrero','March':'Marzo','April':'Abril','May':'Mayo','June':'Junio','July':'Julio','August':'Agosto','September':'Septiembre','October':'Octubre','November':'Noviembre','December':'Diciembre'})}} {{evento.evento.inicio|date('H:m')}}<p>
+                            </div>
                             
                         </div>
-                        <div class="col-md-4">
-                            <b>{{evento.evento.localidad}}</b>
+                        <div class="row">
+                            <div class="col-md-12 event-body">
+                                
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <p>            </p>
-                        </div>
-                        <div class="col-md-3 event-incription">
-                            <b><a href="{{ path('evento_show', {'id': evento.evento.id}) }}">Ve al evento</a></b>
+                        <div class="row">
+                            <div class="col-md-2">
+                                
+                            </div>
+                            <div class="col-md-4 event-city">
+                                <b>{{evento.evento.localidad}}</b>
+                            </div>
+                            <div class="col-md-2">
+                                <p>            </p>
+                            </div>
+                            <div class="col-md-3 event-incription">
+                                <b><a href="{{ path('evento_show', {'id': evento.evento.id}) }}">Inscripción</a></b>
+                            </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     {% endfor %}
+</div>
 {% endblock %}

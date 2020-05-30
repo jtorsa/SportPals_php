@@ -25,6 +25,10 @@ body {
     text-align: center;
   }
 
+  .nav-link{
+    color: white;
+  }
+
   .info{
     background-color: teal;
     color: white;
@@ -46,30 +50,61 @@ body {
    color: orange;
    width: 7em;
  }
+
   .evento{
-    
-    height: 25em;
-    padding: 10px;
+    height: 27em;
+    padding: 25px;
     margin-bottom: 10px;
   }
 
+  .evento-fondo{
+    background: url('/SportSpals/public/evento.jpeg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+  }
+
+
   .event-title{
-    background-color: #d9d9d9;
+    background-color:rgba(255,255,255,0.9);
     color: black;
     text-align: center;
-    width: 90%;
+    width: 100%;
+  }
+
+  .total{
+    padding:15px
   }
 
   .event-incription{
-    height: 2em;
-    padding-top :5px;
-    background-color: indigo;
-    color: ivory;
+    width: 7.3em;
+    padding-top :4px;
+    background-color: #515367;
     border-radius: 0.5em;
+    padding-right: auto;
+    padding-left: auto;
+    position: absolute;
+     bottom: 30px;
+     right: 30px;
+  }
+
+  .event-city{
+    width: 6em;
+    padding-top :4px;
+    background-color: #515367;
+    color: orange;
+    border-radius: 0.5em;
+    padding-right: auto;
+    padding-left: auto;
+    position: absolute;
+     bottom: 30px;
+     left: 30px;
   }
 
   .event-incription a{
-    color: ivory;
+    color: orange;
   }
 
   .event-img{
@@ -94,11 +129,36 @@ body {
     -o-background-size: cover;
   }
 
+  .star-value{
+    position:absolute;
+    bottom:0;
+    right:0;
+    color: blue;
+}
+
+  #alert-event{
+    height: 3em;
+    border-color: orangered;
+    border-radius: 1px;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    color: orangered;
+    padding-left: 8px;
+    padding-top: 0.5em;
+  }
+
   .tenis-half{
     height: 27em;
     padding: 5em;
 
   }
+  .pos-text{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .position{
     text-align: center;
     height: 9em;
@@ -225,10 +285,23 @@ body {
   #usuario{
     background-color: blue;
   }
+
   .header-div{
     width: 15em;
     text-align: center;
     height: 5em;
+  }
+
+  #header-events{
+    color: orange;
+  }
+
+  #header-sports{
+    color: orange;
+  }
+
+  #header-sports{
+    color: orange;
   }
 
  .rating {

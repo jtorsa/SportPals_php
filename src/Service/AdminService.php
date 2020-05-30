@@ -102,23 +102,23 @@ class AdminService extends AbstractController
                             {% endif %}
                         {% endfor %}
                         {% if voteBreak == true %}
-                            <div class="row class="position-avatar"">
-                                {% if vote == 1 %}
-                                    <span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 2 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 3 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 4 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                                {% if vote == 5 %}
-                                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                                {% endif %}
-                            </div>   
+                        <div class="star-value">
+                            {% if vote == 1 %}
+                                1<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 2 %}
+                                2<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 3 %}
+                                3<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 4 %}
+                                4<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                            {% if vote == 5 %}
+                                5<span class="glyphicon glyphicon-star"></span>
+                            {% endif %}
+                        </div>   
                         {% endif %}
                         {% if app.user and app.user.avatar != user and app.user.avatar in global.participantes %}
                             <div class="vote">
@@ -228,11 +228,11 @@ class AdminService extends AbstractController
                         {% endif %}
                     </div>
                     {% elseif global.rolled  or app.user is null %}
-                        <div class="row">
+                        <div class="row pos-text">
                             '.$posicion.' del equipo '.$team.'
                         </div>
                     {% else %}
-                        <div class="row">
+                        <div class="row pos-text">
                             '.$posicion.' del equipo '.$team.'
                         </div>
                         <div class="row">

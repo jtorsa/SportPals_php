@@ -21,8 +21,12 @@
 </script>
 <div class="container">
 {% for same in global.sameHour %}
-    ¡CUIDADO! Ya estás inscrito en otro evento a la misma hora que este. <a href="{{ path('evento_show', {'id': same.id}) }}">Ve al evento</a>
+    <div id="alert-event"> 
+    <span class="glyphicon glyphicon glyphicon-alert" aria-hidden="true"></span>
+        ¡CUIDADO! Ya estás inscrito en otro evento a la misma hora que este. <a href="{{ path('evento_show', {'id': same.id}) }}">Ve al evento</a>
+    </div>
 {% endfor %}
+<br><br>
     <div class="row">
         <div class="col-md-6" id="event-info">
             <div class="row">
