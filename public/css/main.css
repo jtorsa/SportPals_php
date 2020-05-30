@@ -9,6 +9,16 @@ body {
     border-radius: 1em;
   }
 
+  #nav-img{
+    padding-top: 0;
+    padding-bottom: 0em;
+  }
+
+  #a-img{
+    padding-top: 0;
+    padding-bottom: 0em;
+  }
+
   #cerrar-sesion{
     padding: 2px;
     background-color:#D94846;
@@ -29,6 +39,9 @@ body {
     color: white;
   }
 
+  .ds{
+    width: 100%;
+  }
   .info{
     background-color: teal;
     color: white;
@@ -47,9 +60,19 @@ body {
    border-width: 2px;
    border-color: orange;
    border-style: solid;
+   border-radius: 1em;
    color: orange;
-   width: 7em;
+   width: 8em;
  }
+
+ #header-register{
+  border-width: 2px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 1em;
+  color: orange;
+  width: 8em;
+}
 
   .evento{
     height: 27em;
@@ -296,7 +319,7 @@ body {
     color: orange;
   }
 
-  #header-sports{
+  #header-sport{
     color: orange;
   }
 
@@ -317,4 +340,8 @@ body {
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+}
+
+.newClass {
+  height: 60px;
 }

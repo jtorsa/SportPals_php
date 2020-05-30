@@ -25,6 +25,7 @@
     </head>
     <body>
     {% block navbar %}
+    {% set admin = false %}
             <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="header1">
                 <a class="nav-link" href="/SportSpals/public/index.php">
                     <img id="nav-logo" src='/SportSpals/public/Logo.png'>
@@ -46,19 +47,30 @@
                             <a id="header-sports" class="nav-link" href="/SportSpals/public/index.php/practica/new">Deportes que practicas</a>
                         </li>
                         <li class="nav-item active header-div" id="nav-img">
-                            <a class="nav-link" href="/SportSpals/public/index.php/usuario/{{app.user.id}}">
-                                <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
-                            </a>
+                        {% for rol in app.user.roles %}
+                            {% if rol == 'ROLE_ADMIN' %}
+                                {% set admin = true %}
+                            {% endif %}
+                        {% endfor %}
+                            {% if admin == true %}
+                                <a class="nav-link" href="/SportSpals/public/index.php/admin" id="a-img">
+                                    <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
+                                </a>
+                            {% else %}
+                                <a class="nav-link" id="a-img" href="/SportSpals/public/index.php/usuario/{{app.user.id}}">
+                                    <img id="nav-avatar" src='/SportSpals/public/avatars/{{app.user.avatar}}'>
+                                </a>
+                            {% endif %}
                         </li>
                         <li class="nav-item active header-div">
-                            <a id="cerrar-sesion" href="/SportSpals/public/index.php/logout"> Cerrar sesión </a>
+                            <a id="header-login" class="nav-link" href="/SportSpals/public/index.php/logout">Logout <span class="sr-only">(current)</span></a>
                         </li>
                     {% else %}
                         <li class="nav-item active header-div">
                             <a id="header-login" class="nav-link" href="/SportSpals/public/index.php/login">Login <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active header-div">
-                            <a class="nav-link" href="/SportSpals/public/index.php/usuario/new">registro <span class="sr-only">(current)</span></a>
+                            <a id="header-register" class="nav-link" href="/SportSpals/public/index.php/usuario/new">registro <span class="sr-only">(current)</span></a>
                         </li>
                     {% endif %}
                     </ul>
@@ -182,7 +194,11 @@
         {% endblock %}
         
         {% block javascripts %}
-            
+            <script>
+            $document.scroll(function() {
+                $("#header1").toggleClass(newClass, $document.scrollTop() >= 50);
+            })
+            </script>
         {% endblock %}
     </body>
 </html>

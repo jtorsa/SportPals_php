@@ -3,11 +3,27 @@
 {% block title %}New Evento{% endblock %}
 
 {% block body %}
-    <h1>Create new Evento</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-5">
+            <h1>Crea tu nuevo evento</h1>
+<br><br>
 
-    {{ include('evento/_form.html.twig') }}
+            {{ include('evento/_form.html.twig') }}
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('evento_index') }}">back to list</a> 
+        </div>
+    </div>
+    <br><br>
+</div>
+    
 
-    <a href="{{ path('evento_index') }}">back to list</a>
+    
+
+   
 
     <script>
         var $sport = $('#evento_deporte');

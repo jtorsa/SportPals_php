@@ -1,6 +1,39 @@
 {% use "bootstrap_base_layout.html.twig" %}
 
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row">
+        {{ form_widget(form.nick, {'attr':{'class':'ds','placeholder':'Nick'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.nombre, {'attr':{'class':'ds','placeholder':'Nombre'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.email, {'attr':{'class':'ds','placeholder':'Email'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.edad, {'attr':{'class':'ds','placeholder':'Edad'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.apellidos, {'attr':{'class':'ds','placeholder':'Nombre'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.password, {'attr':{'class':'ds','placeholder':'Contraseña'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.localidad, {'attr':{'class':'ds','placeholder':'Localidad'}}) }}
+    </div>
+    <br>
+    <div class="row">
+        {{ form_widget(form.avatar, {'attr':{'class':'ds','placeholder':'Avatar'}}) }}
+    </div>
+    <br>
+    <div class="row">
+    <button class="btn btn-lg lg-button">{{ button_label|default('Registrate') }}</button>
+    </div>
 {{ form_end(form) }}

@@ -53,7 +53,7 @@ class Usuario implements UserInterface
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $sexo;
+    private $nick;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Evento", mappedBy="creador")
@@ -207,14 +207,14 @@ class Usuario implements UserInterface
         return $this;
     }
 
-    public function getSexo(): ?string
+    public function getNick(): ?string
     {
-        return $this->sexo;
+        return $this->nick;
     }
 
-    public function setSexo(string $sexo): self
+    public function setNick(string $nick): self
     {
-        $this->sexo = $sexo;
+        $this->nombre = $nick;
 
         return $this;
     }
