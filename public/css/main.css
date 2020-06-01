@@ -56,6 +56,10 @@ body {
     padding: 2em;
   }
 
+  .half-form{
+    width: 40%;
+  }
+
  #header-login{
    border-width: 2px;
    border-color: orange;
@@ -81,7 +85,7 @@ body {
   }
 
   .evento-fondo{
-    background: url('/SportSpals/public/evento.jpeg') no-repeat center center;
+    background:  no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -203,8 +207,8 @@ body {
   }
 
   #profile-img{
-    height: 8em;
-    width: 8em;
+    height: 15em;
+    width: 15em;
     background-color: #D94846;
   }
 

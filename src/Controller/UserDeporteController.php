@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Deporte;
 use App\Repository\DeporteRepository;
+use App\Repository\NivelRepository;
+use App\Repository\PosicionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +19,15 @@ class UserDeporteController extends AbstractController
 {
     private $indexService;
     private $appViewmanager;
+    private $posicionRepository;
+    private $nivelRepository;
 
-    public function __construct(IndexService $indexService, AppViewmanager $appViewmanager)
+    public function __construct(IndexService $indexService, AppViewmanager $appViewmanager, PosicionRepository $posicionRepository, NivelRepository $nivelRepository)
     {
         $this->indexService = $indexService;
         $this->appViewmanager = $appViewmanager;
+        $this->nivelRepository = $nivelRepository;
+        $this->posicionRepository = $posicionRepository;
     }
 
     /**
@@ -42,6 +48,9 @@ class UserDeporteController extends AbstractController
     {
         $global = $this->appViewmanager->index();
         $global['deporte'] = $deporte;
+        $global['posiciones']= $this->posicionRepository->findBy(['deporte'=> $deporte->getId()]);
+        $global['niveles']= $this->nivelRepository->findBy(['deporte'=> $deporte->getId()]);
+        
         return $this->render('deporteuser/show.html.twig', [
             'global' => $global
         ]);

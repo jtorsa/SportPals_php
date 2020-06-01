@@ -15,6 +15,7 @@ class DeporteType extends AbstractType
         $builder
             ->add('Nombre')
             ->add('Descripcion')
+            ->add('requeridos')
             ->add('Campo', FileType::class,[
                 'label' => 'Campo de juego',
                 'mapped' => false

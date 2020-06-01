@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\ViewManager\EventoViewmanager;
+use DateTime;
 
 /**
  * @Route("/admin/evento")
@@ -44,6 +45,8 @@ class EventoController extends AbstractController
         $evento->setCreador($this->getUser());
         $form = $this->createForm(EventoType::class, $evento);
         $form->handleRequest($request);
+        $hoy = new DateTime('now');
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

@@ -214,7 +214,7 @@ class Usuario implements UserInterface
 
     public function setNick(string $nick): self
     {
-        $this->nombre = $nick;
+        $this->nick = $nick;
 
         return $this;
     }

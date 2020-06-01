@@ -89,9 +89,6 @@
                         <a href="{{ path('evento_index')}}"> ver mas </a>
                     </div>
                 </div>
-                <div class="row">
-                    <a href="/SportSpals/public/index.php/evento/new"> Crear evento </a>
-                </div>
             </div>
             <div class="container">
                 <div class="row">
@@ -102,20 +99,51 @@
                             {% set esta = true %}
                         {% endif %}
                     {% endfor %}
-                    <div class="col-md-3 evento-index">
-                        <img src='/SportSpals/public/balls/{{practicado.deporte}}.png' height="30" width="30">
-                        {% if esta ==true %}
-                            <span class="glyphicon glyphicon-ok"> </span>Ya estás inscrito en este evento
-                        {% endif %}
-                            <div class="row">{{practicado.title}}</div>
-                            <div class="row">{{practicado.descripcion}}</div>
-                            <a href="{{ path('evento_show', {'id': practicado.id}) }}">Ve al evento</a>
+                    {# aqui se separa#}
+                    <div class="col-md-4 evento">
+                    <div class="evento-fondo" style="background-image:url('/SportSpals/public/events/{{practicado.image}}'), url('/SportSpals/public/evento.jpeg')">
+                        <div class="row">
+                        
+                            <div class="col-md-12 event-title">
+                                {% if esta ==true %}
+                                    <span class="glyphicon glyphicon-ok"> </span>Ya estás inscrito en este evento
+                                {% endif %}
+                                <h3><img src='/SportSpals/public/balls/{{practicado.deporte}}.png' height="15" width="15"><b>{{practicado.title}}</b></h3>
+                                <p>{{practicado.dia|date("l d F")|replace({'Monday':'Lunes','Tuesday':'Martes','Wednesday':'Miercoles','Thursday':'Jueves','Friday':'Viernes','Saturday':'Sabado','Sunday':'Domingo','January':'Enero','February':'Febrero','March':'Marzo','April':'Abril','May':'Mayo','June':'Junio','July':'Julio','August':'Agosto','September':'Septiembre','October':'Octubre','November':'Noviembre','December':'Diciembre'})}} {{practicado.inicio|date('H:m')}}<p>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 event-body">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                
+                            </div>
+                            <div class="col-md-4 event-city">
+                                <b>{{practicado.localidad}}</b>
+                            </div>
+                            <div class="col-md-2">
+                                <p>            </p>
+                            </div>
+                            <div class="col-md-3 event-incription">
+                                <b><a href="{{ path('evento_show', {'id': practicado.id}) }}">Inscripción</a></b>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                    {##}
                     {% else %}
                     <div class="row">
                         <p class="no-events"> Aún no hay eventos en tu localidad anímate a crear el primero</p>
                     </div>
                 {% endfor %}
+                <div class="row">
+                    <p>¿No te convence ninguno?</p><a href="/SportSpals/public/index.php/evento/new"> Prueba a crear tu propioevento </a>
+                </div>
                 </div>
             </div>
             <div class="container">
@@ -126,12 +154,37 @@
             <div class="container">
                 <div class="row">
                 {% for noPracticado in global.noPracticados %}
-                    <div class="col-md-3 evento-index">
-                        <img src='/SportSpals/public/balls/{{noPracticado.deporte}}.png' height="30" width="30">
-                        <div class="row">{{noPracticado.title}}</div>
-                        <div class="row">{{noPracticado.descripcion}}</div>
-                        <a href="{{ path('evento_show', {'id': noPracticado.id}) }}">Ve al evento</a>
+                    <div class="col-md-4 evento">
+                    <div class="evento-fondo">
+                        <div class="row">
+                        
+                            <div class="col-md-12 event-title">
+                                <h3><img src='/SportSpals/public/balls/{{noPracticado.deporte}}.png' height="15" width="15"><b>{{noPracticado.title}}</b></h3>
+                                <p>{{noPracticado.dia|date("l d F")|replace({'Monday':'Lunes','Tuesday':'Martes','Wednesday':'Miercoles','Thursday':'Jueves','Friday':'Viernes','Saturday':'Sabado','Sunday':'Domingo','January':'Enero','February':'Febrero','March':'Marzo','April':'Abril','May':'Mayo','June':'Junio','July':'Julio','August':'Agosto','September':'Septiembre','October':'Octubre','November':'Noviembre','December':'Diciembre'})}} {{noPracticado.inicio|date('H:m')}}<p>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 event-body">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                
+                            </div>
+                            <div class="col-md-4 event-city">
+                                <b>{{noPracticado.localidad}}</b>
+                            </div>
+                            <div class="col-md-2">
+                                <p>            </p>
+                            </div>
+                            <div class="col-md-3 event-incription">
+                                <b><a href="{{ path('evento_show', {'id': noPracticado.id}) }}">Inscripción</a></b>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -194,11 +247,7 @@
         {% endblock %}
         
         {% block javascripts %}
-            <script>
-            $document.scroll(function() {
-                $("#header1").toggleClass(newClass, $document.scrollTop() >= 50);
-            })
-            </script>
+            
         {% endblock %}
     </body>
 </html>

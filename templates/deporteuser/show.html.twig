@@ -3,12 +3,59 @@
 {% block title %}{{global.deporte.nombre}}{% endblock %}
 
 {% block body %}
-    <h1>{{global.deporte.nombre}}</h1>
-        <table>
-            <tr>
-                <td>{{ global.deporte.id }}</td>
-                <td>{{ global.deporte.Nombre }}</td>
-                <td>{{ global.deporte.Descripcion }}</td>
-            </tr>
-    </table>
+
+
+<div class="container">
+    <div class="row">
+        <h1>{{global.deporte.nombre}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <img src='/SportSpals/public/sports/{{global.deporte.nombre}}.png' height="400" width="550">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <h4>{{global.deporte.descripcion}}</h4>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <h3> Niveles </h3>
+            </div>
+            {% for nivel in global.niveles %}
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-3">
+                        <b>{{nivel.nivel}}</b>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-9">
+                        {{nivel.descripcion}}
+                    </div>
+                </div>
+                <br>
+            {% endfor %}  
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="row">
+                <h3> Posiciones </h3>
+            </div>
+            {% if global.posiciones is empty %}
+            Este deporte no tiene ninguna posición 
+            {% endif %}
+            {% for posicion in global.posiciones %}
+                <div class="row">
+                    <h4>{{posicion.nombre}}<h4>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-sm-12 col-xs-12">
+</div>
+
 {% endblock %}

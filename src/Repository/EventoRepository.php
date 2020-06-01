@@ -69,7 +69,7 @@ class EventoRepository extends ServiceEntityRepository
             AND e.deporte IN ('.implode(',',$practicados).')'
         ); 
         $query->setParameter("id", $localidad->getId());
-        $query->setMaxResults(4);
+        $query->setMaxResults(3);
 
         return $query->getResult();
     }
@@ -97,7 +97,7 @@ class EventoRepository extends ServiceEntityRepository
             ); 
         }
         $query->setParameter("id", $localidad->getId());
-        $query->setMaxResults(4);
+        $query->setMaxResults(3);
 
         return $query->getResult();
     }

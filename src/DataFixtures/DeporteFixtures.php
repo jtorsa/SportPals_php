@@ -23,6 +23,7 @@ class DeporteFixtures extends Fixture
          desde la que se efectúa el tiro a canasta, o de uno, si se trata de un tiro libre por una falta de un jugador 
          contrario. El equipo ganador es el que obtiene el mayor número de puntos');
         $deporte->setCampoJuego('Baloncesto.png');
+        $deporte->setRequeridos(5);
         $manager->persist($deporte);
 
         $deporte2 = new Deporte();
@@ -31,6 +32,7 @@ class DeporteFixtures extends Fixture
         árbitros que se ocupan de que las normas se cumplan correctamente. Es ampliamente considerado el deporte más
          popular del mundo, pues lo practican unas 270 millones de personas');
          $deporte2->setCampoJuego('Futbol.png');
+         $deporte2->setRequeridos(11);
         $manager->persist($deporte2);
 
         $deporte3 = new Deporte();
@@ -42,6 +44,7 @@ class DeporteFixtures extends Fixture
          permitidos del campo del rival, procurando que este no pueda devolverla para conseguir un segundo rebote en el
          suelo y por ende un punto.');
          $deporte3->setCampoJuego('Tenis.png');
+         $deporte3->setRequeridos(1);
         $manager->persist($deporte3);
 
         $padel = new Deporte();
@@ -51,6 +54,7 @@ class DeporteFixtures extends Fixture
         la bola en el campo contrario antes de impactar con las paredes y/o verja (excepto en el servicio). 
         El jugador o jugadores opuestos deben devolver la bola con un golpe, cumpliendo con un máximo de un bote para golpearla.');
         $padel->setCampoJuego('Padel.png');
+        $padel->setRequeridos(4);
         $manager->persist($padel);
 
         $balonmano = new Deporte();
@@ -58,6 +62,7 @@ class DeporteFixtures extends Fixture
         $balonmano->setDescripcion(' deporte de pelota en el que se enfrentan dos equipos, se caracteriza por transportarla con las manos.
          Cada equipo se compone de siete jugadores (seis de campo y un portero), pudiendo el equipo contar con otros siete jugadores 
          (o menos, o ninguno) reservas que pueden intercambiarse en cualquier momento con sus compañeros.');
+         $deporte->setRequeridos(6);
         $manager->persist($balonmano);
         
         $ciclismo = new Deporte();

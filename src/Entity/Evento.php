@@ -74,6 +74,11 @@ class Evento
      */
     private $final;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -207,6 +212,18 @@ class Evento
     public function setFinal(\DateTimeInterface $final): self
     {
         $this->final = $final;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

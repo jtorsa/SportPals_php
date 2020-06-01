@@ -6,7 +6,7 @@
     {{ form_row(form.descripcion) }}
     {{ form_row(form.direccion) }}
     {{ form_row(form.requeridos) }}
-    {{ form_row(form.dia) }}
+    {{ form_row(form.dia, {'attr':{'class':'ds','min': hoy }}) }}
     {{ form_row(form.inicio) }}
     {{ form_row(form.final) }}
 

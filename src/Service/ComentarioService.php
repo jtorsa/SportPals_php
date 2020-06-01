@@ -25,14 +25,15 @@ class ComentarioService extends AbstractController
 
         $evento = $this->eventoRepository->find($param['event_id']);
         $user = $this->security->getUser();
-
-        $comentario = new Comentario;
-        $comentario->setMensaje($param['comment']);
-        $comentario->setEvento($evento);
-        $comentario->setUsuario($user);
-
-        $entityManager->persist($comentario);
-        
-        $entityManager->flush();
+        if($param['comment'] !== ''){
+            $comentario = new Comentario;
+            $comentario->setMensaje($param['comment']);
+            $comentario->setEvento($evento);
+            $comentario->setUsuario($user);
+    
+            $entityManager->persist($comentario);
+            
+            $entityManager->flush();
+        }
     }
 }

@@ -41,6 +41,11 @@ class Deporte
      */
     private $posiciones;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $requeridos;
+
 
     public function getId(): ?int
     {
@@ -112,6 +117,18 @@ class Deporte
     public function setImagen(?string $imagen): self
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    public function getRequeridos(): ?int
+    {
+        return $this->requeridos;
+    }
+
+    public function setRequeridos(?int $requeridos): self
+    {
+        $this->requeridos = $requeridos;
 
         return $this;
     }

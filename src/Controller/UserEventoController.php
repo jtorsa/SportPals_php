@@ -13,6 +13,8 @@ use App\Form\EventoType;
 use App\Repository\ParticipaRepository;
 use App\ViewManager\AppViewmanager;
 use App\ViewManager\EventoViewmanager;
+use DateInterval;
+use DateTime;
 
 /**
  * @Route("/evento")
@@ -48,6 +50,8 @@ class UserEventoController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $hoy = new DateTime('now');
+        $hoy->sub(new DateInterval('P1D'));
         $global = $this->appViewmanager->index();
         $evento = new Evento();
         $evento->setCreador($this->getUser());
@@ -65,7 +69,8 @@ class UserEventoController extends AbstractController
         return $this->render('evento/new.html.twig', [
             'global' => $global,
             'evento' => $evento,
-            'form' => $form->createView(),
+            'hoy' => $hoy->format('Y-m-d'),
+            'form' => $form->createView()
         ]);
     }
 

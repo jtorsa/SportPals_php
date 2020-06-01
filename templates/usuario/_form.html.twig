@@ -10,16 +10,17 @@
     </div>
     <br>
     <div class="row">
+        {{ form_widget(form.apellidos, {'attr':{'class':'ds','placeholder':'Apellidos'}}) }}
+    </div>
+    <br>
+    <div class="row">
         {{ form_widget(form.email, {'attr':{'class':'ds','placeholder':'Email'}}) }}
     </div>
     <br>
     <div class="row">
         {{ form_widget(form.edad, {'attr':{'class':'ds','placeholder':'Edad'}}) }}
     </div>
-    <br>
-    <div class="row">
-        {{ form_widget(form.apellidos, {'attr':{'class':'ds','placeholder':'Nombre'}}) }}
-    </div>
+    
     <br>
     <div class="row">
         {{ form_widget(form.password, {'attr':{'class':'ds','placeholder':'Contraseña'}}) }}

@@ -29,10 +29,10 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user = new Usuario();
         $user->setEmail('admin@mail.com');
-        $user->setSexo('H');
         $user->setNombre('Nombre');
         $user->setApellidos('Apellidos');
         $user->setEdad(18);
+        $user->setNick('adminB');
         $user->setFechaAlta(new DateTime('now'));
         $user->setPassword($this->passwordEncoder->encodePassword(
                          $user,
@@ -45,7 +45,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user2 = new Usuario();
         $user2->setEmail('avatar@mail.com');
-        $user2->setSexo('M');
+        $user2->setNick('fdsfds78');
         $user2->setNombre('Nombre');
         $user2->setApellidos('Apellidos');
         $user2->setEdad(18);
@@ -61,7 +61,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user3 = new Usuario();
         $user3->setEmail('user@mail.com');
-        $user3->setSexo('H');
+        $user3->setNick('useryt89');
         $user3->setNombre('Nombre');
         $user3->setApellidos('Apellidos');
         $user3->setEdad(40);
@@ -77,7 +77,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user4 = new Usuario();
         $user4->setEmail('user4@mail.com');
-        $user4->setSexo('H');
+        $user4->setNick('odod0990');
         $user4->setNombre('User3');
         $user4->setApellidos('Apellidos3');
         $user4->setEdad(40);
@@ -95,7 +95,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user5 = new Usuario();
         $user5->setEmail('user5@mail.com');
-        $user5->setSexo('H');
+        $user5->setNick('garmazin');
         $user5->setNombre('Nombre5');
         $user5->setApellidos('Apellidos5');
         $user5->setEdad(18);
@@ -111,7 +111,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user6 = new Usuario();
         $user6->setEmail('user6@mail.com');
-        $user6->setSexo('H');
+        $user6->setNick('dfsfdofikds343');
         $user6->setNombre('Nombre6');
         $user6->setApellidos('Apellidos6');
         $user6->setEdad(18);
@@ -128,7 +128,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user7 = new Usuario();
         $user7->setEmail('user7@mail.com');
-        $user7->setSexo('H');
+        $user7->setNick('fdfd99');
         $user7->setNombre('Nombre7');
         $user7->setApellidos('7');
         $user7->setEdad(18);
@@ -144,7 +144,7 @@ class UsuarioFixtures extends Fixture implements DependentFixtureInterface
 
         $user8 = new Usuario();
         $user8->setEmail('user8@mail.com');
-        $user8->setSexo('H');
+        $user8->setNick('sal09');
         $user8->setNombre('Nombre8');
         $user8->setApellidos('8');
         $user8->setEdad(18);

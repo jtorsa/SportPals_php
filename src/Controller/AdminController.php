@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DeporteRepository;
 use App\Service\AdminService;
 use App\ViewManager\AdminViewmanager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +17,13 @@ class AdminController extends AbstractController
 {
     private $adminViewmanager;
     private $adminService;
+    private $deporteRepository;
 
-    public function __construct(AdminViewmanager $adminViewmanager, AdminService $adminService)
+    public function __construct(AdminViewmanager $adminViewmanager, AdminService $adminService, DeporteRepository $deporteRepository)
     {
         $this->adminViewmanager = $adminViewmanager;
         $this->adminService = $adminService;
+        $this->deporteRepository = $deporteRepository;
     }
 
     /**
@@ -41,7 +44,11 @@ class AdminController extends AbstractController
     public function createSportTemplate(Request $request)
     {
         $global= $this->adminViewmanager->index();
+        
+       
         $global['deporteId'] = $request->attributes->get('id');
+        $requeridos = (string)$this->deporteRepository->find($global['deporteId'])->getRequeridos();
+        $global['requeridos'] = $requeridos;
         return $this->render('admin/sportTemplate.html.twig', array(
             'global' => $global
         ));
