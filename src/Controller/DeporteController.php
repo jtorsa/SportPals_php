@@ -68,8 +68,7 @@ class DeporteController extends AbstractController
                 $img->save($this->getParameter('court_directory').'/'.$imageFileName);
                 
             } catch (FileException $e) {
-                dump($e->getMessage());die;
-                return $e->getMessage();
+                 $e->getMessage();
             }
             $entityManager->persist($deporte);
             $entityManager->flush();

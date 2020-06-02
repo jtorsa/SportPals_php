@@ -10,11 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\EventoType;
-use App\Repository\ParticipaRepository;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\ViewManager\AppViewmanager;
 use App\ViewManager\EventoViewmanager;
 use DateInterval;
 use DateTime;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 /**
  * @Route("/evento")
@@ -50,6 +52,7 @@ class UserEventoController extends AbstractController
      */
     public function new(Request $request): Response
     {
+    
         $hoy = new DateTime('now');
         $hoy->sub(new DateInterval('P1D'));
         $global = $this->appViewmanager->index();
@@ -57,9 +60,27 @@ class UserEventoController extends AbstractController
         $evento->setCreador($this->getUser());
         $form = $this->createForm(EventoType::class, $evento);
         $form->handleRequest($request);
-
+        
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $image = $form->get('image')->getData();
+        
+            $imageFileName = $form->get('title')->getData().$form->get('dia')->getData()->format('Y-m-d').'.png';
+            $evento->setImage($imageFileName);
+                $image->move(
+                    $this->getParameter('event_directory'),
+                    $imageFileName
+                );
+                $imagick = new \Imagick();
+                $imagick->readImage($this->getParameter('event_directory').'/'.$imageFileName);
+                $imagick->writeImage($this->getParameter('event_directory').'/'.$imageFileName);
+                $imagick->clear();
+                $imagick->destroy();
+                $img = Image::make($this->getParameter('event_directory').'/'.$imageFileName);
+                $img->resize(300, 400);
+                $img->save($this->getParameter('event_directory').'/'.$imageFileName);
+                
             $entityManager->persist($evento);
             $entityManager->flush();
 

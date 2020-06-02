@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\Evento;
 use App\Form\EventoType;
 use App\Repository\EventoRepository;
+use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\ViewManager\EventoViewmanager;
 use DateTime;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/admin/evento")
@@ -41,15 +43,30 @@ class EventoController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        dump(0);die;
         $evento = new Evento();
         $evento->setCreador($this->getUser());
         $form = $this->createForm(EventoType::class, $evento);
-        $form->handleRequest($request);
-        $hoy = new DateTime('now');
-        
+        $form->handleRequest($request);        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $image = $form->get('image')->getData();
+            $imageFileName = $form->get('title')->getData().$form->get('dia')->getData().'.png';
+            try {
+                $image->move(
+                    $this->getParameter('event_directory'),
+                $imageFileName
+                );
+                $img = Image::make($this->getParameter('event_directory').'/'.$imageFileName);
+                $img->resize(450, 700);
+                $img->save($this->getParameter('event_directory').'/'.$imageFileName);
+            }catch (FileException $e) {
+                dump($e->getMessage());die;
+                    $e->getMessage();
+               }
+               $evento->setImage($imageFileName);
+dump($evento);die;
             $entityManager->persist($evento);
             $entityManager->flush();
 

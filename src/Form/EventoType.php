@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EventoType extends AbstractType
 {
@@ -44,7 +45,11 @@ class EventoType extends AbstractType
             ->add('final',TimeType::class,
             ['widget' => 'single_text',
             'empty_data' => 'final']
-            )  
+            )
+            ->add('image', FileType::class,[
+                'label' => 'Imagen del evento',
+                'mapped' => false
+            ])
         ;
 
         $formModifier = function (FormInterface $form, Deporte $sport = null) {
