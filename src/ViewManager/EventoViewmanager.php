@@ -48,7 +48,7 @@ class EventoViewmanager extends AbstractController
     public function index()
     {
         $global = $this->appViewmanager->index();
-        $global['eventos'] = $this->participaService->getPlayersByEvent();
+        $global['eventos'] = array_reverse($this->participaService->getPlayersByEvent());
 
         return $global;
         

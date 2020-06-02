@@ -47,6 +47,21 @@ class ParticipaController extends AbstractController
     }
 
     /**
+     * @Route("/unroll", name="participa_unroll_ajax", methods={"GET","POST"})
+     */
+    public function unrollAjax(Request $request): Response
+    {   
+
+        $participa = $this->participaService->unrollFromAjax($request->query->get('event'), $request->query->get('user'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($participa);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('evento_show',['id'=>$request->query->get('event')]);
+    }
+
+    /**
      * @Route("/new", name="participa_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

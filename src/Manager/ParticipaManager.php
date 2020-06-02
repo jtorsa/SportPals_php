@@ -58,4 +58,9 @@ class ParticipaManager
     {
         return $this->participaRepository->getPlayersByEvent();
     }
+
+    public function getParticipaByUserEvent(string $usuario, string $evento)
+    {
+        return $this->participaRepository->findOneBy(['jugador'=> $usuario, 'evento'=>$evento]);
+    }
 }

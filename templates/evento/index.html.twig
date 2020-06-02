@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Evento index{% endblock %}
 
 {% block body %}
-    <h1>Evento index</h1>
+    <h1>Indice de Eventos</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,7 @@
                 <th>Title</th>
                 <th>Descripcion</th>
                 <th>Direccion</th>
-                <th>Start</th>
+                <th>Dia</th>
                 <th>Requeridos</th>
                 <th>actions</th>
             </tr>
@@ -24,11 +24,11 @@
                 <td>{{ evento.title }}</td>
                 <td>{{ evento.descripcion }}</td>
                 <td>{{ evento.direccion }}</td>
-                <td>{{ evento.start }}</td>
+                <td>{{ evento.dia|date('d-m-Y') }}</td>
                 <td>{{ evento.requeridos }}</td>
                 <td>
-                    <a href="{{ path('evento_show', {'id': evento.id}) }}">show</a>
-                    <a href="{{ path('evento_edit', {'id': evento.id}) }}">edit</a>
+                    <a href="{{ path('admin_evento_show', {'id': evento.id}) }}">detalle</a>
+                    <a href="{{ path('evento_edit', {'id': evento.id}) }}">editar</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('evento_new') }}">Create new</a>
+    <a href="{{ path('evento_new') }}">Create evento</a>
 {% endblock %}

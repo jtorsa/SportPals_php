@@ -101,6 +101,13 @@ body {
     width: 100%;
   }
 
+  .sport-title{
+    background-color:rgba(255,255,255,0.9);
+    color: red;
+    text-align: center;
+    width: 100%;
+  }
+
   .total{
     padding:15px
   }
@@ -260,6 +267,11 @@ body {
     opacity: 0;
     transition: opacity 0.3s;
   }
+  #unroll{
+    background-color: #515367;
+    color: orange;
+    width: 7em;
+  }
 
   .prueba:hover .vote {
     visibility: visible;
@@ -268,34 +280,23 @@ body {
 
   .pos_1{
     height: 27em;
-    border-color: indigo;
-    border-style: solid;
-    border-width: 2px;
     text-align: center;
   }
   .pos_2{
     height: 13.5em;
-    border-color: indigo;
-    border-style: solid;
-    border-width: 2px;
+
   }
   .pos_3{
     height: 9em;
-    border-color: indigo;
-    border-style: solid;
-    border-width: 2px;
+
   }
   .pos_4{
     height: 6.8em;
-    border-color: indigo;
-    border-style: solid;
-    border-width: 2px;
+
   }
   .pos_5{
     height: 5.4em;
-    border-color: indigo;
-    border-style: solid;
-    border-width: 2px;
+
   }
 
   .lg-button{

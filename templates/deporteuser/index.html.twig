@@ -3,30 +3,39 @@
 {% block title %}Deportes{% endblock %}
 
 {% block body %}
-    <h1>Deporte index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for deporte in global.deportes %}
-            <tr>
-                <td>{{ deporte.Nombre }}</td>
-                <td> <img src='/SportSpals/public/sports/{{deporte.nombre}}.png' height="70" width="100"></td>
-                <td>
-                    <a href="{{ path('deporte_show', {'id': deporte.id}) }}">Ve al deporte</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aun no hay ningun deporte registrado</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1>Nuestros deportes</h1>
+    {% for row in global.deportes|batch(3) %}
+        <div class="row">
+            {% for deporte in row %}
+                <div class="col-md-4 evento">
+                    <div class="evento-fondo" style="background-image:url('/SportSpals/public/sports/{{deporte.nombre}}.png'), url('/SportSpals/public/sports/default.jpg')">
+                        <div class="row">
+                        
+                            <div class="col-md-12 event-title">
+                                <h3><b>{{deporte.nombre}}</b></h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 event-body">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                
+                            </div>
+                            <div class="col-md-4 event-city">
+                            </div>
+                            <div class="col-md-2">
+                                <p>            </p>
+                            </div>
+                            <div class="col-md-3 event-incription">
+                                <b><a href="{{ path('deporte_show', {'id': deporte.id}) }}">Detalles</a></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}

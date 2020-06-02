@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Usuario index{% endblock %}
 
@@ -11,11 +11,10 @@
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Edad</th>
-                <th>Sexo</th>
+                <th>Nick</th>
                 <th>Avatar</th>
                 <th>actions</th>
             </tr>
@@ -26,11 +25,10 @@
                 <td>{{ usuario.id }}</td>
                 <td>{{ usuario.email }}</td>
                 <td>{{ usuario.roles ? usuario.roles|json_encode : '' }}</td>
-                <td>{{ usuario.password }}</td>
                 <td>{{ usuario.nombre }}</td>
                 <td>{{ usuario.apellidos }}</td>
                 <td>{{ usuario.edad }}</td>
-                <td>{{ usuario.sexo }}</td>
+                <td>{{ usuario.nick }}</td>
                 <td>{{ usuario.avatar }}</td>
                 <td>
                     <a href="{{ path('usuario_show', {'id': usuario.id}) }}">show</a>

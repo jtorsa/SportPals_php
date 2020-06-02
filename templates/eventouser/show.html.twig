@@ -29,6 +29,11 @@
 <br><br>
     <div class="row">
         <div class="col-md-6" id="event-info">
+        {% if global.rolled %}
+            <div class="row" id="unroll" user="{{app.user.id}}"event="{{global.evento.id}}">
+                Abandonar el evento
+            </div>
+        {% endif %}
             <div class="row">
                 <h3>{{ global.evento.title }}</h3>
             </div>
@@ -119,6 +124,21 @@
                 success: function(html){
                     location.reload();
                 }
+            });
+        });
+
+        $('#unroll').click(function(event){
+            event.preventDefault();
+            $.ajax({
+                url : "{{path('participa_unroll_ajax')}}",
+                type: method,
+                data: {
+                    'user' : $('#unroll').attr('user'),
+                    'event' : $('#unroll').attr('event')
+                },
+            success: function(html){
+                        location.reload();
+                    }
             });
         });
     })

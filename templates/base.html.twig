@@ -37,10 +37,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                     <li class="nav-item header-div">
-                        <a id="header-sport" class="nav-link" href="/SportSpals/public/index.php/deporte">Deporte</a>
+                        <a id="header-sport" class="nav-link" href="{{ path('deporte_index') }}">Deporte</a>
                     </li>
                     <li class="nav-item header-div">
-                        <a id="header-events" class="nav-link" href="/SportSpals/public/index.php/evento">Eventos</a>
+                        <a id="header-events" class="nav-link" href="{{ path('evento_index') }}">Eventos</a>
                     </li>
                 {# login logic #}
                     {% if app.user %}
@@ -71,7 +71,7 @@
                             <a id="header-login" class="nav-link" href="/SportSpals/public/index.php/login">Login <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active header-div">
-                            <a id="header-register" class="nav-link" href="/SportSpals/public/index.php/usuario/new">registro <span class="sr-only">(current)</span></a>
+                            <a id="header-register" class="nav-link" href="/SportSpals/public/index.php/usuario/new">Registro <span class="sr-only">(current)</span></a>
                         </li>
                     {% endif %}
                     </ul>

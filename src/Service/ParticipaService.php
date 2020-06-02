@@ -39,6 +39,11 @@ class ParticipaService
         return $participa;
     }
 
+    public function unrollFromAjax(string $event, string $user) 
+    {
+        return $this->participaManager->getParticipaByUserEvent($user, $event);
+    }
+
     public function getMostActiveCities()
     {
         return $this->participaManager->getMostActiveCities();

@@ -12,10 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\ViewManager\EventoViewmanager;
 use DateTime;
+use DateInterval;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
- * @Route("/admin/evento")
+ * @Route("/admin/event")
  */
 class EventoController extends AbstractController
 {
@@ -28,7 +29,7 @@ class EventoController extends AbstractController
     }
 
     /**
-     * @Route("/", name="evento_index", methods={"GET"})
+     * @Route("/", name="admin_evento_index", methods={"GET"})
      */
     public function index(EventoRepository $eventoRepository): Response
     {
@@ -39,7 +40,7 @@ class EventoController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evento_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_evento_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -80,7 +81,7 @@ dump($evento);die;
     }
 
     /**
-     * @Route("/{id}", name="evento_show", methods={"GET"})
+     * @Route("/{id}", name="admin_evento_show", methods={"GET"})
      */
     public function show(Evento $evento): Response
     {
@@ -90,10 +91,12 @@ dump($evento);die;
     }
 
     /**
-     * @Route("/{id}/edit", name="evento_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_evento_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evento $evento): Response
     {
+        $hoy = new DateTime('now');
+        $hoy->sub(new DateInterval('P1D'));
         $form = $this->createForm(EventoType::class, $evento);
         $form->handleRequest($request);
 
@@ -104,6 +107,7 @@ dump($evento);die;
         }
 
         return $this->render('evento/edit.html.twig', [
+            'hoy' => $hoy,
             'evento' => $evento,
             'form' => $form->createView(),
         ]);
